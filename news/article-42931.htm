@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+      <link rel="canonical" href="https://freeclashx.github.io/news/article-42931.htm" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>【impala】python通过kerberos连接impala操作hive，及解决遇到的问题</title>
+        <meta name="description" content="参考相关文章,并整理了遇到的问题  https://blog.csdn.net/qq_31922231/article/details/98056113 https://baijiahao.baidu" />
+        <link rel="icon" href="/assets/website/img/freeclashx/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Free Clash X免费订阅地址中文网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freeclashx.github.io/news/article-42931.htm" />
+    <meta property="og:site_name" content="Free Clash X免费订阅地址中文网" />
+    <meta property="og:title" content="【impala】python通过kerberos连接impala操作hive，及解决遇到的问题" />
+    <meta property="og:image" content="https://freeclashx.github.io/uploads/20250116/78072564e9a4819c72319f5ac608ec78.webp" />
+        <meta property="og:release_date" content="2025-01-19T07:10:13" />
+    <meta property="og:updated_time" content="2025-01-19T07:10:13" />
+        <meta property="og:description" content="参考相关文章,并整理了遇到的问题  https://blog.csdn.net/qq_31922231/article/details/98056113 https://baijiahao.baidu" />
+        
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/bootstrap.min.css">
+    <!-- Font -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/font-awesome.min.css">
+    <!-- Slicknav -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/slicknav.css">
+    <!-- Owl carousel -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/owl.carousel.css">
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/owl.theme.css">
+    <!-- Animate -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/animate.css">
+    <!-- Main Style -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/main.css">
+    <!-- Extras Style -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/extras.css">
+    <!-- Responsive Style -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/responsive.css">
+    
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3Z77540WBS"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-3Z77540WBS');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!-- Header Area wrapper Starts -->
+    <header id="header-wrap">
+              <!-- Navbar Start -->
+        <nav class="navbar navbar-expand-lg fixed-top scrolling-navbar indigo">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                        <span class="icon-menu"></span>
+                        <span class="icon-menu"></span>
+                        <span class="icon-menu"></span>
+                    </button>
+                    <a href="/" class="navbar-brand xcblog-blog-logo">
+                                                <span>Free Clash X</span>
+                                            </a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-navbar">
+                    <ul class="navbar-nav mr-auto w-100 justify-content-end clearfix">
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/">
+                                首页                            </a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/free-nodes/">
+                                免费节点                            </a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/paid-subscribe/">
+                                推荐机场                            </a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/news/">
+                                新闻资讯                            </a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                关于
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                联系
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Mobile Menu Start -->
+            <ul class="mobile-menu navbar-nav">
+                                <li>
+                    <a href="/">
+                        首页                    </a>
+                </li>
+                                <li>
+                    <a href="/free-nodes/">
+                        免费节点                    </a>
+                </li>
+                                <li>
+                    <a href="/paid-subscribe/">
+                        推荐机场                    </a>
+                </li>
+                                <li>
+                    <a href="/news/">
+                        新闻资讯                    </a>
+                </li>
+                                <li>
+                    <a href="#">
+                        关于
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        联系
+                    </a>
+                </li>
+            </ul>
+            <!-- Mobile Menu End -->
+        </nav>
+        <!-- Navbar End -->
+        <!-- sliders -->
+        <div id="sliders">
+            <div class="full-width">
+                <!-- light slider -->
+                <div id="light-slider" class="carousel slide">
+                    <div id="carousel-area">
+                        <div id="carousel-slider" class="carousel slide" data-ride="carousel">
+                            <div class="carousel-inner" role="listbox">
+                                <div class="carousel-item active">
+                                    <img src="/assets/website/img/freeclashx/slider/bg-1.jpg" alt="">
+                                    <div class="carousel-caption">
+                                        <h1 class="slide-title">【impala】python通过kerberos连接impala操作hive，及解决遇到的问题</h1>
+                                        <h5 class="slide-text">
+                                            <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End sliders -->
+    </header>
+    <!-- Header Area wrapper End -->
+    
+    <!-- Services Section Start -->
+    <section id="services" class="section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Node官网订阅站" data-url="https://clashnode.github.io">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-light"> <p>参考相关文章,并整理了遇到的问题</p> <ul> <li><code>https://blog.csdn.net/qq_31922231/article/details/98056113</code></li> <li><code>https://baijiahao.baidu.com/s?id=1619270849703818962&amp;wfr=spider&amp;for=pc</code></li> </ul> <h2> <a id="_6" rel="nofollow"></a>一、环境信息</h2> <table> <thead> <tr> <th>组件</th> <th>版本</th> </tr> </thead> <tbody> <tr> <td>python</td> <td>2.7</td> </tr> <tr> <td>cdh</td> <td>5.13</td> </tr> <tr> <td>kerberos</td> <td>true</td> </tr> </tbody> </table> <hr/> <h3> <a id="_15" rel="nofollow"></a>二、安装相关包及配置</h3> <ol> <li>python相关依赖包</li> </ol> <pre><code class="prism language-bash">pip <span class="token function">install</span> krbcontext<span class="token operator">==</span>0.9 pip <span class="token function">install</span> thrift<span class="token operator">==</span>0.9.3 pip <span class="token function">install</span> thrift-sasl<span class="token operator">==</span>0.2.1 pip <span class="token function">install</span> impyla<span class="token operator">==</span>0.14.1 pip <span class="token function">install</span> impala<span class="token operator">==</span>0.2.0 pip <span class="token function">install</span> pykerberos<span class="token operator">==</span>1.2.1 </code></pre> <ol start="2"> <li>配置krb5.conf<br /> 安装了kerberos相关的包，/etc下面有个krb5.conf文件，换成自己集群的krb5.conf文件</li> </ol> <hr/> <h3> <a id="hive_30" rel="nofollow"></a>三、连接hive的示例代码：</h3> <pre><code class="prism language-python"><span class="token keyword">import</span> os <span class="token keyword">from</span> impala<span class="token punctuation">.</span>dbapi <span class="token keyword">import</span> connect <span class="token keyword">from</span> krbcontext <span class="token keyword">import</span> krbcontext  <span class="token keyword">def</span> <span class="token function">explain_sql</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>     <span class="token comment"># impala连接</span>     <span class="token keyword">try</span><span class="token punctuation">:</span>         krbcontext<span class="token punctuation">(</span>using_keytab<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span>                    principal<span class="token operator">=</span><span class="token string">'hive/bi-hadoop02.xxxx.com'</span><span class="token punctuation">,</span>                    keytab_file<span class="token operator">=</span><span class="token string">'/opt/hive.keytab'</span><span class="token punctuation">)</span>         conn <span class="token operator">=</span> connect<span class="token punctuation">(</span>host<span class="token operator">=</span><span class="token string">'impala-jdbc.xxxx.com'</span><span class="token punctuation">,</span>                        port<span class="token operator">=</span><span class="token number">21050</span><span class="token punctuation">,</span>                        auth_mechanism<span class="token operator">=</span><span class="token string">'GSSAPI'</span><span class="token punctuation">,</span>                        kerberos_service_name<span class="token operator">=</span><span class="token string">'hive'</span><span class="token punctuation">)</span>          cur <span class="token operator">=</span> conn<span class="token punctuation">.</span>cursor<span class="token punctuation">(</span><span class="token punctuation">)</span>         cur<span class="token punctuation">.</span>execute<span class="token punctuation">(</span><span class="token string">'show tables'</span><span class="token punctuation">)</span>         fetchData <span class="token operator">=</span> cur<span class="token punctuation">.</span>fetchall<span class="token punctuation">(</span><span class="token punctuation">)</span>          <span class="token comment"># 关闭连接</span>         cur<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>         conn<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>     <span class="token keyword">except</span> Exception <span class="token keyword">as</span> e<span class="token punctuation">:</span>         <span class="token keyword">print</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span>       </code></pre> <hr/> <h2> <a id="_60" rel="nofollow"></a>四、报错内容</h2> <p>本以为根据参考文章就已经大功告成了，没想到居然报错了。报错内容贴下：</p> <pre><code class="prism language-bash">Could not start SASL: Error <span class="token keyword">in</span> sasl_client_start <span class="token punctuation">(</span>-1<span class="token punctuation">)</span> SASL<span class="token punctuation">(</span>-1<span class="token punctuation">)</span>: generic failure: GSSAPI Error: Unspecified GSS failure.  Minor code may provide <span class="token function">more</span> information <span class="token punctuation">(</span>Credentials cache <span class="token function">file</span> <span class="token string">'/tmp/krb5cc_0'</span> not found<span class="token punctuation">)</span> Traceback <span class="token punctuation">(</span>most recent call last<span class="token punctuation">)</span>:   File <span class="token string">"./impala_jdbc.py"</span>, line 72, <span class="token keyword">in</span> <span class="token operator">&lt;</span>module<span class="token operator">&gt;</span>     parse_database<span class="token punctuation">(</span>fetchData<span class="token punctuation">)</span>   File <span class="token string">"./impala_jdbc.py"</span>, line 38, <span class="token keyword">in</span> parse_database     <span class="token keyword">for</span> data <span class="token keyword">in</span> fetchData: TypeError: <span class="token string">'NoneType'</span> object is not iterable </code></pre> <p>看了下报错，大致原因是因为跑python脚本这台服务器，没有认证kerberos权限或者权限失效了。<br /> 参考<code>https://baijiahao.baidu.com/s?id=1619270849703818962&amp;wfr=spider&amp;for=pc</code></p> <hr/> <h2> <a id="_76" rel="nofollow"></a>五、解决方法</h2> <h4> <a id="1_klistkerberos_77" rel="nofollow"></a>1. <code>klist</code>查看是否有kerberos认证</h4> <p><img decoding="async" src="http://img.555519.xyz/uploads/20221229/db93ee4ffe0ff955a1a7bd13192945e2.jpg" alt="【impala】python通过kerberos连接impala操作hive，及解决遇到的问题"><br /> 果然没有权限</p> <h4> <a id="2___82" rel="nofollow"></a>2. 添加代码</h4> <pre><code class="prism language-bash"><span class="token function">import</span> os os.system<span class="token punctuation">(</span><span class="token string">"kinit -kt /opt/hive.keytab hive/admin"</span><span class="token punctuation">)</span> </code></pre> <p>添加上述代码，就是每次使用jdbc时，都先认证一下防止principal过期或者跟换成别的principal，导致权限不够，没有访问impala的权限。</p> <p>== 贴下完整代码 ==：</p> <pre><code class="prism language-python"><span class="token keyword">import</span> os <span class="token keyword">from</span> impala<span class="token punctuation">.</span>dbapi <span class="token keyword">import</span> connect <span class="token keyword">from</span> krbcontext <span class="token keyword">import</span> krbcontext  <span class="token keyword">def</span> <span class="token function">explain_sql</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>     os<span class="token punctuation">.</span>system<span class="token punctuation">(</span><span class="token string">"kinit -kt /opt/hive.keytab hive/admin"</span><span class="token punctuation">)</span>     <span class="token comment"># impala连接</span>     <span class="token keyword">try</span><span class="token punctuation">:</span>         krbcontext<span class="token punctuation">(</span>using_keytab<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span>                    principal<span class="token operator">=</span><span class="token string">'hive/bi-hadoop02.xxxx.com'</span><span class="token punctuation">,</span>                    keytab_file<span class="token operator">=</span><span class="token string">'/opt/hive.keytab'</span><span class="token punctuation">)</span>         conn <span class="token operator">=</span> connect<span class="token punctuation">(</span>host<span class="token operator">=</span><span class="token string">'impala-jdbc.xxxx.com'</span><span class="token punctuation">,</span>                        port<span class="token operator">=</span><span class="token number">21050</span><span class="token punctuation">,</span>                        auth_mechanism<span class="token operator">=</span><span class="token string">'GSSAPI'</span><span class="token punctuation">,</span>                        kerberos_service_name<span class="token operator">=</span><span class="token string">'hive'</span><span class="token punctuation">)</span>          cur <span class="token operator">=</span> conn<span class="token punctuation">.</span>cursor<span class="token punctuation">(</span><span class="token punctuation">)</span>         cur<span class="token punctuation">.</span>execute<span class="token punctuation">(</span><span class="token string">'show tables'</span><span class="token punctuation">)</span>         fetchData <span class="token operator">=</span> cur<span class="token punctuation">.</span>fetchall<span class="token punctuation">(</span><span class="token punctuation">)</span>          <span class="token comment"># 关闭连接</span>         cur<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>         conn<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>     <span class="token keyword">except</span> Exception <span class="token keyword">as</span> e<span class="token punctuation">:</span>         <span class="token keyword">print</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span>       </code></pre> <hr/> <h2> <a id="_121" rel="nofollow"></a>六、总结</h2> <p>之前java写的较多，java代码认证kerberos是在代码级别的，而python是服务器级别，所以需要手动认证一下，还是对python 不太了解。</p> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-42930.htm">Vue3 学习笔记&#8211;组合式 API</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-42436.htm" title="动物医生执照的报考条件要求（动物医生职业资格证书）">动物医生执照的报考条件要求（动物医生职业资格证书）</a></li>
+                        <li class="py-2"><a href="/news/article-41939.htm" title="动物疫苗接种禁忌症和注意事项图片视频讲解（动物疫苗接种禁忌症和注意事项图片视频讲解）">动物疫苗接种禁忌症和注意事项图片视频讲解（动物疫苗接种禁忌症和注意事项图片视频讲解）</a></li>
+                        <li class="py-2"><a href="/news/article-42931.htm" title="【impala】python通过kerberos连接impala操作hive，及解决遇到的问题">【impala】python通过kerberos连接impala操作hive，及解决遇到的问题</a></li>
+                        <li class="py-2"><a href="/news/article-41747.htm" title="猫咪养多久能认识主人（养猫多久它会认识你）">猫咪养多久能认识主人（养猫多久它会认识你）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-16-free-node-subscribe-links.htm" title="1月16日最新机场订阅 | 20.9M/S|2025年SSR/Shadowrocket/V2ray/Clash免费节点地址链接分享">1月16日最新机场订阅 | 20.9M/S|2025年SSR/Shadowrocket/V2ray/Clash免费节点地址链接分享</a></li>
+                        <li class="py-2"><a href="/news/article-41938.htm" title="人被猫咬了要打针吗（人被猫咬了要打针吗?疫苗多少钱一针）">人被猫咬了要打针吗（人被猫咬了要打针吗?疫苗多少钱一针）</a></li>
+                        <li class="py-2"><a href="/news/article-41746.htm" title="宠物犬免费领养（宠物狗免费领养）">宠物犬免费领养（宠物狗免费领养）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-17-free-clash-subscribe.htm" title="1月17日最新ClashX订阅 | 18.2M/S|2025年Clash/V2ray/Shadowrocket/SSR免费节点地址链接分享">1月17日最新ClashX订阅 | 18.2M/S|2025年Clash/V2ray/Shadowrocket/SSR免费节点地址链接分享</a></li>
+                        <li class="py-2"><a href="/news/article-42930.htm" title="Vue3 学习笔记&#8211;组合式 API">Vue3 学习笔记&#8211;组合式 API</a></li>
+                        <li class="py-2"><a href="/news/article-42438.htm" title="宠物饲料加工厂加盟费多少钱（宠物饲料加工厂转让）">宠物饲料加工厂加盟费多少钱（宠物饲料加工厂转让）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">12</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Services Section End -->
+    
+        <!-- Footer Section -->
+    <footer class="footer">
+        <!-- Copyright -->
+        <div id="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-xs-12">
+                        <p class="copyright-text">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                            Free Clash X免费订阅地址中文网 版权所有 Powered by WordPress
+                        </p>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-xs-12">
+                        <ul class="nav nav-inline  justify-content-end ">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="/">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Sitemap</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Privacy Policy</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Terms of services</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Copyright  End-->
+    </footer>
+    <!-- Footer Section End-->
+    <!-- Go to Top Link -->
+    <a href="#" class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+    </a>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader" id="loader-1"></div>
+    </div>
+    <!-- End Preloader -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="/assets/website/js/frontend/freeclashx/jquery-min.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/jquery.mixitup.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/jquery.countTo.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/jquery.nav.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/scrolling-nav.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/jquery.easing.min.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/jquery.slicknav.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/form-validator.min.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/contact-form-script.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
