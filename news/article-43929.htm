@@ -2,19 +2,23 @@
 <html xml:lang="zh-CN" lang="zh-CN">
 
 <head>
-      <link rel="canonical" href="https://freeclashx.github.io/free-nodes/" />
+      <link rel="canonical" href="https://freeclashx.github.io/news/article-43929.htm" />
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>免费节点 - Free Clash X免费订阅地址中文网</title>
+    <title>springboot docker 分层打包镜像，精减变动体积</title>
+        <meta name="description" content="Dockerfile FROM openjdk:8-jdk-alpine as basic VOLUME /tmp COPY BOOT-INF/lib /app/lib COPY META-INF /" />
         <link rel="icon" href="/assets/website/img/freeclashx/favicon.ico" type="image/x-icon"/>
 
     <meta name="author" content="Free Clash X免费订阅地址中文网">
-    <meta property="og:type" content="webpage" />
-    <meta property="og:url" content="https://freeclashx.github.io/free-nodes/" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freeclashx.github.io/news/article-43929.htm" />
     <meta property="og:site_name" content="Free Clash X免费订阅地址中文网" />
-    <meta property="og:title" content="免费节点 - Free Clash X免费订阅地址中文网" />
-    <meta property="og:image" content="/assets/website/img/freeclashx/favicon.ico" />
+    <meta property="og:title" content="springboot docker 分层打包镜像，精减变动体积" />
+    <meta property="og:image" content="https://freeclashx.github.io/uploads/20250116/2f2fffd02b5cd3d0e99f05dc26659108.webp" />
+        <meta property="og:release_date" content="2025-01-21T09:50:00" />
+    <meta property="og:updated_time" content="2025-01-21T09:50:00" />
+        <meta property="og:description" content="Dockerfile FROM openjdk:8-jdk-alpine as basic VOLUME /tmp COPY BOOT-INF/lib /app/lib COPY META-INF /" />
         
     <meta name="applicable-device" content="pc,mobile" />
     <meta name="renderer" content="webkit" />
@@ -23,7 +27,7 @@
     <meta name="robots" content="max-image-preview:large" />
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-title" content="免费节点 - Free Clash X免费订阅地址中文网">
+    <meta name="apple-mobile-web-app-title" content="springboot docker 分层打包镜像，精减变动体积">
     <meta name="format-detection" content="telephone=no">
 
     <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
@@ -63,7 +67,7 @@
      crossorigin="anonymous"></script>
 </head>
 
-<body data-page="category">
+<body data-page="detail">
     <!-- Header Area wrapper Starts -->
     <header id="header-wrap">
               <!-- Navbar Start -->
@@ -155,9 +159,10 @@
                                 <div class="carousel-item active">
                                     <img src="/assets/website/img/freeclashx/slider/bg-1.jpg" alt="">
                                     <div class="carousel-caption">
-                                        <h1 class="slide-title">免费节点</h1>
+                                        <h1 class="slide-title">springboot docker 分层打包镜像，精减变动体积</h1>
                                         <h5 class="slide-text">
-                                            <a href="/">首页</a> / 免费节点                                        </h5>
+                                            <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                                        </h5>
                                     </div>
                                 </div>
                             </div>
@@ -173,102 +178,15 @@
     <!-- Services Section Start -->
     <section id="services" class="section-padding">
         <div class="container">
-                        <div class="row">
+            <div class="row">
                 <div class="col-md-9">
-                    <div class="xcblog-blog-list">
-                                                <div class="row item xcblog-blog-item" data-date="2025-01-21">
-                            <div class="col-md-3">
-                                <a href="/free-nodes/2025-1-21-clash-node-github.htm" class="xcblog-blog-url">
-                                    <img src="/uploads/20250116/a59fa93e670f7f1faebf2ae87e923c2c.webp" alt="1月21日最新ClashX订阅 | 20.6M/S|2025年V2ray/SSR/Clash/Shadowrocket免费节点地址链接分享" style="width:100%;">
-                                </a>
-                            </div>
-                            <div class="col-md-9">
-                                <div class="about-content pr-30">
-                                    <a href="/free-nodes/2025-1-21-clash-node-github.htm" class="xcblog-blog-url">
-                                        <h3 class="xcblog-blog-title">1月21日最新ClashX订阅 | 20.6M/S|2025年V2ray/SSR/Clash/Shadowrocket免费节点地址链接分享</h3>
-                                    </a>
-                                    <p>这一次的节点更新覆盖了美国、加拿大、日本、新加坡、欧洲、韩国、香港等地区,最高速度可达20.6 M/S。只需复制下方的Clash/v2ray订阅链接,在客户端添加后即可正常使用。</p>
+                                    <input type="hidden" id="share-website-info" data-name="Clash Node官网订阅站" data-url="https://clashnode.github.io">
+                  				  				  				<div id="content_views" class="htmledit_views"> <p>Dockerfile</p> <pre><code>FROM openjdk:8-jdk-alpine as basic VOLUME /tmp COPY BOOT-INF/lib /app/lib COPY META-INF /app/META-INF COPY BOOT-INF/classes /app/classes  FROM openjdk:8-jdk-alpine COPY --from=basic /app/lib /app/lib COPY --from=basic /app/META-INF /app/META-INF COPY --from=basic /app/classes /app/classes  ENTRYPOINT java -XX:MaxRAMFraction=2 -cp app/classes:app/lib/* com.example.demo.DemoApplication</code></pre> <p>构建脚本</p> <pre><code>repository="harbor.hknaruto.com/library/training"  mvn clean package -Dmaven.test.skip=true -T4 mkdir target/dependency cp Dockerfile target/dependency (   cd target/dependency   jar -xf ../*.jar   docker build -t "$repository":"$(git branch | awk '{print $2}')"."$(git rev-parse --short HEAD)" .   # 清理老的镜像，本地保留3个最近构建的镜像，从第4个开始，删除本地镜像   docker images | grep "$repository" | tail -n +4 | awk '{print $3}' | xargs -i docker rmi {} )</code></pre> <p>第一次构建效果</p> <pre><code>$ docker history harbor.hknaruto.com/library/training:master.30b943a IMAGE               CREATED             CREATED BY                                      SIZE                COMMENT f5d2de97b288        12 seconds ago      /bin/sh -c #(nop)  ENTRYPOINT ["/bin/sh" "-c…   0B                   a50c1ee7d59c        12 seconds ago      /bin/sh -c #(nop) COPY dir:590e06da69bc4b6fc…   10.8kB               5b91b3624e0a        12 seconds ago      /bin/sh -c #(nop) COPY dir:34d1e4a296310a6ec…   2.17kB               52dcee3f3e35        4 minutes ago       /bin/sh -c #(nop) COPY dir:94d828a4ed8596549…   20MB                 a3562aa0b991        2 years ago         /bin/sh -c set -x  &amp;&amp; apk add --no-cache   o…   99.3MB               &lt;missing&gt;           2 years ago         /bin/sh -c #(nop)  ENV JAVA_ALPINE_VERSION=8…   0B                   &lt;missing&gt;           2 years ago         /bin/sh -c #(nop)  ENV JAVA_VERSION=8u212       0B                   &lt;missing&gt;           2 years ago         /bin/sh -c #(nop)  ENV PATH=/usr/local/sbin:…   0B                   &lt;missing&gt;           2 years ago         /bin/sh -c #(nop)  ENV JAVA_HOME=/usr/lib/jv…   0B                   &lt;missing&gt;           2 years ago         /bin/sh -c {   echo '#!/bin/sh';   echo 'set…   87B                  &lt;missing&gt;           2 years ago         /bin/sh -c #(nop)  ENV LANG=C.UTF-8             0B                   &lt;missing&gt;           2 years ago         /bin/sh -c #(nop)  CMD ["/bin/sh"]              0B                   &lt;missing&gt;           2 years ago         /bin/sh -c #(nop) ADD file:a86aea1f3a7d68f6a…   5.53MB</code></pre> <p>第二次构建效果</p> <pre><code>$ docker history harbor.hknaruto.com/library/training:master.30b943a IMAGE               CREATED             CREATED BY                                      SIZE                COMMENT abc62088b1b6        1 second ago        /bin/sh -c #(nop)  ENTRYPOINT ["/bin/sh" "-c…   0B                   61cf540de3ff        1 second ago        /bin/sh -c #(nop) COPY dir:d4dc9a24cb84bd616…   10.8kB               5b91b3624e0a        2 minutes ago       /bin/sh -c #(nop) COPY dir:34d1e4a296310a6ec…   2.17kB               52dcee3f3e35        5 minutes ago       /bin/sh -c #(nop) COPY dir:94d828a4ed8596549…   20MB                 a3562aa0b991        2 years ago         /bin/sh -c set -x  &amp;&amp; apk add --no-cache   o…   99.3MB               &lt;missing&gt;           2 years ago         /bin/sh -c #(nop)  ENV JAVA_ALPINE_VERSION=8…   0B                   &lt;missing&gt;           2 years ago         /bin/sh -c #(nop)  ENV JAVA_VERSION=8u212       0B                   &lt;missing&gt;           2 years ago         /bin/sh -c #(nop)  ENV PATH=/usr/local/sbin:…   0B                   &lt;missing&gt;           2 years ago         /bin/sh -c #(nop)  ENV JAVA_HOME=/usr/lib/jv…   0B                   &lt;missing&gt;           2 years ago         /bin/sh -c {   echo '#!/bin/sh';   echo 'set…   87B                  &lt;missing&gt;           2 years ago         /bin/sh -c #(nop)  ENV LANG=C.UTF-8             0B                   &lt;missing&gt;           2 years ago         /bin/sh -c #(nop)  CMD ["/bin/sh"]              0B                   &lt;missing&gt;           2 years ago         /bin/sh -c #(nop) ADD file:a86aea1f3a7d68f6a…   5.53MB</code></pre> <p>其中最大的lib目录由于没有发生变动，并没有执行更新。</p> <p>注意，如果不采用COPY --from 方式，即使lib目录没有更新，也会重新创建新的层！导致镜像变动部分仍然很大。</p> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-43442.htm">动物医院社会实践内容怎么写（动物医院实践个人总结）</a></p>
+                                        <p>下一个：<a href="/news/article-43930.htm">宠物疫苗多少钱一次（宠物疫苗一般多少钱一只）</a></p>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                                                <div class="row item xcblog-blog-item" data-date="2025-01-20">
-                            <div class="col-md-3">
-                                <a href="/free-nodes/2025-1-20-node-share-links.htm" class="xcblog-blog-url">
-                                    <img src="/uploads/20250116/2f2fffd02b5cd3d0e99f05dc26659108.webp" alt="1月20日最新ClashX订阅 | 22.8M/S|2025年Clash/SSR/V2ray/Shadowrocket免费节点地址链接分享" style="width:100%;">
-                                </a>
-                            </div>
-                            <div class="col-md-9">
-                                <div class="about-content pr-30">
-                                    <a href="/free-nodes/2025-1-20-node-share-links.htm" class="xcblog-blog-url">
-                                        <h3 class="xcblog-blog-title">1月20日最新ClashX订阅 | 22.8M/S|2025年Clash/SSR/V2ray/Shadowrocket免费节点地址链接分享</h3>
-                                    </a>
-                                    <p>这一次的节点更新覆盖了新加坡、美国、日本、韩国、加拿大、香港、欧洲等地区,最高速度可达22.8 M/S。只需复制下方的Clash/v2ray订阅链接,在客户端添加后即可正常使用。</p>
-                                </div>
-                            </div>
-                        </div>
-                                                <div class="row item xcblog-blog-item" data-date="2025-01-19">
-                            <div class="col-md-3">
-                                <a href="/free-nodes/2025-1-19-clash-v2ray-ss-ssr.htm" class="xcblog-blog-url">
-                                    <img src="/uploads/20250116/d7b5f4a911d79162edd3b3b27d22edd1.webp" alt="1月19日最新ClashX订阅 | 21.8M/S|2025年Shadowrocket/SSR/Clash/V2ray免费节点地址链接分享" style="width:100%;">
-                                </a>
-                            </div>
-                            <div class="col-md-9">
-                                <div class="about-content pr-30">
-                                    <a href="/free-nodes/2025-1-19-clash-v2ray-ss-ssr.htm" class="xcblog-blog-url">
-                                        <h3 class="xcblog-blog-title">1月19日最新ClashX订阅 | 21.8M/S|2025年Shadowrocket/SSR/Clash/V2ray免费节点地址链接分享</h3>
-                                    </a>
-                                    <p>这一次的节点更新覆盖了美国、韩国、新加坡、加拿大、欧洲、日本、香港等地区,最高速度可达21.8 M/S。只需复制下方的Clash/v2ray订阅链接,在客户端添加后即可正常使用。</p>
-                                </div>
-                            </div>
-                        </div>
-                                                <div class="row item xcblog-blog-item" data-date="2025-01-18">
-                            <div class="col-md-3">
-                                <a href="/free-nodes/2025-1-18-node-share.htm" class="xcblog-blog-url">
-                                    <img src="/uploads/20250116/e16afa57b6ea9df35047bc19b9edffd5.webp" alt="1月18日最新ClashX订阅 | 21.7M/S|2025年V2ray/Clash/Shadowrocket/SSR免费节点地址链接分享" style="width:100%;">
-                                </a>
-                            </div>
-                            <div class="col-md-9">
-                                <div class="about-content pr-30">
-                                    <a href="/free-nodes/2025-1-18-node-share.htm" class="xcblog-blog-url">
-                                        <h3 class="xcblog-blog-title">1月18日最新ClashX订阅 | 21.7M/S|2025年V2ray/Clash/Shadowrocket/SSR免费节点地址链接分享</h3>
-                                    </a>
-                                    <p>这一次的节点更新覆盖了新加坡、加拿大、日本、香港、韩国、欧洲、美国等地区,最高速度可达21.7 M/S。只需复制下方的Clash/v2ray订阅链接,在客户端添加后即可正常使用。</p>
-                                </div>
-                            </div>
-                        </div>
-                                                <div class="row item xcblog-blog-item" data-date="2025-01-17">
-                            <div class="col-md-3">
-                                <a href="/free-nodes/2025-1-17-free-clash-subscribe.htm" class="xcblog-blog-url">
-                                    <img src="/uploads/20250116/f6091faed29c9ea57c5d04d364247c66.webp" alt="1月17日最新ClashX订阅 | 18.2M/S|2025年Clash/V2ray/Shadowrocket/SSR免费节点地址链接分享" style="width:100%;">
-                                </a>
-                            </div>
-                            <div class="col-md-9">
-                                <div class="about-content pr-30">
-                                    <a href="/free-nodes/2025-1-17-free-clash-subscribe.htm" class="xcblog-blog-url">
-                                        <h3 class="xcblog-blog-title">1月17日最新ClashX订阅 | 18.2M/S|2025年Clash/V2ray/Shadowrocket/SSR免费节点地址链接分享</h3>
-                                    </a>
-                                    <p>这一次的节点更新覆盖了欧洲、韩国、日本、加拿大、新加坡、美国、香港等地区,最高速度可达18.2 M/S。只需复制下方的Clash/v2ray订阅链接,在客户端添加后即可正常使用。</p>
-                                </div>
-                            </div>
-                        </div>
-                                                <div class="row item xcblog-blog-item" data-date="2025-01-16">
-                            <div class="col-md-3">
-                                <a href="/free-nodes/2025-1-16-free-node-subscribe-links.htm" class="xcblog-blog-url">
-                                    <img src="/uploads/20250116/4a60dea9f4f049e320300b9d875bcc45.webp" alt="1月16日最新机场订阅 | 20.9M/S|2025年SSR/Shadowrocket/V2ray/Clash免费节点地址链接分享" style="width:100%;">
-                                </a>
-                            </div>
-                            <div class="col-md-9">
-                                <div class="about-content pr-30">
-                                    <a href="/free-nodes/2025-1-16-free-node-subscribe-links.htm" class="xcblog-blog-url">
-                                        <h3 class="xcblog-blog-title">1月16日最新机场订阅 | 20.9M/S|2025年SSR/Shadowrocket/V2ray/Clash免费节点地址链接分享</h3>
-                                    </a>
-                                    <p>这一次的节点更新覆盖了新加坡、日本、韩国、美国、欧洲、加拿大、香港等地区,最高速度可达20.9 M/S。只需复制下方的Clash/v2ray订阅链接,在客户端添加后即可正常使用。</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                                            </div>
-                </div>
                 <div class="col-md-3">
                     <div class="panel panel-default">
     <div class="panel-heading">
@@ -276,16 +194,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2025-1-18-node-share.htm" title="1月18日最新ClashX订阅 | 21.7M/S|2025年V2ray/Clash/Shadowrocket/SSR免费节点地址链接分享">1月18日最新ClashX订阅 | 21.7M/S|2025年V2ray/Clash/Shadowrocket/SSR免费节点地址链接分享</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-1-20-node-share-links.htm" title="1月20日最新ClashX订阅 | 22.8M/S|2025年Clash/SSR/V2ray/Shadowrocket免费节点地址链接分享">1月20日最新ClashX订阅 | 22.8M/S|2025年Clash/SSR/V2ray/Shadowrocket免费节点地址链接分享</a></li>
-                        <li class="py-2"><a href="/news/article-43441.htm" title="在Java中可以重载或覆盖静态方法吗">在Java中可以重载或覆盖静态方法吗</a></li>
-                        <li class="py-2"><a href="/news/article-41746.htm" title="宠物犬免费领养（宠物狗免费领养）">宠物犬免费领养（宠物狗免费领养）</a></li>
-                        <li class="py-2"><a href="/news/article-42436.htm" title="动物医生执照的报考条件要求（动物医生职业资格证书）">动物医生执照的报考条件要求（动物医生职业资格证书）</a></li>
-                        <li class="py-2"><a href="/news/article-42931.htm" title="【impala】python通过kerberos连接impala操作hive，及解决遇到的问题">【impala】python通过kerberos连接impala操作hive，及解决遇到的问题</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-1-19-clash-v2ray-ss-ssr.htm" title="1月19日最新ClashX订阅 | 21.8M/S|2025年Shadowrocket/SSR/Clash/V2ray免费节点地址链接分享">1月19日最新ClashX订阅 | 21.8M/S|2025年Shadowrocket/SSR/Clash/V2ray免费节点地址链接分享</a></li>
-                        <li class="py-2"><a href="/news/article-43929.htm" title="springboot docker 分层打包镜像，精减变动体积">springboot docker 分层打包镜像，精减变动体积</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-1-17-free-clash-subscribe.htm" title="1月17日最新ClashX订阅 | 18.2M/S|2025年Clash/V2ray/Shadowrocket/SSR免费节点地址链接分享">1月17日最新ClashX订阅 | 18.2M/S|2025年Clash/V2ray/Shadowrocket/SSR免费节点地址链接分享</a></li>
                         <li class="py-2"><a href="/free-nodes/2025-1-16-free-node-subscribe-links.htm" title="1月16日最新机场订阅 | 20.9M/S|2025年SSR/Shadowrocket/V2ray/Clash免费节点地址链接分享">1月16日最新机场订阅 | 20.9M/S|2025年SSR/Shadowrocket/V2ray/Clash免费节点地址链接分享</a></li>
+                        <li class="py-2"><a href="/news/article-43442.htm" title="动物医院社会实践内容怎么写（动物医院实践个人总结）">动物医院社会实践内容怎么写（动物医院实践个人总结）</a></li>
+                        <li class="py-2"><a href="/news/article-43930.htm" title="宠物疫苗多少钱一次（宠物疫苗一般多少钱一只）">宠物疫苗多少钱一次（宠物疫苗一般多少钱一只）</a></li>
+                        <li class="py-2"><a href="/news/article-41939.htm" title="动物疫苗接种禁忌症和注意事项图片视频讲解（动物疫苗接种禁忌症和注意事项图片视频讲解）">动物疫苗接种禁忌症和注意事项图片视频讲解（动物疫苗接种禁忌症和注意事项图片视频讲解）</a></li>
+                        <li class="py-2"><a href="/news/article-42930.htm" title="Vue3 学习笔记&#8211;组合式 API">Vue3 学习笔记&#8211;组合式 API</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-19-clash-v2ray-ss-ssr.htm" title="1月19日最新ClashX订阅 | 21.8M/S|2025年Shadowrocket/SSR/Clash/V2ray免费节点地址链接分享">1月19日最新ClashX订阅 | 21.8M/S|2025年Shadowrocket/SSR/Clash/V2ray免费节点地址链接分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-18-node-share.htm" title="1月18日最新ClashX订阅 | 21.7M/S|2025年V2ray/Clash/Shadowrocket/SSR免费节点地址链接分享">1月18日最新ClashX订阅 | 21.7M/S|2025年V2ray/Clash/Shadowrocket/SSR免费节点地址链接分享</a></li>
+                        <li class="py-2"><a href="/news/article-42931.htm" title="【impala】python通过kerberos连接impala操作hive，及解决遇到的问题">【impala】python通过kerberos连接impala操作hive，及解决遇到的问题</a></li>
+                        <li class="py-2"><a href="/news/article-41746.htm" title="宠物犬免费领养（宠物狗免费领养）">宠物犬免费领养（宠物狗免费领养）</a></li>
+                        <li class="py-2"><a href="/news/article-42438.htm" title="宠物饲料加工厂加盟费多少钱（宠物饲料加工厂转让）">宠物饲料加工厂加盟费多少钱（宠物饲料加工厂转让）</a></li>
                     </ul>
     </div>
 </div>
