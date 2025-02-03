@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+      <link rel="canonical" href="https://freeclashx.github.io/news/article-50412.htm" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>vue实现动态列表尾部添加数据执行动画_vue.js</title>
+        <meta name="description" content="目录  动态列表尾部添加数据执行动画  先上动画  动态数据使用wowjs显示动画  1.通过npm安装 2.在main.js中引入animate.css     动态列表尾部添加数据执行动画  先上" />
+        <link rel="icon" href="/assets/website/img/freeclashx/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Free Clash X免费订阅地址中文网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freeclashx.github.io/news/article-50412.htm" />
+    <meta property="og:site_name" content="Free Clash X免费订阅地址中文网" />
+    <meta property="og:title" content="vue实现动态列表尾部添加数据执行动画_vue.js" />
+    <meta property="og:image" content="https://freeclashx.github.io/uploads/20250116/2f2fffd02b5cd3d0e99f05dc26659108.webp" />
+        <meta property="og:release_date" content="2025-02-03T09:26:18" />
+    <meta property="og:updated_time" content="2025-02-03T09:26:18" />
+        <meta property="og:description" content="目录  动态列表尾部添加数据执行动画  先上动画  动态数据使用wowjs显示动画  1.通过npm安装 2.在main.js中引入animate.css     动态列表尾部添加数据执行动画  先上" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="vue实现动态列表尾部添加数据执行动画_vue.js">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/bootstrap.min.css">
+    <!-- Font -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/font-awesome.min.css">
+    <!-- Slicknav -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/slicknav.css">
+    <!-- Owl carousel -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/owl.carousel.css">
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/owl.theme.css">
+    <!-- Animate -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/animate.css">
+    <!-- Main Style -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/main.css">
+    <!-- Extras Style -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/extras.css">
+    <!-- Responsive Style -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/responsive.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3Z77540WBS"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-3Z77540WBS');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!-- Header Area wrapper Starts -->
+    <header id="header-wrap">
+              <!-- Navbar Start -->
+        <nav class="navbar navbar-expand-lg fixed-top scrolling-navbar indigo">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                        <span class="icon-menu"></span>
+                        <span class="icon-menu"></span>
+                        <span class="icon-menu"></span>
+                    </button>
+                    <a href="/" class="navbar-brand xcblog-blog-logo">
+                                                <span>Free Clash X</span>
+                                            </a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-navbar">
+                    <ul class="navbar-nav mr-auto w-100 justify-content-end clearfix">
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/">
+                                首页                            </a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/free-nodes/">
+                                免费节点                            </a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/paid-subscribe/">
+                                推荐机场                            </a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/news/">
+                                新闻资讯                            </a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                关于
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                联系
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Mobile Menu Start -->
+            <ul class="mobile-menu navbar-nav">
+                                <li>
+                    <a href="/">
+                        首页                    </a>
+                </li>
+                                <li>
+                    <a href="/free-nodes/">
+                        免费节点                    </a>
+                </li>
+                                <li>
+                    <a href="/paid-subscribe/">
+                        推荐机场                    </a>
+                </li>
+                                <li>
+                    <a href="/news/">
+                        新闻资讯                    </a>
+                </li>
+                                <li>
+                    <a href="#">
+                        关于
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        联系
+                    </a>
+                </li>
+            </ul>
+            <!-- Mobile Menu End -->
+        </nav>
+        <!-- Navbar End -->
+        <!-- sliders -->
+        <div id="sliders">
+            <div class="full-width">
+                <!-- light slider -->
+                <div id="light-slider" class="carousel slide">
+                    <div id="carousel-area">
+                        <div id="carousel-slider" class="carousel slide" data-ride="carousel">
+                            <div class="carousel-inner" role="listbox">
+                                <div class="carousel-item active">
+                                    <img src="/assets/website/img/freeclashx/slider/bg-1.jpg" alt="">
+                                    <div class="carousel-caption">
+                                        <h1 class="slide-title">vue实现动态列表尾部添加数据执行动画_vue.js</h1>
+                                        <h5 class="slide-text">
+                                            <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End sliders -->
+    </header>
+    <!-- Header Area wrapper End -->
+    
+    <!-- Services Section Start -->
+    <section id="services" class="section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Node官网订阅站" data-url="https://clashnode.github.io">
+                  				  				  				<div id="navCategory"> <h5 class="catalogue">目录</h5> <ul class="first_class_ul"> <li><a href="#_label0" rel="nofollow">动态列表尾部添加数据执行动画</a></li> <ul class="second_class_ul"> <li><a href="#_lab2_0_0" rel="nofollow">先上动画</a></li> </ul> <li><a href="#_label1" rel="nofollow">动态数据使用wowjs显示动画</a></li> <ul class="second_class_ul"> <li><a href="#_lab2_1_1" rel="nofollow">1.通过npm安装</a></li> <li><a href="#_lab2_1_2" rel="nofollow">2.在main.js中引入animate.css</a></li> </ul> </ul> </div> <p class="maodian"><a name="_label0" rel="nofollow"></a></p> <h2>动态列表尾部添加数据执行动画</h2> <p class="maodian"><a name="_lab2_0_0" rel="nofollow"></a></p> <h3>先上动画</h3> <p style="text-align:center"><img decoding="async" alt="在这里插入图片描述" src="http://img.555519.xyz/uploads3/20220420/08a53105c76eeecbded60397683e8d52.jpg"></p> <ul> <li>动态控制节点数量（目前只显示6个节点）</li> <li>尾部添加几个item，头部则删除几个item</li> <li>触发 transition-group 动画</li> <li>splice 的使用方法</li> </ul> <p><strong>代码：</strong></p> <div class="ay1code"> <pre class="brush:css;">&lt;style lang="scss"&gt;  .content {    display: flex;    width: 600px;    height: 50px;    margin: 100px auto;  }  .list-complete-item {    transition: all 1s;    display: inline-block;    width: 100px;    text-align: center;    line-height: 50px;    font-size: 18px;  }  .list-complete-enter,  .list-complete-leave-to {    opacity: 0;    transform: translateX(-30px);  }  .list-complete-leave-active {    position: absolute;  }  &lt;/style&gt;</pre> </div> <div class="ay1code"> <pre class="brush:xhtml;">&lt;template&gt;    &lt;div class="vueBox"&gt;      &lt;transition-group class="content" name="list-complete" tag="div"&gt;        &lt;span          v-for="item in list"          v-bind:key="item.value"          class="list-complete-item"        &gt;          {{ item.name }}        &lt;/span&gt;      &lt;/transition-group&gt;    &lt;/div&gt;  &lt;/template&gt;</pre> </div> <div class="ay1code"> <pre class="brush:js;">&lt;script&gt;  export default {    name: "slideanimation",    data() {      return {        list: [          {            name: "苹果",            value: "1.68",          },          {            name: "橘子",            value: "0.9",          },          {            name: "香蕉",            value: "2.58",          },          {            name: "猕猴桃",            value: "3.2",          },          {            name: "灵梦",            value: "1.2",          },          {            name: "李子",            value: "13.2",          },        ],      };    },    mounted() {      // 定时模拟的socket的 推送数据， 需求： 页面只显示6个节点，推送几个新的数据，则删除头部几个数组。      setInterval(() =&gt; {        this.animation();      }, 3000);    },    methods: {      // 生成指定 随机范围的 整数      randomNum(minNum, maxNum) {        switch (arguments.length) {          case 1:            return parseInt(Math.random() * minNum + 1, 10);            break;          case 2:            return parseInt(Math.random() * (maxNum - minNum + 1) + minNum, 10);            break;          default:            return 0;            break;        }      },      animation() {        let newItems = [...this.list];        // 来一波随机个数，随机数组        let randomCount = 1,          addItems = [];        randomCount = this.randomNum(1, 3);        console.info("生成随机数 - 尾部添加 - 头部删除", randomCount);        Array.from(new Array(randomCount), (n, i) =&gt; i).forEach(() =&gt;          addItems.push({            name: (Math.random(0, 1) * 1000).toFixed(0),            value: Math.random(0, 1),          })        );        // 删除 数组 头部 几个item        newItems.splice(0, randomCount);        // 数组 尾部 添加 几个item        newItems.splice(newItems.length, 0, ...addItems);        // 触发 transition-group 动画        this.list = [...newItems];      },    },  };  &lt;/script&gt;</pre> </div> <p class="maodian"><a name="_label1" rel="nofollow"></a></p> <h2>动态数据使用wowjs显示动画</h2> <p class="maodian"><a name="_lab2_1_1" rel="nofollow"></a></p> <h3>1.通过npm安装</h3> <div class="ay1code"> <pre class="brush:js;">npm install wowjs --save-dev</pre> </div> <p>animate.css会自动安装。</p> <p class="maodian"><a name="_lab2_1_2" rel="nofollow"></a></p> <h3>2.在main.js中引入animate.css</h3> <div class="ay1code"> <pre class="brush:js;">import 'wowjs/css/libs/animate.css</pre> </div> <p>在组件需要的地方引入wowjs</p> <p><strong>有两种使用方式：</strong></p> <p>第一种：</p> <div class="ay1code"> <pre class="brush:js;">import {WOW} from 'wowjs'         mounted() {        new WOW().init()      }</pre> </div> <p>第二种：</p> <div class="ay1code"> <pre class="brush:js;">import WOW from 'wowjs'       mounted() {       new WOW.WOW().init()     }</pre> </div> <p><strong>wow实例化里面的配置参数</strong></p> <p style="text-align:center"><img decoding="async" alt="" src="http://img.555519.xyz/uploads3/20220420/a23e386f37f3b7094ba13f56e5992dbc.jpg"></p> <p><strong>自己选择性添加配置参数</strong></p> <p style="text-align:center"><img decoding="async" alt="" src="http://img.555519.xyz/uploads3/20220420/1afd79e7121098131e4b2f89884fd564.jpg"></p> <p><strong>infinite无限次播放</strong> </p> <p>如过添加动画的元素渲染数据是请求接口渲染的   那么实例化wow一定得在接口请求结束之后使用this.$nextTick()在这个函数里面执行</p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-49895.htm">重庆宠物狗领养中心地址在哪里（重庆宠物领养中心宠物领养）</a></p>
+                                        <p>下一个：<a href="/news/article-50413.htm">河北农业大学动物医学院电话（河北农业大学动物医学院官网）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-49389.htm" title="宠物领养资格证怎么考取（宠物领养证书怎么办理）">宠物领养资格证怎么考取（宠物领养证书怎么办理）</a></li>
+                        <li class="py-2"><a href="/news/article-41938.htm" title="人被猫咬了要打针吗（人被猫咬了要打针吗?疫苗多少钱一针）">人被猫咬了要打针吗（人被猫咬了要打针吗?疫苗多少钱一针）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-18-node-share.htm" title="1月18日最新ClashX订阅 | 21.7M/S|2025年V2ray/Clash/Shadowrocket/SSR免费节点地址链接分享">1月18日最新ClashX订阅 | 21.7M/S|2025年V2ray/Clash/Shadowrocket/SSR免费节点地址链接分享</a></li>
+                        <li class="py-2"><a href="/news/article-43930.htm" title="宠物疫苗多少钱一次（宠物疫苗一般多少钱一只）">宠物疫苗多少钱一次（宠物疫苗一般多少钱一只）</a></li>
+                        <li class="py-2"><a href="/news/article-43441.htm" title="在Java中可以重载或覆盖静态方法吗">在Java中可以重载或覆盖静态方法吗</a></li>
+                        <li class="py-2"><a href="/news/article-46396.htm" title="动物疫苗多少钱一支啊图片高清大图大全（动物疫苗多少钱一支啊图片高清大图大全）">动物疫苗多少钱一支啊图片高清大图大全（动物疫苗多少钱一支啊图片高清大图大全）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-25-free-node-subscribe.htm" title="1月25日最新ClashX订阅 | 19.2M/S|2025年Clash/Shadowrocket/SSR/V2ray免费节点地址链接分享">1月25日最新ClashX订阅 | 19.2M/S|2025年Clash/Shadowrocket/SSR/V2ray免费节点地址链接分享</a></li>
+                        <li class="py-2"><a href="/news/article-48864.htm" title="动物疫苗要打几针才有效果呢知乎（动物疫苗一针多少钱）">动物疫苗要打几针才有效果呢知乎（动物疫苗一针多少钱）</a></li>
+                        <li class="py-2"><a href="/news/article-45922.htm" title="广州市宠物领养 广州市宠物领养中心">广州市宠物领养 广州市宠物领养中心</a></li>
+                        <li class="py-2"><a href="/news/article-44426.htm" title="宠物领养市场分析报告模板（宠物领养网站论文）">宠物领养市场分析报告模板（宠物领养网站论文）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">9</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">48</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Services Section End -->
+    
+        <!-- Footer Section -->
+    <footer class="footer">
+        <!-- Copyright -->
+        <div id="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-xs-12">
+                        <p class="copyright-text">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                            Free Clash X免费订阅地址中文网 版权所有 Powered by WordPress
+                        </p>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-xs-12">
+                        <ul class="nav nav-inline  justify-content-end ">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="/">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Sitemap</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Privacy Policy</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Terms of services</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Copyright  End-->
+    </footer>
+    <!-- Footer Section End-->
+    <!-- Go to Top Link -->
+    <a href="#" class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+    </a>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader" id="loader-1"></div>
+    </div>
+    <!-- End Preloader -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="/assets/website/js/frontend/freeclashx/jquery-min.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/jquery.mixitup.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/jquery.countTo.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/jquery.nav.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/scrolling-nav.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/jquery.easing.min.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/jquery.slicknav.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/form-validator.min.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/contact-form-script.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
