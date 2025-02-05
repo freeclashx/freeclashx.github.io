@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+      <link rel="canonical" href="https://freeclashx.github.io/news/article-50940.htm" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>vue妙用ref父组件访问子组件中的值和调用子组件的方法</title>
+        <meta name="description" content="按钮控制弹框显示的两种写法 1, 法一 &lt;child-dialog :visible="visible"&gt;&lt;/child-dialog&gt; // 在data里面定义visible" />
+        <link rel="icon" href="/assets/website/img/freeclashx/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Free Clash X免费订阅地址中文网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freeclashx.github.io/news/article-50940.htm" />
+    <meta property="og:site_name" content="Free Clash X免费订阅地址中文网" />
+    <meta property="og:title" content="vue妙用ref父组件访问子组件中的值和调用子组件的方法" />
+    <meta property="og:image" content="https://freeclashx.github.io/uploads/20250116/f6091faed29c9ea57c5d04d364247c66.webp" />
+        <meta property="og:release_date" content="2025-02-04T00:27:35" />
+    <meta property="og:updated_time" content="2025-02-04T00:27:35" />
+        <meta property="og:description" content="按钮控制弹框显示的两种写法 1, 法一 &lt;child-dialog :visible="visible"&gt;&lt;/child-dialog&gt; // 在data里面定义visible" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="vue妙用ref父组件访问子组件中的值和调用子组件的方法">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/bootstrap.min.css">
+    <!-- Font -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/font-awesome.min.css">
+    <!-- Slicknav -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/slicknav.css">
+    <!-- Owl carousel -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/owl.carousel.css">
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/owl.theme.css">
+    <!-- Animate -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/animate.css">
+    <!-- Main Style -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/main.css">
+    <!-- Extras Style -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/extras.css">
+    <!-- Responsive Style -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/responsive.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3Z77540WBS"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-3Z77540WBS');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!-- Header Area wrapper Starts -->
+    <header id="header-wrap">
+              <!-- Navbar Start -->
+        <nav class="navbar navbar-expand-lg fixed-top scrolling-navbar indigo">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                        <span class="icon-menu"></span>
+                        <span class="icon-menu"></span>
+                        <span class="icon-menu"></span>
+                    </button>
+                    <a href="/" class="navbar-brand xcblog-blog-logo">
+                                                <span>Free Clash X</span>
+                                            </a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-navbar">
+                    <ul class="navbar-nav mr-auto w-100 justify-content-end clearfix">
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/">
+                                首页                            </a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/free-nodes/">
+                                免费节点                            </a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/paid-subscribe/">
+                                推荐机场                            </a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/news/">
+                                新闻资讯                            </a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                关于
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                联系
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Mobile Menu Start -->
+            <ul class="mobile-menu navbar-nav">
+                                <li>
+                    <a href="/">
+                        首页                    </a>
+                </li>
+                                <li>
+                    <a href="/free-nodes/">
+                        免费节点                    </a>
+                </li>
+                                <li>
+                    <a href="/paid-subscribe/">
+                        推荐机场                    </a>
+                </li>
+                                <li>
+                    <a href="/news/">
+                        新闻资讯                    </a>
+                </li>
+                                <li>
+                    <a href="#">
+                        关于
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        联系
+                    </a>
+                </li>
+            </ul>
+            <!-- Mobile Menu End -->
+        </nav>
+        <!-- Navbar End -->
+        <!-- sliders -->
+        <div id="sliders">
+            <div class="full-width">
+                <!-- light slider -->
+                <div id="light-slider" class="carousel slide">
+                    <div id="carousel-area">
+                        <div id="carousel-slider" class="carousel slide" data-ride="carousel">
+                            <div class="carousel-inner" role="listbox">
+                                <div class="carousel-item active">
+                                    <img src="/assets/website/img/freeclashx/slider/bg-1.jpg" alt="">
+                                    <div class="carousel-caption">
+                                        <h1 class="slide-title">vue妙用ref父组件访问子组件中的值和调用子组件的方法</h1>
+                                        <h5 class="slide-text">
+                                            <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End sliders -->
+    </header>
+    <!-- Header Area wrapper End -->
+    
+    <!-- Services Section Start -->
+    <section id="services" class="section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Node官网订阅站" data-url="https://clashnode.github.io">
+                  				  				  				<div id="content_views" class="htmledit_views"> </h1> <h2>按钮控制弹框显示的两种写法</h2> <p><strong>1, 法一</strong></p> <pre><code class="language-html">&lt;child-dialog :visible="visible"&gt;&lt;/child-dialog&gt; // 在data里面定义visible &lt;div @click="visible = true"&gt;按钮&lt;/div&gt;</code></pre> <p><strong>2, 法二</strong></p> <pre><code class="language-html">&lt;child-dialog ref="childDia" @childConfirm="childConfirm"&gt;&lt;/child-dialog&gt; &lt;div @click="$refs.childDia.showAlert()"&gt;按钮&lt;/div&gt; // childConfirm,子组件传值 // showAlert(),子组件里的方法</code></pre> <p><strong>注解: ref 有三种用法：</strong>&nbsp;  </p> <ul> <li> <p>1、ref 加在普通的 DOM 元素上使用,引用this.ref.name 指向的就是 DOM 元素  </p> </li> <li> <p>2、ref 加在子组件上,用this.ref.name 获取到的是组件实例,可以使用组件的所有方法   </p> </li> <li> <p>3、当 v-for 用于元素或组件的时候,引用信息将是包含 DOM 节点或组件实例的数组</p> </li> <li> <p>4、ref 需要在dom渲染完成后才会有,在使用的时候确保dom已经渲染完成,。比如在生命周期 mounted(){} 钩子中调用,或者在 this.$nextTick(()=&gt;{}) 中调用</p> </li> <li> <p>5、如果ref 是循环出来的,有多个重名,那么ref的值会是一个数组,此时要拿到单个的ref 只需要循环就可以了</p> <p> <img fetchpriority="high" decoding="async" alt="" height="440" src="http://img.555519.xyz/uploads/20221231/303afcdfe3fcff566545da579fc58690.jpg"></p> <p><img decoding="async" alt="" height="765" src="http://img.555519.xyz/uploads/20221231/8019549fc02c5dff830190d7efd14a66.jpg"></p> </li> </ul> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-50413.htm">河北农业大学动物医学院电话（河北农业大学动物医学院官网）</a></p>
+                                        <p>下一个：<a href="/news/article-50941.htm">中国动物疫苗十强名单（中国动物疫苗十强名单图片）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-49388.htm" title="宠物领养需求分析报告范文（宠物领养系统国内外现状）">宠物领养需求分析报告范文（宠物领养系统国内外现状）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-26-free-high-speed-nodes.htm" title="1月26日最新ClashX订阅 | 22.7M/S|2025年SSR/V2ray/Clash/Shadowrocket免费节点地址链接分享">1月26日最新ClashX订阅 | 22.7M/S|2025年SSR/V2ray/Clash/Shadowrocket免费节点地址链接分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-4-clash-v2ray-ss-ssr.htm" title="2月4日最新ClashX订阅 | 22.6M/S|2025年V2ray/SSR/Clash/Shadowrocket免费节点地址链接分享">2月4日最新ClashX订阅 | 22.6M/S|2025年V2ray/SSR/Clash/Shadowrocket免费节点地址链接分享</a></li>
+                        <li class="py-2"><a href="/news/article-42438.htm" title="宠物饲料加工厂加盟费多少钱（宠物饲料加工厂转让）">宠物饲料加工厂加盟费多少钱（宠物饲料加工厂转让）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-22-free-node-subscribe.htm" title="1月22日最新ClashX订阅 | 20.1M/S|2025年Clash/Shadowrocket/V2ray/SSR免费节点地址链接分享">1月22日最新ClashX订阅 | 20.1M/S|2025年Clash/Shadowrocket/V2ray/SSR免费节点地址链接分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-21-clash-node-github.htm" title="1月21日最新ClashX订阅 | 20.6M/S|2025年V2ray/SSR/Clash/Shadowrocket免费节点地址链接分享">1月21日最新ClashX订阅 | 20.6M/S|2025年V2ray/SSR/Clash/Shadowrocket免费节点地址链接分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-5-free-node-subscribe-links.htm" title="2月5日最新ClashX订阅 | 20.4M/S|2025年V2ray/Clash/Shadowrocket/SSR免费节点地址链接分享">2月5日最新ClashX订阅 | 20.4M/S|2025年V2ray/Clash/Shadowrocket/SSR免费节点地址链接分享</a></li>
+                        <li class="py-2"><a href="/news/article-48864.htm" title="动物疫苗要打几针才有效果呢知乎（动物疫苗一针多少钱）">动物疫苗要打几针才有效果呢知乎（动物疫苗一针多少钱）</a></li>
+                        <li class="py-2"><a href="/news/article-50940.htm" title="vue妙用ref父组件访问子组件中的值和调用子组件的方法">vue妙用ref父组件访问子组件中的值和调用子组件的方法</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-23-free-high-speed-nodes.htm" title="1月23日最新ClashX订阅 | 19.1M/S|2025年V2ray/SSR/Clash/Shadowrocket免费节点地址链接分享">1月23日最新ClashX订阅 | 19.1M/S|2025年V2ray/SSR/Clash/Shadowrocket免费节点地址链接分享</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">18</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">48</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Services Section End -->
+    
+        <!-- Footer Section -->
+    <footer class="footer">
+        <!-- Copyright -->
+        <div id="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-xs-12">
+                        <p class="copyright-text">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                            Free Clash X免费订阅地址中文网 版权所有 Powered by WordPress
+                        </p>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-xs-12">
+                        <ul class="nav nav-inline  justify-content-end ">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="/">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Sitemap</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Privacy Policy</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Terms of services</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Copyright  End-->
+    </footer>
+    <!-- Footer Section End-->
+    <!-- Go to Top Link -->
+    <a href="#" class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+    </a>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader" id="loader-1"></div>
+    </div>
+    <!-- End Preloader -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="/assets/website/js/frontend/freeclashx/jquery-min.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/jquery.mixitup.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/jquery.countTo.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/jquery.nav.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/scrolling-nav.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/jquery.easing.min.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/jquery.slicknav.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/form-validator.min.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/contact-form-script.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
