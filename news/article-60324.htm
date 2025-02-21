@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+      <link rel="canonical" href="https://freeclashx.github.io/news/article-60324.htm" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>react18中react-redux状态管理的实现_React</title>
+        <meta name="description" content="react的状态管理还是挺多的现在流行的有以下五种：  Recoil MobX XState Redux Context  今天我们来讲一下react众多状态管理之一的redux，虽然这个我不太喜欢用" />
+        <link rel="icon" href="/assets/website/img/freeclashx/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Free Clash X免费订阅地址中文网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freeclashx.github.io/news/article-60324.htm" />
+    <meta property="og:site_name" content="Free Clash X免费订阅地址中文网" />
+    <meta property="og:title" content="react18中react-redux状态管理的实现_React" />
+    <meta property="og:image" content="https://freeclashx.github.io/uploads/20250116/cac47049f1432330de86eff1807173dc.webp" />
+        <meta property="og:release_date" content="2025-02-21T09:19:29" />
+    <meta property="og:updated_time" content="2025-02-21T09:19:29" />
+        <meta property="og:description" content="react的状态管理还是挺多的现在流行的有以下五种：  Recoil MobX XState Redux Context  今天我们来讲一下react众多状态管理之一的redux，虽然这个我不太喜欢用" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="react18中react-redux状态管理的实现_React">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/bootstrap.min.css">
+    <!-- Font -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/font-awesome.min.css">
+    <!-- Slicknav -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/slicknav.css">
+    <!-- Owl carousel -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/owl.carousel.css">
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/owl.theme.css">
+    <!-- Animate -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/animate.css">
+    <!-- Main Style -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/main.css">
+    <!-- Extras Style -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/extras.css">
+    <!-- Responsive Style -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/responsive.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3Z77540WBS"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-3Z77540WBS');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!-- Header Area wrapper Starts -->
+    <header id="header-wrap">
+              <!-- Navbar Start -->
+        <nav class="navbar navbar-expand-lg fixed-top scrolling-navbar indigo">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                        <span class="icon-menu"></span>
+                        <span class="icon-menu"></span>
+                        <span class="icon-menu"></span>
+                    </button>
+                    <a href="/" class="navbar-brand xcblog-blog-logo">
+                                                <span>Free Clash X</span>
+                                            </a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-navbar">
+                    <ul class="navbar-nav mr-auto w-100 justify-content-end clearfix">
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/">
+                                首页                            </a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/free-nodes/">
+                                免费节点                            </a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/paid-subscribe/">
+                                推荐机场                            </a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/client.htm">
+                                客户端                            </a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/news/">
+                                新闻资讯                            </a>
+                        </li>
+                                            </ul>
+                </div>
+            </div>
+            <!-- Mobile Menu Start -->
+            <ul class="mobile-menu navbar-nav">
+                                <li>
+                    <a href="/">
+                        首页                    </a>
+                </li>
+                                <li>
+                    <a href="/free-nodes/">
+                        免费节点                    </a>
+                </li>
+                                <li>
+                    <a href="/paid-subscribe/">
+                        推荐机场                    </a>
+                </li>
+                                <li>
+                    <a href="/client.htm">
+                        客户端                    </a>
+                </li>
+                                <li>
+                    <a href="/news/">
+                        新闻资讯                    </a>
+                </li>
+                            </ul>
+            <!-- Mobile Menu End -->
+        </nav>
+        <!-- Navbar End -->
+        <!-- sliders -->
+        <div id="sliders">
+            <div class="full-width">
+                <!-- light slider -->
+                <div id="light-slider" class="carousel slide">
+                    <div id="carousel-area">
+                        <div id="carousel-slider" class="carousel slide" data-ride="carousel">
+                            <div class="carousel-inner" role="listbox">
+                                <div class="carousel-item active">
+                                    <img src="/assets/website/img/freeclashx/slider/bg-1.jpg" alt="">
+                                    <div class="carousel-caption">
+                                        <h1 class="slide-title">react18中react-redux状态管理的实现_React</h1>
+                                        <h5 class="slide-text">
+                                            <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End sliders -->
+    </header>
+    <!-- Header Area wrapper End -->
+    
+    <!-- Services Section Start -->
+    <section id="services" class="section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Node官网订阅站" data-url="https://clashnode.github.io">
+                  				  				  				<p>react的状态管理还是挺多的现在流行的有以下五种：</p> <ul> <li>Recoil</li> <li>MobX</li> <li>XState</li> <li>Redux</li> <li>Context</li> </ul> <p>今天我们来讲一下react众多状态管理之一的redux，虽然这个我不太喜欢用，但是我觉得简单的状态管理谁都会，但是难的就是程序员的分水岭，所以今天来给大家讲一下redux。</p> <p>下面我们来讲讲redux的优点：</p> <ul> <li>可以在众多组件中传值，突破react单向数据流的限制</li> <li>不仅支持react还支持vue等主流框架</li> <li>当然是好用方便啦</li> </ul> <p>接下来我们讲一下啥时候去使用他</p> <ul> <li>在我们有好多组件，但是组件间传值非常困难的时候在使用redux。</li> <li>redux一定要作为最后底牌使用，因为他布局起来有点过程复杂。</li> </ul> <p>接下来我们安装并使用redux</p> <div class="ay1code"> <pre class="brush:js;">yarn add redux react-redux redux-devtools-extension redux-thunk  </pre> </div> <p>安装好了下面我给大家讲一下每个插件是干嘛的</p> <ul> <li>redux不用说了状态管理</li> <li>react-redux，这个插件的话，咱这样将：就是redux将组件分为了ui组件和容器组件两类，自然我们平常写方法，页面啥的就叫ui组件，redux提供的叫容器组件，这俩组件构成了父子组件，大家记住我这说的话，下面会用到。</li> <li>redux-devtools-extension这个特别长的是redux官方提供的可以查看状态的ui插件，让我们在很多组件的情况下，也能知道每个组件的数据情况，非常贴心。</li> <li>redux-thunk这个插件可以让redux拥有使用异步操作的能力，本身redux是不支持异步操作的</li> </ul> <p>下面我们开始在react中去部署redux。中间会有点复杂，提倡大家多打两遍代码，毕竟还是内句话，简单 的谁都会，难的才是你和别的程序员的分水岭。</p> <p>第一步：我们在src目录下创建一个redux的目录作为我们状态管理的文件夹。</p> <p>第二步：在redux文件夹下创建store.js的文件，作为我们的入口文件</p> <div class="ay1code"> <pre class="brush:js;">/*  * 该文件专门用于暴露一个store对象，整个应用只有一个store对象*/     //创建redux中作为核心的store               支持异步的中间件  import {legacy_createStore as createStore, applyMiddleware} from 'redux'     //引入支持异步acton  import thunk from 'redux-thunk'  //引入开发者工具  import {composeWithDevTools} from 'redux-devtools-extension'  import Reducer from './reducer'                                                   这里为reduces文件这里还没说往下看  export default createStore(Reducer,composeWithDevTools(applyMiddleware(thunk)))</pre> </div> <p>第三步：在redux文件夹下创建actions文件，用来管理我们的动作对象，包括两个一个是type，data</p> <ul> <li>type：这个是标识属性</li> <li>data：顾名思义就是数据</li> </ul> <div class="ay1code"> <pre class="brush:js;">/*  * 专门为count组件生成action对象*/  export const increment=data=&gt;({type:"add",data})  export const decrement=data=&gt;({type:"inadd",data})  // 异步action就是指action的值为函数  export const incrementAsync=(data,time)=&gt;{      return (dispatch)=&gt;{          setTimeout(()=&gt;{              dispatch(increment(data))          },time)      }  }</pre> </div> <p>第四步：在redux文件夹下创建我们较为重要的reducer.js文件，这个文件为纯函数，里面不允许有任何的操作，加就是加，减就是减，不能有任何的条件或者异步</p> <div class="ay1code"> <pre class="brush:js;">/*  reduce只管纯函数，不管啥偶数加奇数加等等只是一个纯函数  * 本身就是一个函数*/    //之前的值，传过来的值                       //prestate初始化状态是null所以得定义一下默认值  const initState=0  export default function countReduce(preState=initState,action){      const {type,data}=action      switch (type) {          case "add":              return preState+data          case "inadd":              return preState-data          default:              return preState;      }  }</pre> </div> <p>第五步：下面我们为兄弟组件，上面提到了哦，兄弟组件传值，没错redux就是利用props传值</p> <p>在index.js文件中去设置</p> <div class="ay1code"> <pre class="brush:js;">import store from "./redux/store";  import {Provider} from "react-redux";  const root = ReactDOM.createRoot(document.getElementById('root'));  root.render(      &lt;Provider store={store}&gt;      &lt;App /&gt;      &lt;/Provider&gt;  );</pre> </div> <p>下面我们去使用redux，到组件中去使用，我们可以将ui组件和容器组件联合到一起写，根据意思就是使用一个叫connect的单词来使用在组件中引入(因为使用的是react -18的版本推崇hooks和函数组件，下面例子为函数组件)</p> <div class="ay1code"> <pre class="brush:js;">import {connect} from 'react-redux'  //引入操作方法  import {add,inadd} from '../action'  const app=(props)=&gt;{      //这里log一下如果存在data说明redux部署成功了函数组件这样取值      console.log(props.count)      方法就是      porps.add()      return(                    )  }                export default connect(      //数据      state=&gt;({count:state}),      //方法      {          add,          inadd          }  )(app)</pre> </div> <p>好啦上面就是部署redux的全部过程，大家按照流程多写两遍，因为redux有点复杂，难懂。</p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-59756.htm">学宠物医生上什么专科学校好（学宠物医生有前景吗?）</a></p>
+                                        <p>下一个：<a href="/news/article-60325.htm">广州上门回收宠物狗（广州哪里收宠物狗）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-58710.htm" title="猫疫苗三针隔多久打一次（猫打疫苗三针间隔时间）">猫疫苗三针隔多久打一次（猫打疫苗三针间隔时间）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-19-free-ssr-subscribe.htm" title="2月19日最新ClashX订阅 | 23M/S|2025年SSR/Shadowrocket/V2ray/Clash免费节点地址链接分享">2月19日最新ClashX订阅 | 23M/S|2025年SSR/Shadowrocket/V2ray/Clash免费节点地址链接分享</a></li>
+                        <li class="py-2"><a href="/news/article-51993.htm" title="怎么给宠物驱虫（宠物怎么驱虫防虫）">怎么给宠物驱虫（宠物怎么驱虫防虫）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-16-free-ssr-subscribe.htm" title="2月16日最新ClashX订阅 | 21.1M/S|2025年Clash/SSR/V2ray/Shadowrocket免费节点地址链接分享">2月16日最新ClashX订阅 | 21.1M/S|2025年Clash/SSR/V2ray/Shadowrocket免费节点地址链接分享</a></li>
+                        <li class="py-2"><a href="/news/article-48297.htm" title="动物医院诊疗活动范围（动物医院价目表）">动物医院诊疗活动范围（动物医院价目表）</a></li>
+                        <li class="py-2"><a href="/news/article-47864.htm" title="以太网属性闪退怎么回事（以太网老是掉线怎么办）">以太网属性闪退怎么回事（以太网老是掉线怎么办）</a></li>
+                        <li class="py-2"><a href="/news/article-47863.htm" title="使用Proftpd支持FTP/SFTP权限管控">使用Proftpd支持FTP/SFTP权限管控</a></li>
+                        <li class="py-2"><a href="/news/article-55236.htm" title="深圳动物防疫站给猫打疫苗多少钱（深圳宠物医院猫猫打疫苗怎么收费）">深圳动物防疫站给猫打疫苗多少钱（深圳宠物医院猫猫打疫苗怎么收费）</a></li>
+                        <li class="py-2"><a href="/news/article-48299.htm" title="宠物用品厂家进货渠道批发（宠物用品货源渠道）">宠物用品厂家进货渠道批发（宠物用品货源渠道）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-1-free-clash.htm" title="2月1日最新ClashX订阅 | 22.3M/S|2025年Clash/V2ray/Shadowrocket/SSR免费节点地址链接分享">2月1日最新ClashX订阅 | 22.3M/S|2025年Clash/V2ray/Shadowrocket/SSR免费节点地址链接分享</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">63</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">48</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Services Section End -->
+    
+        <!-- Footer Section -->
+    <footer class="footer">
+        <!-- Copyright -->
+        <div id="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-xs-12">
+                        <p class="copyright-text">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                            Free Clash X免费订阅地址中文网 版权所有 Powered by WordPress
+                        </p>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-xs-12">
+                        <ul class="nav nav-inline  justify-content-end ">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="/">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Sitemap</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Privacy Policy</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Terms of services</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Copyright  End-->
+    </footer>
+    <!-- Footer Section End-->
+    <!-- Go to Top Link -->
+    <a href="#" class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+    </a>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader" id="loader-1"></div>
+    </div>
+    <!-- End Preloader -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="/assets/website/js/frontend/freeclashx/jquery-min.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/jquery.mixitup.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/jquery.countTo.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/jquery.nav.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/scrolling-nav.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/jquery.easing.min.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/jquery.slicknav.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/form-validator.min.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/contact-form-script.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+      <link rel="canonical" href="https://freeclashx.github.io/news/article-59755.htm" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>vue 使用echarts绘制折线图</title>
+        <meta name="description" content="&lt;template&gt;     &lt;div&gt;         &lt;!-- 方法一，注册echarts到vue的原型对象中，指定某个div作为echarts的画布 --&gt; " />
+        <link rel="icon" href="/assets/website/img/freeclashx/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Free Clash X免费订阅地址中文网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freeclashx.github.io/news/article-59755.htm" />
+    <meta property="og:site_name" content="Free Clash X免费订阅地址中文网" />
+    <meta property="og:title" content="vue 使用echarts绘制折线图" />
+    <meta property="og:image" content="https://freeclashx.github.io/uploads/20250116/9ac19c1e9bdc0c2033204238d27c404c.webp" />
+        <meta property="og:release_date" content="2025-02-20T09:55:58" />
+    <meta property="og:updated_time" content="2025-02-20T09:55:58" />
+        <meta property="og:description" content="&lt;template&gt;     &lt;div&gt;         &lt;!-- 方法一，注册echarts到vue的原型对象中，指定某个div作为echarts的画布 --&gt; " />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="vue 使用echarts绘制折线图">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/bootstrap.min.css">
+    <!-- Font -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/font-awesome.min.css">
+    <!-- Slicknav -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/slicknav.css">
+    <!-- Owl carousel -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/owl.carousel.css">
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/owl.theme.css">
+    <!-- Animate -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/animate.css">
+    <!-- Main Style -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/main.css">
+    <!-- Extras Style -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/extras.css">
+    <!-- Responsive Style -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/responsive.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3Z77540WBS"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-3Z77540WBS');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!-- Header Area wrapper Starts -->
+    <header id="header-wrap">
+              <!-- Navbar Start -->
+        <nav class="navbar navbar-expand-lg fixed-top scrolling-navbar indigo">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                        <span class="icon-menu"></span>
+                        <span class="icon-menu"></span>
+                        <span class="icon-menu"></span>
+                    </button>
+                    <a href="/" class="navbar-brand xcblog-blog-logo">
+                                                <span>Free Clash X</span>
+                                            </a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-navbar">
+                    <ul class="navbar-nav mr-auto w-100 justify-content-end clearfix">
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/">
+                                首页                            </a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/free-nodes/">
+                                免费节点                            </a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/paid-subscribe/">
+                                推荐机场                            </a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/client.htm">
+                                客户端                            </a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/news/">
+                                新闻资讯                            </a>
+                        </li>
+                                            </ul>
+                </div>
+            </div>
+            <!-- Mobile Menu Start -->
+            <ul class="mobile-menu navbar-nav">
+                                <li>
+                    <a href="/">
+                        首页                    </a>
+                </li>
+                                <li>
+                    <a href="/free-nodes/">
+                        免费节点                    </a>
+                </li>
+                                <li>
+                    <a href="/paid-subscribe/">
+                        推荐机场                    </a>
+                </li>
+                                <li>
+                    <a href="/client.htm">
+                        客户端                    </a>
+                </li>
+                                <li>
+                    <a href="/news/">
+                        新闻资讯                    </a>
+                </li>
+                            </ul>
+            <!-- Mobile Menu End -->
+        </nav>
+        <!-- Navbar End -->
+        <!-- sliders -->
+        <div id="sliders">
+            <div class="full-width">
+                <!-- light slider -->
+                <div id="light-slider" class="carousel slide">
+                    <div id="carousel-area">
+                        <div id="carousel-slider" class="carousel slide" data-ride="carousel">
+                            <div class="carousel-inner" role="listbox">
+                                <div class="carousel-item active">
+                                    <img src="/assets/website/img/freeclashx/slider/bg-1.jpg" alt="">
+                                    <div class="carousel-caption">
+                                        <h1 class="slide-title">vue 使用echarts绘制折线图</h1>
+                                        <h5 class="slide-text">
+                                            <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End sliders -->
+    </header>
+    <!-- Header Area wrapper End -->
+    
+    <!-- Services Section Start -->
+    <section id="services" class="section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Node官网订阅站" data-url="https://clashnode.github.io">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-light"> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220608/14bbf058d43319b9ed8bce938b2ab836.jpg" alt="vue 使用echarts绘制折线图"></p> <pre><code>&lt;template&gt;     &lt;div&gt;         &lt;!-- 方法一，注册echarts到vue的原型对象中，指定某个div作为echarts的画布 --&gt;         &lt;el-row :gutter="20" style="margin-bottom: 20px;"&gt;             &lt;el-col :span="24"&gt;                 &lt;el-card shadow="always"&gt;                     &lt;el-input v-model="query.deviceId" placeholder="请输入设备编号" style="width:250px;" clearable&gt;&lt;/el-input&gt;                     &lt;el-button icon="el-icon-search" @click="getDevMeterHistoryData()"&gt;查询&lt;/el-button&gt;                     &lt;div id="myChart" style="{width:1000px; height:500px;}"&gt;&lt;/div&gt;                 &lt;/el-card&gt;             &lt;/el-col&gt;         &lt;/el-row&gt;     &lt;/div&gt; &lt;/template&gt; &lt;script&gt; import { fetchGet } from "@/assets/js/api"; export default {     name: "dashboard",     data() {         return {             query: {                 deviceId: "884A1882E80A",                 fields: "",             },             myChart: "",             option: [],             minData: 0,             data_totalVoltage: [],             data_electricCurrentData: [],             data_activePower: [],             data_powerFactor: [],             data_frequency: [],             data_energy: [],         };     },     mounted() {         this.initChart();         this.getDevMeterHistoryData();         this.getLegendSelectChanged();     },     methods: {         initChart() {             //echarts.init(document.getElementById("myChart")).dispose(); //销毁前一个echarts实例             //获取容器元素,初始化echarts实例             this.myChart = this.$echarts.init(document.getElementById("myChart"));             this.option = {                 title: { text: "" },                 tooltip: {                     trigger: "axis",                     textStyle: { align: "left" },                 },                 toolBox: {                     show: true,                     feature: {                         dataView:{show: true},                         dataZoom:{show: true},//数据缩放视图                         magicType:{type :['line','bar']},                         restore:{show: true},                         saveAsImage: { show: true }                     },                 },                 xAxis: {                     data: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],                     splitLine: { show: false }, //去除网格分割线（默认false）                     splitArea: { show: false }, //保留网格区域                     axisLine: {                         lineStyle: {                             //坐标线                             type: "solid",                             //color: '#d8d8d8',//轴的颜 色                             width: "1", //坐标线宽度                         },                     },                     axisTick: {                         show: false, //x轴初始化不显示                     },                 },                 yAxis: {                     name: "", //y轴的名称（单位）                     //max: '241.0',//y轴最大刻度                     min: 0, //y轴最小刻度                     type: "value",                     axisLine: {                         show: false,                     },                 },                 legend: {                     //itemWidth: 34, //图例                     //itemHeight: 14,                     align: "left",                     data: [ "电压", "电流", "有功功率", "频率", "功率因数", "用电量"],                 },                 series: [                     { name: "电压", type: "line", data: [], , smooth: true }, //smooth 是否平滑 也可以设置为 0到1 的值，表示平滑程度                     { name: "电流", type: "line", data: [] },                     { name: "有功功率", type: "line", data: [] },                     { name: "频率", type: "line", data: [] },                     { name: "功率因数", type: "line", data: [] },                     { name: "用电量", type: "line", data: [] },                 ],             };             //重绘, 设置option             window.addEventListener("resize", this.myChart.resize());             this.myChart.setOption(this.option);             this.getLegendSelectChanged();         },         getDevMeterHistoryData() {             fetchGet("getDevMeterHistoryData", {                 deviceId: this.query.deviceId,                 pageNo: 1,                 pageSize: 15,             }).then((rsp) =&gt; {                 if (rsp.code == 0) {                     this.setChartData(rsp.data);                 }             });         },         //设置图表实体数据         setChartData(rspData) {             let opt = this.option;             opt.xAxis.data = rspData.xAxisData;             opt.legend.data = [];             opt.series = [];             //             for (var i = 0; i &lt; rspData.data.length; i++) {                 let vo = rspData.data[i];                 if (rspData.size == 1) {                     opt.yAxis.name = vo.unit;                     opt.yAxis.min = vo.minData;                 }                 opt.legend.data.push(vo.name);                 //                 // 给一个对象中增加属性markPoint                 var markPoint = {data: [{type: 'max', name: '最大值'}]}                 this.$set(vo, 'markPoint', markPoint)                 console.log(vo)                 opt.series.push(vo);             }             this.myChart.setOption(opt);         },         getLegendSelectChanged() {             let opt = this.option;             this.myChart.on("legendselectchanged", function (param) {                 var keys = Object.keys(param.selected);                 var values = Object.values(param.selected);                 //                 console.log(param.name);                 //                 if (keys == null || keys.length == 0 || opt.series == null) {                     return;                 }                 for (var i = 0; i &lt; opt.series.length; i++) {                     if (param.name != keys[i]) {                         //根据点击的参数，如果只有一个数据展示，则动态设置y轴的最小参考数值（未处理）                         //this.minData = opt.series[i].minData;                         //console.log(opt.series[i]);                     } else {                         //console.log("1 minData:" + this.minData +", series minData:" + opt.series[i].minData);                         this.minData = opt.series[i].minData;                         console.log("2 minData:" + this.minData + ", series minData:" + opt.series[i].minData);//                     }                 }             });             this.myChart.setOption(opt);         }     }, }; &lt;/script&gt;</code></pre> <h3><a id="set__173" rel="nofollow"></a>使用$set 给一个对象中增加属性</h3> <pre><code class="prism language-html">//给一个对象中增加属性markPoint var markPoint = {data: [{type: 'max', name: '最大值'}]} this.$set(vo, 'markPoint', markPoint) console.log(vo) opt.series.push(vo);</code></pre> <h2><a id="_182" rel="nofollow"></a>接口实体参数</h2> <pre><code>{     "result":"SUCCESS",     "code":"0",     "msg":"ok",     "data":{         "xAxisData":["17:46:20","17:46:40","17:46:50","17:47:00","17:47:10","17:47:20","17:47:40", "17:47:50","17:48:00","17:48:10","17:48:20","17:48:30","17:48:50","17:49:00","17:49:10"],         "data":[{                 "field":"voltage",                 "id":"voltage",                 "name":"电压",                 "unit":"V",                 "minData":240,                 "type":"line",                 "data":[236.71,236.7,236.82,236.62,236.75,236.58,236.6,236.53,236.68,236.52,236.65,236.44,236.95,236.84,236.81]             },{                 "field":"electricCurrent",                 "id":"electricCurrent",                 "name":"电流",                 "unit":"mA",                 "minData":5,                 "type":"line",                 "data":[0.002,0.002,0.002,0.002,0.002,0.002,0.002,0.002,0.002,0.002,0.002,0.002,0.002,0.002,0.002]             },{                 "field":"activePower",                 "id":"activePower",                 "name":"有功功率",                 "unit":"KW",                 "minData":0,                 "type":"line",                 "data":[0.537,0.534,0.53,0.531,0.53,0.529,0.533, 0.527,0.525, 0.537,0.532,0.535,0.526, 0.53,0.528]             },{                 "field":"frequency",                 "id":"frequency",                 "name":"频率",                 "unit":"Hz",                 "minData":51,                 "type":"line",                 "data":[49.9,49.92,49.94,49.92,49.88,49.88,49.88,49.88,49.82,49.9,49.9,49.88,49.92,49.96,49.9]             },{                 "field":"powerFactor",                 "id":"powerFactor",                 "name":"功率因数",                 "unit":"λ",                 "minData":0,                 "type":"line",                 "data":[0.88,0.87,0.87,0.86,0.87,0.87,0.87,0.86,0.87,0.88,0.87,0.87,0.86,0.87,0.88 ]             },{                 "field":"energy",                 "id":"energy",                 "name":"用电量",                 "unit":"千瓦·时(度)",                 "minData":0,                 "type":"line",                 "data":[1.784, 1.784,1.784,1.784,1.784,1.784,1.784,1.784,1.784,1.784,1.784,1.784,1.784,1.784,1.784]             }         ]     } }</code></pre> <h3><a id="_245" rel="nofollow"></a>参考资料</h3> <p>vue中绘制echarts折线图<br /> https://www.cnblogs.com/yanl55555/p/12544109.html</p> <p>echarts 改变折线图曲线颜色、区域颜色<br /> https://www.cnblogs.com/justyouadmin/p/11421680.html</p> <p>echarts中设置markPoint<br /> https://www.cnblogs.com/aixuexi-504682107/p/13575733.html</p> <pre><code>markPoint: {     data: [         {             type: "max",             name: "最大值",             color: "pink",             itemStyle: {                 color: "rgba(115, 159, 250, .5)"                 },                 symbol: "rect",                 symbolSize: [25, 25], // 容器大小                 symbolOffset: [0, -15], //位置偏移         },         {                 type: "min",                 name: "最小值",                 color: "rgba(255, 148, 77, 1)",                 itemStyle: {                     color: "rgba(255, 148, 77, .5)"                     },                     symbol: "rect",                     symbolSize: [25, 25], // 容器大小                     symbolOffset: [0, -15], //位置偏移         },     ] },</code></pre> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-59182.htm">动物医院评论（动物医院评价）</a></p>
+                                        <p>下一个：<a href="/news/article-59756.htm">学宠物医生上什么专科学校好（学宠物医生有前景吗?）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-48297.htm" title="动物医院诊疗活动范围（动物医院价目表）">动物医院诊疗活动范围（动物医院价目表）</a></li>
+                        <li class="py-2"><a href="/news/article-41746.htm" title="宠物犬免费领养（宠物狗免费领养）">宠物犬免费领养（宠物狗免费领养）</a></li>
+                        <li class="py-2"><a href="/news/article-44924.htm" title="领养宠物狗是什么意思啊视频教学（领养宠物狗是什么意思啊视频教学下载）">领养宠物狗是什么意思啊视频教学（领养宠物狗是什么意思啊视频教学下载）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-16-free-node-subscribe-links.htm" title="1月16日最新机场订阅 | 20.9M/S|2025年SSR/Shadowrocket/V2ray/Clash免费节点地址链接分享">1月16日最新机场订阅 | 20.9M/S|2025年SSR/Shadowrocket/V2ray/Clash免费节点地址链接分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-20-node-share-links.htm" title="1月20日最新ClashX订阅 | 22.8M/S|2025年Clash/SSR/V2ray/Shadowrocket免费节点地址链接分享">1月20日最新ClashX订阅 | 22.8M/S|2025年Clash/SSR/V2ray/Shadowrocket免费节点地址链接分享</a></li>
+                        <li class="py-2"><a href="/news/article-54682.htm" title="动物疫苗在哪里买便宜些（动物疫苗经销商）">动物疫苗在哪里买便宜些（动物疫苗经销商）</a></li>
+                        <li class="py-2"><a href="/news/article-41747.htm" title="猫咪养多久能认识主人（养猫多久它会认识你）">猫咪养多久能认识主人（养猫多久它会认识你）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-15-node-share-links.htm" title="2月15日最新ClashX订阅 | 21.8M/S|2025年V2ray/Clash/SSR/Shadowrocket免费节点地址链接分享">2月15日最新ClashX订阅 | 21.8M/S|2025年V2ray/Clash/SSR/Shadowrocket免费节点地址链接分享</a></li>
+                        <li class="py-2"><a href="/news/article-52508.htm" title="饲料厂加盟多少钱（饲料厂加盟多少钱）">饲料厂加盟多少钱（饲料厂加盟多少钱）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-19-free-ssr-subscribe.htm" title="2月19日最新ClashX订阅 | 23M/S|2025年SSR/Shadowrocket/V2ray/Clash免费节点地址链接分享">2月19日最新ClashX订阅 | 23M/S|2025年SSR/Shadowrocket/V2ray/Clash免费节点地址链接分享</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">63</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">48</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Services Section End -->
+    
+        <!-- Footer Section -->
+    <footer class="footer">
+        <!-- Copyright -->
+        <div id="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-xs-12">
+                        <p class="copyright-text">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                            Free Clash X免费订阅地址中文网 版权所有 Powered by WordPress
+                        </p>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-xs-12">
+                        <ul class="nav nav-inline  justify-content-end ">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="/">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Sitemap</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Privacy Policy</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Terms of services</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Copyright  End-->
+    </footer>
+    <!-- Footer Section End-->
+    <!-- Go to Top Link -->
+    <a href="#" class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+    </a>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader" id="loader-1"></div>
+    </div>
+    <!-- End Preloader -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="/assets/website/js/frontend/freeclashx/jquery-min.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/jquery.mixitup.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/jquery.countTo.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/jquery.nav.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/scrolling-nav.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/jquery.easing.min.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/jquery.slicknav.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/form-validator.min.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/contact-form-script.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
