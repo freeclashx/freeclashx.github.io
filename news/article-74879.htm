@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+      <link rel="canonical" href="https://freeclashx.github.io/news/article-74879.htm" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>es修改字段text类型为date类型</title>
+        <meta name="description" content="一、概述 首先说明es中索引的字段类型是不可修改的，只能是重新创建一个索引并设置好映射mapping，然后再将老索引的数据复制过去。 二、原索引字段text类型  三、操作步骤   创建索引，并指定映" />
+        <link rel="icon" href="/assets/website/img/freeclashx/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Free Clash X免费订阅地址中文网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freeclashx.github.io/news/article-74879.htm" />
+    <meta property="og:site_name" content="Free Clash X免费订阅地址中文网" />
+    <meta property="og:title" content="es修改字段text类型为date类型" />
+    <meta property="og:image" content="https://freeclashx.github.io/uploads/20250116/4a60dea9f4f049e320300b9d875bcc45.webp" />
+        <meta property="og:release_date" content="2025-03-16T10:28:34" />
+    <meta property="og:updated_time" content="2025-03-16T10:28:34" />
+        <meta property="og:description" content="一、概述 首先说明es中索引的字段类型是不可修改的，只能是重新创建一个索引并设置好映射mapping，然后再将老索引的数据复制过去。 二、原索引字段text类型  三、操作步骤   创建索引，并指定映" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="es修改字段text类型为date类型">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/bootstrap.min.css">
+    <!-- Font -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/font-awesome.min.css">
+    <!-- Slicknav -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/slicknav.css">
+    <!-- Owl carousel -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/owl.carousel.css">
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/owl.theme.css">
+    <!-- Animate -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/animate.css">
+    <!-- Main Style -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/main.css">
+    <!-- Extras Style -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/extras.css">
+    <!-- Responsive Style -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/responsive.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3Z77540WBS"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-3Z77540WBS');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!-- Header Area wrapper Starts -->
+    <header id="header-wrap">
+              <!-- Navbar Start -->
+        <nav class="navbar navbar-expand-lg fixed-top scrolling-navbar indigo">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                        <span class="icon-menu"></span>
+                        <span class="icon-menu"></span>
+                        <span class="icon-menu"></span>
+                    </button>
+                    <a href="/" class="navbar-brand xcblog-blog-logo">
+                                                <span>Free Clash X</span>
+                                            </a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-navbar">
+                    <ul class="navbar-nav mr-auto w-100 justify-content-end clearfix">
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/">
+                                首页                            </a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/free-nodes/">
+                                免费节点                            </a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/paid-subscribe/">
+                                推荐机场                            </a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/client.htm">
+                                客户端                            </a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/news/">
+                                新闻资讯                            </a>
+                        </li>
+                                            </ul>
+                </div>
+            </div>
+            <!-- Mobile Menu Start -->
+            <ul class="mobile-menu navbar-nav">
+                                <li>
+                    <a href="/">
+                        首页                    </a>
+                </li>
+                                <li>
+                    <a href="/free-nodes/">
+                        免费节点                    </a>
+                </li>
+                                <li>
+                    <a href="/paid-subscribe/">
+                        推荐机场                    </a>
+                </li>
+                                <li>
+                    <a href="/client.htm">
+                        客户端                    </a>
+                </li>
+                                <li>
+                    <a href="/news/">
+                        新闻资讯                    </a>
+                </li>
+                            </ul>
+            <!-- Mobile Menu End -->
+        </nav>
+        <!-- Navbar End -->
+        <!-- sliders -->
+        <div id="sliders">
+            <div class="full-width">
+                <!-- light slider -->
+                <div id="light-slider" class="carousel slide">
+                    <div id="carousel-area">
+                        <div id="carousel-slider" class="carousel slide" data-ride="carousel">
+                            <div class="carousel-inner" role="listbox">
+                                <div class="carousel-item active">
+                                    <img src="/assets/website/img/freeclashx/slider/bg-1.jpg" alt="">
+                                    <div class="carousel-caption">
+                                        <h1 class="slide-title">es修改字段text类型为date类型</h1>
+                                        <h5 class="slide-text">
+                                            <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End sliders -->
+    </header>
+    <!-- Header Area wrapper End -->
+    
+    <!-- Services Section Start -->
+    <section id="services" class="section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Node官网订阅站" data-url="https://clashnode.github.io">
+                  				  				  				<div id="content_views" class="htmledit_views"> <h2>一、概述</h2> <p>首先说明es中索引的字段类型是不可修改的，只能是重新创建一个索引并设置好映射mapping，然后再将老索引的数据复制过去。</p> <h2>二、原索引字段text类型</h2> <p><img fetchpriority="high" decoding="async" alt="" height="415" src="http://img.555519.xyz/uploads3/20220608/0a342ac3bb9326ca4d68a688d3701550.jpg"></p> <h2>三、操作步骤</h2> <ol> <li> <h3>创建索引，并指定映射mapping</h3> </li> </ol> <pre><code>PUT /audit2 {   "mappings": {     "properties": {       "@timestamp": {         "type": "date"       },       "@version": {         "type": "text",         "fields": {           "keyword": {             "type": "keyword",             "ignore_above": 256           }         }       },       "childmodule": {         "type": "text",         "fields": {           "keyword": {             "type": "keyword",             "ignore_above": 256           }         }       },       "dmltype": {         "type": "text",         "fields": {           "keyword": {             "type": "keyword",             "ignore_above": 256           }         }       },       "id": {         "type": "text",         "fields": {           "keyword": {             "type": "keyword",             "ignore_above": 256           }         }       },       "masterid": {         "type": "text",         "fields": {           "keyword": {             "type": "keyword",             "ignore_above": 256           }         }       },       "module": {         "type": "text",         "fields": {           "keyword": {             "type": "keyword",             "ignore_above": 256           }         }       },       "objectchangedata": {         "type": "text",         "fields": {           "keyword": {             "type": "keyword",             "ignore_above": 256           }         }       },       "objectid": {         "type": "text",         "fields": {           "keyword": {             "type": "keyword",             "ignore_above": 256           }         }       },       "objectkey": {         "type": "text",         "fields": {           "keyword": {             "type": "keyword",             "ignore_above": 256           }         }       },       "operationdetail": {         "type": "text",         "fields": {           "keyword": {             "type": "keyword",             "ignore_above": 256           }         }       },       "operationtime": {         "type": "date",         "format": "yyyy-MM-dd HH:mm:ss||yyyy-MM-dd||epoch_millis"       },       "operatoremployeeno": {         "type": "text",         "fields": {           "keyword": {             "type": "keyword",             "ignore_above": 256           }         }       },       "operatorpersonname": {         "type": "text",         "fields": {           "keyword": {             "type": "keyword",             "ignore_above": 256           }         }       },       "product": {         "type": "text",         "fields": {           "keyword": {             "type": "keyword",             "ignore_above": 256           }         }       },       "tenant": {         "type": "text",         "fields": {           "keyword": {             "type": "keyword",             "ignore_above": 256           }         }       },       "type": {         "type": "text",         "fields": {           "keyword": {             "type": "keyword",             "ignore_above": 256           }         }       }     }   } }</code></pre> <p><img decoding="async" alt="" height="223" src="http://img.555519.xyz/uploads3/20220608/0912ffa4a245dc3c6263e127ef5228ac.jpg"></p> <h3>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;2、将老的索引中的数据复制到新的索引中：</h3> <pre><code>POST _reindex {   "source": {     "index": "audit-q-2021-11"   },   "dest": {     "index": "audit2"   } }</code></pre> <h3>&nbsp; &nbsp; &nbsp; &nbsp; 3、显示audit2索引已有同步过来的数据（时间字段由原来的text变为了date类型）</h3> <p><img decoding="async" alt="" height="19" src="http://img.555519.xyz/uploads3/20220608/a374635c21f1504d17c437d7a2ad51d8.jpg"></p> <p><img loading="lazy" decoding="async" alt="" height="495" src="http://img.555519.xyz/uploads3/20220608/0a32a1df54f8efcffc9d6429dc4bf385.jpg"></p> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-74878.htm">使用Python在D天内运送包裹的能力</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-3-16-free-high-speed-nodes.htm" title="3月16日最新ClashX订阅 | 21.5M/S|2025年SSR/V2ray/Shadowrocket/Clash免费节点地址链接分享">3月16日最新ClashX订阅 | 21.5M/S|2025年SSR/V2ray/Shadowrocket/Clash免费节点地址链接分享</a></li>
+                        <li class="py-2"><a href="/news/article-74200.htm" title="我所在的城市有一家动物医院的英语（我所在的城市有一家动物医院的英语）">我所在的城市有一家动物医院的英语（我所在的城市有一家动物医院的英语）</a></li>
+                        <li class="py-2"><a href="/news/article-50941.htm" title="中国动物疫苗十强名单（中国动物疫苗十强名单图片）">中国动物疫苗十强名单（中国动物疫苗十强名单图片）</a></li>
+                        <li class="py-2"><a href="/news/article-56335.htm" title="用指针低三位存放额外信息的优化方法 &#8211; 程鑫 _在线工具">用指针低三位存放额外信息的优化方法 &#8211; 程鑫 _在线工具</a></li>
+                        <li class="py-2"><a href="/news/article-54129.htm" title="@RequestBody 接收复杂实体类集合">@RequestBody 接收复杂实体类集合</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-9-free-node-subscribe.htm" title="2月9日最新ClashX订阅 | 19.7M/S|2025年Clash/V2ray/Shadowrocket/SSR免费节点地址链接分享">2月9日最新ClashX订阅 | 19.7M/S|2025年Clash/V2ray/Shadowrocket/SSR免费节点地址链接分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-5-free-node-subscribe-links.htm" title="2月5日最新ClashX订阅 | 20.4M/S|2025年V2ray/Clash/Shadowrocket/SSR免费节点地址链接分享">2月5日最新ClashX订阅 | 20.4M/S|2025年V2ray/Clash/Shadowrocket/SSR免费节点地址链接分享</a></li>
+                        <li class="py-2"><a href="/news/article-72864.htm" title="成都宠物犬领养中心电话地址（成都宠物领养中心官网收容中心）">成都宠物犬领养中心电话地址（成都宠物领养中心官网收容中心）</a></li>
+                        <li class="py-2"><a href="/news/article-52508.htm" title="饲料厂加盟多少钱（饲料厂加盟多少钱）">饲料厂加盟多少钱（饲料厂加盟多少钱）</a></li>
+                        <li class="py-2"><a href="/news/article-53048.htm" title="宠物医院美团好评50字 宠物医院美团好评50字通用评论">宠物医院美团好评50字 宠物医院美团好评50字通用评论</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">48</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">48</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Services Section End -->
+    
+        <!-- Footer Section -->
+    <footer class="footer">
+        <!-- Copyright -->
+        <div id="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-xs-12">
+                        <p class="copyright-text">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                            Free Clash X免费订阅地址中文网 版权所有 Powered by WordPress
+                        </p>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-xs-12">
+                        <ul class="nav nav-inline  justify-content-end ">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="/">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Sitemap</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Privacy Policy</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Terms of services</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Copyright  End-->
+    </footer>
+    <!-- Footer Section End-->
+    <!-- Go to Top Link -->
+    <a href="#" class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+    </a>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader" id="loader-1"></div>
+    </div>
+    <!-- End Preloader -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="/assets/website/js/frontend/freeclashx/jquery-min.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/jquery.mixitup.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/jquery.countTo.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/jquery.nav.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/scrolling-nav.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/jquery.easing.min.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/jquery.slicknav.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/form-validator.min.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/contact-form-script.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
