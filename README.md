@@ -1,4 +1,4 @@
-# 3月19日最新ClashX订阅 | 20.5M/S|2025年Shadowrocket/SSR/Clash/V2ray免费节点地址链接分享  更新时间 2025-03-19 09:29:25
+# 3月22日最新ClashX订阅 | 19.8M/S|2025年Shadowrocket/V2ray/SSR/Clash免费节点地址链接分享  更新时间 2025-03-22 09:10:47
 所有免费clash节点都爬取自网络，请勿用于非法用途 。节点地址：<a href="https://freeclashx.github.io" target="_blank">点击跳转</a>
 
 ## clash使用教程：
@@ -9,23 +9,23 @@
 
 ### Clash订阅链接
 
-- https://freeclashx.github.io/uploads/2025/03/0-20250319.yaml
-- https://freeclashx.github.io/uploads/2025/03/1-20250319.yaml
-- https://freeclashx.github.io/uploads/2025/03/2-20250319.yaml
-- https://freeclashx.github.io/uploads/2025/03/3-20250319.yaml
-- https://freeclashx.github.io/uploads/2025/03/4-20250319.yaml
+- https://freeclashx.github.io/uploads/2025/03/0-20250322.yaml
+- https://freeclashx.github.io/uploads/2025/03/1-20250322.yaml
+- https://freeclashx.github.io/uploads/2025/03/2-20250322.yaml
+- https://freeclashx.github.io/uploads/2025/03/3-20250322.yaml
+- https://freeclashx.github.io/uploads/2025/03/4-20250322.yaml
 
 ### V2ray订阅链接
 
-- https://freeclashx.github.io/uploads/2025/03/0-20250319.txt
-- https://freeclashx.github.io/uploads/2025/03/1-20250319.txt
-- https://freeclashx.github.io/uploads/2025/03/2-20250319.txt
-- https://freeclashx.github.io/uploads/2025/03/3-20250319.txt
-- https://freeclashx.github.io/uploads/2025/03/4-20250319.txt
+- https://freeclashx.github.io/uploads/2025/03/0-20250322.txt
+- https://freeclashx.github.io/uploads/2025/03/1-20250322.txt
+- https://freeclashx.github.io/uploads/2025/03/2-20250322.txt
+- https://freeclashx.github.io/uploads/2025/03/3-20250322.txt
+- https://freeclashx.github.io/uploads/2025/03/4-20250322.txt
 
 ### Sing-box订阅链接
 
-- https://freeclashx.github.io/uploads/2025/03/20250319.json
+- https://freeclashx.github.io/uploads/2025/03/20250322.json
 
 ## 更多clash节点订阅 ：
 
