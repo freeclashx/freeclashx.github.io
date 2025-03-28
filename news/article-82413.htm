@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+      <link rel="canonical" href="https://freeclashx.github.io/news/article-82413.htm" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>自研FeignClient轻量级http客户端</title>
+        <meta name="description" content="一. 为什么会想到编写此项目 1. 背景 在工作中，经常会遇到与其他业务系统进行通讯交互，无非是通过调用对方的http接口进行数据的交互,少则一个，多则几十个。 随着Oauth2.0协议在各个业务系统" />
+        <link rel="icon" href="/assets/website/img/freeclashx/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Free Clash X免费订阅地址中文网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freeclashx.github.io/news/article-82413.htm" />
+    <meta property="og:site_name" content="Free Clash X免费订阅地址中文网" />
+    <meta property="og:title" content="自研FeignClient轻量级http客户端" />
+    <meta property="og:image" content="https://freeclashx.github.io/uploads/20250116/2f2fffd02b5cd3d0e99f05dc26659108.webp" />
+        <meta property="og:release_date" content="2025-03-27T08:13:48" />
+    <meta property="og:updated_time" content="2025-03-27T08:13:48" />
+        <meta property="og:description" content="一. 为什么会想到编写此项目 1. 背景 在工作中，经常会遇到与其他业务系统进行通讯交互，无非是通过调用对方的http接口进行数据的交互,少则一个，多则几十个。 随着Oauth2.0协议在各个业务系统" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="自研FeignClient轻量级http客户端">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/bootstrap.min.css">
+    <!-- Font -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/font-awesome.min.css">
+    <!-- Slicknav -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/slicknav.css">
+    <!-- Owl carousel -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/owl.carousel.css">
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/owl.theme.css">
+    <!-- Animate -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/animate.css">
+    <!-- Main Style -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/main.css">
+    <!-- Extras Style -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/extras.css">
+    <!-- Responsive Style -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/responsive.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3Z77540WBS"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-3Z77540WBS');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!-- Header Area wrapper Starts -->
+    <header id="header-wrap">
+              <!-- Navbar Start -->
+        <nav class="navbar navbar-expand-lg fixed-top scrolling-navbar indigo">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                        <span class="icon-menu"></span>
+                        <span class="icon-menu"></span>
+                        <span class="icon-menu"></span>
+                    </button>
+                    <a href="/" class="navbar-brand xcblog-blog-logo">
+                                                <span>Free Clash X</span>
+                                            </a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-navbar">
+                    <ul class="navbar-nav mr-auto w-100 justify-content-end clearfix">
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/">
+                                首页                            </a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/free-nodes/">
+                                免费节点                            </a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/paid-subscribe/">
+                                推荐机场                            </a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/client.htm">
+                                客户端                            </a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/news/">
+                                新闻资讯                            </a>
+                        </li>
+                                            </ul>
+                </div>
+            </div>
+            <!-- Mobile Menu Start -->
+            <ul class="mobile-menu navbar-nav">
+                                <li>
+                    <a href="/">
+                        首页                    </a>
+                </li>
+                                <li>
+                    <a href="/free-nodes/">
+                        免费节点                    </a>
+                </li>
+                                <li>
+                    <a href="/paid-subscribe/">
+                        推荐机场                    </a>
+                </li>
+                                <li>
+                    <a href="/client.htm">
+                        客户端                    </a>
+                </li>
+                                <li>
+                    <a href="/news/">
+                        新闻资讯                    </a>
+                </li>
+                            </ul>
+            <!-- Mobile Menu End -->
+        </nav>
+        <!-- Navbar End -->
+        <!-- sliders -->
+        <div id="sliders">
+            <div class="full-width">
+                <!-- light slider -->
+                <div id="light-slider" class="carousel slide">
+                    <div id="carousel-area">
+                        <div id="carousel-slider" class="carousel slide" data-ride="carousel">
+                            <div class="carousel-inner" role="listbox">
+                                <div class="carousel-item active">
+                                    <img src="/assets/website/img/freeclashx/slider/bg-1.jpg" alt="">
+                                    <div class="carousel-caption">
+                                        <h1 class="slide-title">自研FeignClient轻量级http客户端</h1>
+                                        <h5 class="slide-text">
+                                            <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End sliders -->
+    </header>
+    <!-- Header Area wrapper End -->
+    
+    <!-- Services Section Start -->
+    <section id="services" class="section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Node官网订阅站" data-url="https://clashnode.github.io">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-light"> </h1> <h2><a id="__2" rel="nofollow"></a>一. 为什么会想到编写此项目</h2> <h3><a id="1__3" rel="nofollow"></a>1. 背景</h3> <p>在工作中，经常会遇到与其他业务系统进行通讯交互，无非是通过调用对方的http接口进行数据的交互,少则一个，多则几十个。</p> <p>随着Oauth2.0协议在各个业务系统的应用，调用其他业务系统的方式也是千篇一律：首先通过对方颁发的客户端信息进行客户端认证，认证通过之后获取accessToken，随后所有业务接口携带accessToken调用接口。一些安全性较高的系统，还会增加一些加解密、验签、完整性、证书的验证。</p> <p>当前大部分思路是通过开发各个接口调用逻辑功能，然后通过统一封装http调用工具进行接口调用，整个代码会显得特别臃肿，同时最近在读feign源码，因此仿照feign客户端进行代码改造，旨在优化业务代码，同时也加深对feign的理解。</p> <h3><a id="2__9" rel="nofollow"></a>2. 改造后的代码示例</h3> <p>只需要按照接口出入参拼接实体类，再接口中维护接口信息即可。一些公共的接口调用逻辑，在动态代理的InvocationHandler中统一进行处理（序列化、反序列化、远程接口调用、异常处理等等）。<br /> 同时该部分代码单独打包成jar包，易于维护及管理。</p> <pre><code class="prism language-java"><span class="token annotation punctuation">@InvokeClient</span><span class="token punctuation">(</span>value<span class="token operator">=</span><span class="token string">"/v1/api"</span><span class="token punctuation">,</span> 		name<span class="token operator">=</span><span class="token string">"requestClient"</span><span class="token punctuation">,</span> 		configuration<span class="token operator">=</span><span class="token punctuation">{<!-- --></span><span class="token class-name">RemoteCallConfig</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token keyword">public</span><span class="token keyword">interface</span><span class="token class-name">RequestClient</span><span class="token punctuation">{<!-- --></span><span class="token annotation punctuation">@InvokeRequest</span><span class="token punctuation">(</span>value<span class="token operator">=</span><span class="token string">"/queryUser"</span><span class="token punctuation">,</span>method<span class="token operator">=</span><span class="token class-name">HttpMethod</span><span class="token punctuation">.</span>POST<span class="token punctuation">)</span><span class="token annotation punctuation">@BreakerCommand</span><span class="token punctuation">(</span>fallback<span class="token operator">=</span><span class="token class-name">RequestClientFallback</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token keyword">public</span><span class="token class-name">ResponseDto</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">User</span><span class="token punctuation">&gt;</span></span><span class="token function">queryUser</span><span class="token punctuation">(</span><span class="token class-name">User</span> user<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span></code></pre> <h3><a id="3__22" rel="nofollow"></a>3. 能够实现什么功能</h3> <ul> <li>基础远程调用【已完成】</li> <li>重试机制【已完成】</li> <li>熔断机制【已完成】</li> <li>自定义配置类及客户段配置类之间的隔离【已完成】</li> <li>自定义请求拦截器【已完成】</li> <li>隔离策略（线程池及信号量）</li> </ul> <h3><a id="4_29" rel="nofollow"></a>4.项目地址</h3> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://github.com/beardlessCat/simple-remote-call"  rel="nofollow">项目地址：https://github.com/beardlessCat/simple-remote-call，喜欢的烦请star</a></p> <h2><a id="_32" rel="nofollow"></a>三.版本规划</h2> <h3><a id="10x_33" rel="nofollow"></a>1.0.x</h3> <p>该版本一些远程客户端的声明都必须在client包内，这样设计的初始目的主要是想规范将客户端的声明与客户端的调用区分开，使得代码更加的整洁已于管理。有需要改动时仅仅调整client包即可，<br /> 无需调整引入该包的相关代码。但是此种方式生成的依赖包仅仅能够供某一特定系统进行使用，系统兼容性较差。</p> <h3><a id="20x_36" rel="nofollow"></a>2.0.x</h3> <p>该版本建议将客户端的声明存放到引入该包的模块或系统中，这样的话，client包仅仅作为远程调用的工具，客户端的声明需在引入该包的模块或者系统中自行声明，<br /> 优劣势与1.0.x相反，同时这种方式也是openfeign的模式。后续的一些维护及升级也是主要基于此版本。</p> <h2><a id="_39" rel="nofollow"></a>四.功能原理</h2> <p>整个功能要实现最主要需要完成两点：远程调用client自动注入及动态代理生成生成客户端实现类进行远程调用处理。当这两个点完成后，其他的就剩下一下<br /> 代理逻辑的处理了。</p> <h3><a id="1_openFeign_42" rel="nofollow"></a>1. openFeign原理</h3> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220602/a3d3dea6c8dc6874b090da24ba984535.jpg" alt="自研FeignClient轻量级http客户端"></p> <h3><a id="2_44" rel="nofollow"></a>2.接口熔断机制</h3> <p>通过接口熔断管理器管理接口状态，对接口进行熔断保护<br /> （1）接口状态说明<br /> 接口基于断路器状态分为三种：OPEN,HAlf-OPEN,CLOSE</p> <ul> <li>CLOSE：熔断器处于关闭状态，接口可正常调用;</li> <li>HAlf-OPEN：熔断器处于半关闭状态，此时回对部门请求进行尝试调用，根据调用结果改变状态。</li> <li>OPEN：熔断器处于开启状态，此时所有请求均不再调用接口，而是直接返回接口熔断信息。</li> </ul> <p>（2）接口状态变更转换图<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220602/382ea5b588ba3907903d7ac46e868f4f.jpg" alt="自研FeignClient轻量级http客户端"></p> <ul> <li>CLOSE转换为OPEN：接口调用失败次数达到阈值</li> <li>OPEN转换为HALF_OPEN：接口熔断时间达到阈值</li> <li>HALF_OPEN转换为CLOSE：接口成功次数达到阈值</li> <li>HALF_OPEN转换为OPEN：接口失败次数达到阈值</li> </ul> <p>（3）接口状态流程图<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220602/3c1d8686cba529834178a0debe39c68b.jpg" alt="自研FeignClient轻量级http客户端"></p> <p>（4）熔断器测试日志</p> <pre><code>: 【断路器变为CLOSE】 : BreakerStateManager(failCount=0, successCount=0, maxOpenToTryTime=60000, maxFailCount=5, maxSuccessCount=5, openRetryCount=0, maxOpenRetryCount=5, breakerState=com.bigyj.breaker.state.ClosedState@43b23436) : 接口调用失败！ : BreakerStateManager(failCount=1, successCount=0, maxOpenToTryTime=60000, maxFailCount=5, maxSuccessCount=5, openRetryCount=0, maxOpenRetryCount=5, breakerState=com.bigyj.breaker.state.ClosedState@43b23436) : 接口调用失败！ : BreakerStateManager(failCount=2, successCount=0, maxOpenToTryTime=60000, maxFailCount=5, maxSuccessCount=5, openRetryCount=0, maxOpenRetryCount=5, breakerState=com.bigyj.breaker.state.ClosedState@43b23436) : 接口调用失败！ : BreakerStateManager(failCount=3, successCount=0, maxOpenToTryTime=60000, maxFailCount=5, maxSuccessCount=5, openRetryCount=0, maxOpenRetryCount=5, breakerState=com.bigyj.breaker.state.ClosedState@43b23436) : 接口调用失败！ : BreakerStateManager(failCount=4, successCount=0, maxOpenToTryTime=60000, maxFailCount=5, maxSuccessCount=5, openRetryCount=0, maxOpenRetryCount=5, breakerState=com.bigyj.breaker.state.ClosedState@43b23436) : 接口调用失败！ =============================================================================================== : 【断路器变为OPEN】 : BreakerStateManager(failCount=5, successCount=0, maxOpenToTryTime=60000, maxFailCount=5, maxSuccessCount=5, openRetryCount=0, maxOpenRetryCount=5, breakerState=com.bigyj.breaker.state.OpenState@189436cd) com.bigyj.exception.MethodNotAvailableException: 服务已熔断，请稍等重试！ : BreakerStateManager(failCount=5, successCount=0, maxOpenToTryTime=60000, maxFailCount=5, maxSuccessCount=5, openRetryCount=0, maxOpenRetryCount=5, breakerState=com.bigyj.breaker.state.OpenState@189436cd) com.bigyj.exception.MethodNotAvailableException: 服务已熔断，请稍等重试！ : BreakerStateManager(failCount=5, successCount=0, maxOpenToTryTime=60000, maxFailCount=5, maxSuccessCount=5, openRetryCount=0, maxOpenRetryCount=5, breakerState=com.bigyj.breaker.state.OpenState@189436cd) com.bigyj.exception.MethodNotAvailableException: 服务已熔断，请稍等重试！ : BreakerStateManager(failCount=5, successCount=0, maxOpenToTryTime=60000, maxFailCount=5, maxSuccessCount=5, openRetryCount=0, maxOpenRetryCount=5, breakerState=com.bigyj.breaker.state.OpenState@189436cd) com.bigyj.exception.MethodNotAvailableException: 服务已熔断，请稍等重试！ : BreakerStateManager(failCount=5, successCount=0, maxOpenToTryTime=60000, maxFailCount=5, maxSuccessCount=5, openRetryCount=0, maxOpenRetryCount=5, breakerState=com.bigyj.breaker.state.OpenState@189436cd) com.bigyj.exception.MethodNotAvailableException: 服务已熔断，请稍等重试！ : 【断路器变为HALF-OPEN】 : BreakerStateManager(failCount=5, successCount=0, maxOpenToTryTime=60000, maxFailCount=5, maxSuccessCount=5, openRetryCount=0, maxOpenRetryCount=5, breakerState=com.bigyj.breaker.state.HalfOpenState@4cef79fb) : 接口调用失败！ : BreakerStateManager(failCount=6, successCount=0, maxOpenToTryTime=60000, maxFailCount=5, maxSuccessCount=5, openRetryCount=1, maxOpenRetryCount=5, breakerState=com.bigyj.breaker.state.HalfOpenState@4cef79fb) : 接口调用失败！ : BreakerStateManager(failCount=7, successCount=0, maxOpenToTryTime=60000, maxFailCount=5, maxSuccessCount=5, openRetryCount=2, maxOpenRetryCount=5, breakerState=com.bigyj.breaker.state.HalfOpenState@4cef79fb) : 接口调用失败！ : BreakerStateManager(failCount=8, successCount=0, maxOpenToTryTime=60000, maxFailCount=5, maxSuccessCount=5, openRetryCount=3, maxOpenRetryCount=5, breakerState=com.bigyj.breaker.state.HalfOpenState@4cef79fb) com.bigyj.exception.MethodNotAvailableException: 服务已熔断，请稍等重试！ : BreakerStateManager(failCount=8, successCount=0, maxOpenToTryTime=60000, maxFailCount=5, maxSuccessCount=5, openRetryCount=3, maxOpenRetryCount=5, breakerState=com.bigyj.breaker.state.HalfOpenState@4cef79fb) com.bigyj.exception.MethodNotAvailableException: 服务已熔断，请稍等重试！ : BreakerStateManager(failCount=8, successCount=0, maxOpenToTryTime=60000, maxFailCount=5, maxSuccessCount=5, openRetryCount=3, maxOpenRetryCount=5, breakerState=com.bigyj.breaker.state.HalfOpenState@4cef79fb) : 接口调用失败！ : BreakerStateManager(failCount=9, successCount=0, maxOpenToTryTime=60000, maxFailCount=5, maxSuccessCount=5, openRetryCount=4, maxOpenRetryCount=5, breakerState=com.bigyj.breaker.state.HalfOpenState@4cef79fb) : 接口调用失败！ : 【断路器变为OPEN】 : BreakerStateManager(failCount=10, successCount=0, maxOpenToTryTime=60000, maxFailCount=5, maxSuccessCount=5, openRetryCount=0, maxOpenRetryCount=5, breakerState=com.bigyj.breaker.state.OpenState@485fb0e8) : 【断路器变为HALF-OPEN】 : BreakerStateManager(failCount=10, successCount=1, maxOpenToTryTime=60000, maxFailCount=5, maxSuccessCount=5, openRetryCount=0, maxOpenRetryCount=5, breakerState=com.bigyj.breaker.state.HalfOpenState@6bb3d520) com.bigyj.exception.MethodNotAvailableException: 服务已熔断，请稍等重试！ : BreakerStateManager(failCount=10, successCount=1, maxOpenToTryTime=60000, maxFailCount=5, maxSuccessCount=5, openRetryCount=0, maxOpenRetryCount=5, breakerState=com.bigyj.breaker.state.HalfOpenState@6bb3d520) com.bigyj.exception.MethodNotAvailableException: 服务已熔断，请稍等重试！ : BreakerStateManager(failCount=10, successCount=1, maxOpenToTryTime=60000, maxFailCount=5, maxSuccessCount=5, openRetryCount=0, maxOpenRetryCount=5, breakerState=com.bigyj.breaker.state.HalfOpenState@6bb3d520) : BreakerStateManager(failCount=10, successCount=2, maxOpenToTryTime=60000, maxFailCount=5, maxSuccessCount=5, openRetryCount=0, maxOpenRetryCount=5, breakerState=com.bigyj.breaker.state.HalfOpenState@6bb3d520) com.bigyj.exception.MethodNotAvailableException: 服务已熔断，请稍等重试！ : BreakerStateManager(failCount=10, successCount=2, maxOpenToTryTime=60000, maxFailCount=5, maxSuccessCount=5, openRetryCount=0, maxOpenRetryCount=5, breakerState=com.bigyj.breaker.state.HalfOpenState@6bb3d520) com.bigyj.exception.MethodNotAvailableException: 服务已熔断，请稍等重试！ : BreakerStateManager(failCount=10, successCount=2, maxOpenToTryTime=60000, maxFailCount=5, maxSuccessCount=5, openRetryCount=0, maxOpenRetryCount=5, breakerState=com.bigyj.breaker.state.HalfOpenState@6bb3d520) com.bigyj.exception.MethodNotAvailableException: 服务已熔断，请稍等重试！ : BreakerStateManager(failCount=10, successCount=2, maxOpenToTryTime=60000, maxFailCount=5, maxSuccessCount=5, openRetryCount=0, maxOpenRetryCount=5, breakerState=com.bigyj.breaker.state.HalfOpenState@6bb3d520) : BreakerStateManager(failCount=10, successCount=3, maxOpenToTryTime=60000, maxFailCount=5, maxSuccessCount=5, openRetryCount=0, maxOpenRetryCount=5, breakerState=com.bigyj.breaker.state.HalfOpenState@6bb3d520) : BreakerStateManager(failCount=10, successCount=4, maxOpenToTryTime=60000, maxFailCount=5, maxSuccessCount=5, openRetryCount=0, maxOpenRetryCount=5, breakerState=com.bigyj.breaker.state.HalfOpenState@6bb3d520) com.bigyj.exception.MethodNotAvailableException: 服务已熔断，请稍等重试！ : BreakerStateManager(failCount=10, successCount=4, maxOpenToTryTime=60000, maxFailCount=5, maxSuccessCount=5, openRetryCount=0, maxOpenRetryCount=5, breakerState=com.bigyj.breaker.state.HalfOpenState@6bb3d520) =============================================================================================== : 【断路器变为CLOSE】 : BreakerStateManager(failCount=0, successCount=0, maxOpenToTryTime=60000, maxFailCount=5, maxSuccessCount=5, openRetryCount=0, maxOpenRetryCount=5, breakerState=com.bigyj.breaker.state.ClosedState@44348bd0) : BreakerStateManager(failCount=0, successCount=1, maxOpenToTryTime=60000, maxFailCount=5, maxSuccessCount=5, openRetryCount=0, maxOpenRetryCount=5, breakerState=com.bigyj.breaker.state.ClosedState@44348bd0) : BreakerStateManager(failCount=0, successCount=2, maxOpenToTryTime=60000, maxFailCount=5, maxSuccessCount=5, openRetryCount=0, maxOpenRetryCount=5, breakerState=com.bigyj.breaker.state.ClosedState@44348bd0) : BreakerStateManager(failCount=0, successCount=3, maxOpenToTryTime=60000, maxFailCount=5, maxSuccessCount=5, openRetryCount=0, maxOpenRetryCount=5, breakerState=com.bigyj.breaker.state.ClosedState@44348bd0) : BreakerStateManager(failCount=0, successCount=4, maxOpenToTryTime=60000, maxFailCount=5, maxSuccessCount=5, openRetryCount=0, maxOpenRetryCount=5, breakerState=com.bigyj.breaker.state.ClosedState@44348bd0) : 接口调用失败！ : BreakerStateManager(failCount=1, successCount=4, maxOpenToTryTime=60000, maxFailCount=5, maxSuccessCount=5, openRetryCount=0, maxOpenRetryCount=5, breakerState=com.bigyj.breaker.state.ClosedState@44348bd0) : 接口调用失败！ : BreakerStateManager(failCount=2, successCount=4, maxOpenToTryTime=60000, maxFailCount=5, maxSuccessCount=5, openRetryCount=0, maxOpenRetryCount=5, breakerState=com.bigyj.breaker.state.ClosedState@44348bd0) : 接口调用失败！ : BreakerStateManager(failCount=3, successCount=4, maxOpenToTryTime=60000, maxFailCount=5, maxSuccessCount=5, openRetryCount=0, maxOpenRetryCount=5, breakerState=com.bigyj.breaker.state.ClosedState@44348bd0) : 接口调用失败！ : BreakerStateManager(failCount=4, successCount=4, maxOpenToTryTime=60000, maxFailCount=5, maxSuccessCount=5, openRetryCount=0, maxOpenRetryCount=5, breakerState=com.bigyj.breaker.state.ClosedState@44348bd0) : 接口调用失败！ =============================================================================================== : 【断路器变为OPEN】 : BreakerStateManager(failCount=5, successCount=0, maxOpenToTryTime=60000, maxFailCount=5, maxSuccessCount=5, openRetryCount=0, maxOpenRetryCount=5, breakerState=com.bigyj.breaker.state.OpenState@2e97b6dc) com.bigyj.exception.MethodNotAvailableException: 服务已熔断，请稍等重试！ : BreakerStateManager(failCount=5, successCount=0, maxOpenToTryTime=60000, maxFailCount=5, maxSuccessCount=5, openRetryCount=0, maxOpenRetryCount=5, breakerState=com.bigyj.breaker.state.OpenState@2e97b6dc) com.bigyj.exception.MethodNotAvailableException: 服务已熔断，请稍等重试！ : BreakerStateManager(failCount=5, successCount=0, maxOpenToTryTime=60000, maxFailCount=5, maxSuccessCount=5, openRetryCount=0, maxOpenRetryCount=5, breakerState=com.bigyj.breaker.state.OpenState@2e97b6dc) com.bigyj.exception.MethodNotAvailableException: 服务已熔断，请稍等重试！ : BreakerStateManager(failCount=5, successCount=0, maxOpenToTryTime=60000, maxFailCount=5, maxSuccessCount=5, openRetryCount=0, maxOpenRetryCount=5, breakerState=com.bigyj.breaker.state.OpenState@2e97b6dc) com.bigyj.exception.MethodNotAvailableException: 服务已熔断，请稍等重试！ : BreakerStateManager(failCount=5, successCount=0, maxOpenToTryTime=60000, maxFailCount=5, maxSuccessCount=5, openRetryCount=0, maxOpenRetryCount=5, breakerState=com.bigyj.breaker.state.OpenState@2e97b6dc) com.bigyj.exception.MethodNotAvailableException: 服务已熔断，请稍等重试！ : BreakerStateManager(failCount=5, successCount=0, maxOpenToTryTime=60000, maxFailCount=5, maxSuccessCount=5, openRetryCount=0, maxOpenRetryCount=5, breakerState=com.bigyj.breaker.state.OpenState@2e97b6dc) com.bigyj.exception.MethodNotAvailableException: 服务已熔断，请稍等重试！ : BreakerStateManager(failCount=5, successCount=0, maxOpenToTryTime=60000, maxFailCount=5, maxSuccessCount=5, openRetryCount=0, maxOpenRetryCount=5, breakerState=com.bigyj.breaker.state.OpenState@2e97b6dc) com.bigyj.exception.MethodNotAvailableException: 服务已熔断，请稍等重试！ : BreakerStateManager(failCount=5, successCount=0, maxOpenToTryTime=60000, maxFailCount=5, maxSuccessCount=5, openRetryCount=0, maxOpenRetryCount=5, breakerState=com.bigyj.breaker.state.OpenState@2e97b6dc) com.bigyj.exception.MethodNotAvailableException: 服务已熔断，请稍等重试！ : BreakerStateManager(failCount=5, successCount=0, maxOpenToTryTime=60000, maxFailCount=5, maxSuccessCount=5, openRetryCount=0, maxOpenRetryCount=5, breakerState=com.bigyj.breaker.state.OpenState@2e97b6dc) com.bigyj.exception.MethodNotAvailableException: 服务已熔断，请稍等重试！ : BreakerStateManager(failCount=5, successCount=0, maxOpenToTryTime=60000, maxFailCount=5, maxSuccessCount=5, openRetryCount=0, maxOpenRetryCount=5, breakerState=com.bigyj.breaker.state.OpenState@2e97b6dc) com.bigyj.exception.MethodNotAvailableException: 服务已熔断，请稍等重试！ : BreakerStateManager(failCount=5, successCount=0, maxOpenToTryTime=60000, maxFailCount=5, maxSuccessCount=5, openRetryCount=0, maxOpenRetryCount=5, breakerState=com.bigyj.breaker.state.OpenState@2e97b6dc) com.bigyj.exception.MethodNotAvailableException: 服务已熔断，请稍等重试！ : BreakerStateManager(failCount=5, successCount=0, maxOpenToTryTime=60000, maxFailCount=5, maxSuccessCount=5, openRetryCount=0, maxOpenRetryCount=5, breakerState=com.bigyj.breaker.state.OpenState@2e97b6dc) =============================================================================================== : 【断路器变为HALF-OPEN】 : BreakerStateManager(failCount=5, successCount=1, maxOpenToTryTime=60000, maxFailCount=5, maxSuccessCount=5, openRetryCount=0, maxOpenRetryCount=5, breakerState=com.bigyj.breaker.state.HalfOpenState@5143c073) com.bigyj.exception.MethodNotAvailableException: 服务已熔断，请稍等重试！ : BreakerStateManager(failCount=5, successCount=1, maxOpenToTryTime=60000, maxFailCount=5, maxSuccessCount=5, openRetryCount=0, maxOpenRetryCount=5, breakerState=com.bigyj.breaker.state.HalfOpenState@5143c073) : BreakerStateManager(failCount=5, successCount=2, maxOpenToTryTime=60000, maxFailCount=5, maxSuccessCount=5, openRetryCount=0, maxOpenRetryCount=5, breakerState=com.bigyj.breaker.state.HalfOpenState@5143c073: BreakerStateManager(failCount=5, successCount=3, maxOpenToTryTime=60000, maxFailCount=5, maxSuccessCount=5, openRetryCount=0, maxOpenRetryCount=5, breakerState=com.bigyj.breaker.state.HalfOpenState@5143c073) : BreakerStateManager(failCount=5, successCount=4, maxOpenToTryTime=60000, maxFailCount=5, maxSuccessCount=5, openRetryCount=0, maxOpenRetryCount=5, breakerState=com.bigyj.breaker.state.HalfOpenState@5143c073) =============================================================================================== : 【断路器变为CLOSE】 : BreakerStateManager(failCount=0, successCount=0, maxOpenToTryTime=60000, maxFailCount=5, maxSuccessCount=5, openRetryCount=0, maxOpenRetryCount=5, breakerState=com.bigyj.breaker.state.ClosedState@7236669a)</code></pre> <h3><a id="3_client_174" rel="nofollow"></a>3. 远程调用client自动注入</h3> <p>通过ImportBeanDefinitionRegistrar进行依赖注入</p> <pre><code class="prism language-java"><span class="token keyword">public</span><span class="token keyword">class</span><span class="token class-name">ClientBeanDefinitionRegistrar</span><span class="token keyword">implements</span><span class="token class-name">ImportBeanDefinitionRegistrar</span><span class="token punctuation">,</span><span class="token class-name">ResourceLoaderAware</span><span class="token punctuation">,</span><span class="token class-name">EnvironmentAware</span><span class="token punctuation">{<!-- --></span><span class="token keyword">private</span><span class="token class-name">Environment</span> environment<span class="token punctuation">;</span><span class="token keyword">private</span><span class="token class-name">ResourceLoader</span> resourceLoader<span class="token punctuation">;</span><span class="token comment">/**      * 自动注入相关类 	 * @param importingClassMetadata 	 * @param registry 	 */</span><span class="token annotation punctuation">@Override</span><span class="token keyword">public</span><span class="token keyword">void</span><span class="token function">registerBeanDefinitions</span><span class="token punctuation">(</span><span class="token class-name">AnnotationMetadata</span> importingClassMetadata<span class="token punctuation">,</span><span class="token class-name">BeanDefinitionRegistry</span> registry<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token punctuation">}</span><span class="token annotation punctuation">@Override</span><span class="token keyword">public</span><span class="token keyword">void</span><span class="token function">setEnvironment</span><span class="token punctuation">(</span><span class="token class-name">Environment</span> environment<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token keyword">this</span><span class="token punctuation">.</span>environment<span class="token operator">=</span> environment<span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token annotation punctuation">@Override</span><span class="token keyword">public</span><span class="token keyword">void</span><span class="token function">setResourceLoader</span><span class="token punctuation">(</span><span class="token class-name">ResourceLoader</span> resourceLoader<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token keyword">this</span><span class="token punctuation">.</span>resourceLoader<span class="token operator">=</span> resourceLoader<span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre> <h3><a id="4__200" rel="nofollow"></a>4. 动态代理生成客户端实现类</h3> <p>通过自定义FactoryBean，在getObject方法中使用代理模式，动态生成相关类</p> <pre><code class="prism language-java"><span class="token keyword">public</span><span class="token keyword">class</span><span class="token class-name">InvokeClientFactoryBean</span><span class="token keyword">implements</span><span class="token class-name">FactoryBean</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Object</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">,</span><span class="token class-name">ApplicationContextAware</span><span class="token punctuation">{<!-- --></span><span class="token keyword">private</span><span class="token class-name">ApplicationContext</span> applicationContext<span class="token punctuation">;</span><span class="token annotation punctuation">@Setter</span><span class="token keyword">private</span><span class="token class-name">Class</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token operator">?</span><span class="token punctuation">&gt;</span></span> type<span class="token punctuation">;</span><span class="token annotation punctuation">@Setter</span><span class="token keyword">private</span><span class="token class-name">String</span> path<span class="token punctuation">;</span><span class="token comment">/** 	 * 生成代理对象 	 * @return 	 * @throws Exception 	 */</span><span class="token annotation punctuation">@Override</span><span class="token keyword">public</span><span class="token class-name">Object</span><span class="token function">getObject</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token keyword">return</span><span class="token class-name">Proxy</span><span class="token punctuation">.</span><span class="token function">newProxyInstance</span><span class="token punctuation">(</span>type<span class="token punctuation">.</span><span class="token function">getClassLoader</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token keyword">new</span><span class="token class-name">Class</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token operator">?</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">{<!-- --></span>type<span class="token punctuation">}</span><span class="token punctuation">,</span> invocationHandler<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token annotation punctuation">@Override</span><span class="token keyword">public</span><span class="token class-name">Class</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token operator">?</span><span class="token punctuation">&gt;</span></span><span class="token function">getObjectType</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token keyword">return</span><span class="token keyword">this</span><span class="token punctuation">.</span>type<span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token annotation punctuation">@Override</span><span class="token keyword">public</span><span class="token keyword">void</span><span class="token function">setApplicationContext</span><span class="token punctuation">(</span><span class="token class-name">ApplicationContext</span> applicationContext<span class="token punctuation">)</span><span class="token keyword">throws</span><span class="token class-name">BeansException</span><span class="token punctuation">{<!-- --></span><span class="token keyword">this</span><span class="token punctuation">.</span>applicationContext<span class="token operator">=</span> applicationContext<span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-81705.htm">长沙市宠物领养中心地址（长沙宠物领养救助站）</a></p>
+                                        <p>下一个：<a href="/news/article-82414.htm">动物疫苗的种类有哪些,各有什么特点呢图片（动物疫苗的种类有哪些,各有什么特点呢图片视频）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-41939.htm" title="动物疫苗接种禁忌症和注意事项图片视频讲解（动物疫苗接种禁忌症和注意事项图片视频讲解）">动物疫苗接种禁忌症和注意事项图片视频讲解（动物疫苗接种禁忌症和注意事项图片视频讲解）</a></li>
+                        <li class="py-2"><a href="/news/article-48863.htm" title="动物疫苗检测报告查询（动物疫苗查询系统）">动物疫苗检测报告查询（动物疫苗查询系统）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-20-clash-v2ray-ss-ssr.htm" title="3月20日最新ClashX订阅 | 20.7M/S|2025年Shadowrocket/Clash/SSR/V2ray免费节点地址链接分享">3月20日最新ClashX订阅 | 20.7M/S|2025年Shadowrocket/Clash/SSR/V2ray免费节点地址链接分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-12-free-ssr-node.htm" title="3月12日最新ClashX订阅 | 19.9M/S|2025年Shadowrocket/V2ray/Clash/SSR免费节点地址链接分享">3月12日最新ClashX订阅 | 19.9M/S|2025年Shadowrocket/V2ray/Clash/SSR免费节点地址链接分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-16-free-high-speed-nodes.htm" title="3月16日最新ClashX订阅 | 21.5M/S|2025年SSR/V2ray/Shadowrocket/Clash免费节点地址链接分享">3月16日最新ClashX订阅 | 21.5M/S|2025年SSR/V2ray/Shadowrocket/Clash免费节点地址链接分享</a></li>
+                        <li class="py-2"><a href="/news/article-59181.htm" title="青浦二中本科录取率（青浦二中本科录取率2019）">青浦二中本科录取率（青浦二中本科录取率2019）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-1-clash-node-github.htm" title="3月1日最新ClashX订阅 | 21.3M/S|2025年V2ray/Shadowrocket/Clash/SSR免费节点地址链接分享">3月1日最新ClashX订阅 | 21.3M/S|2025年V2ray/Shadowrocket/Clash/SSR免费节点地址链接分享</a></li>
+                        <li class="py-2"><a href="/news/article-81024.htm" title="动物疫苗检测的方法（动物疫苗抗体检测）">动物疫苗检测的方法（动物疫苗抗体检测）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-7-free-clash-subscribe.htm" title="2月7日最新ClashX订阅 | 22.4M/S|2025年Shadowrocket/V2ray/Clash/SSR免费节点地址链接分享">2月7日最新ClashX订阅 | 22.4M/S|2025年Shadowrocket/V2ray/Clash/SSR免费节点地址链接分享</a></li>
+                        <li class="py-2"><a href="/news/article-74878.htm" title="使用Python在D天内运送包裹的能力">使用Python在D天内运送包裹的能力</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">48</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Services Section End -->
+    
+        <!-- Footer Section -->
+    <footer class="footer">
+        <!-- Copyright -->
+        <div id="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-xs-12">
+                        <p class="copyright-text">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                            Free Clash X免费订阅地址中文网 版权所有 Powered by WordPress
+                        </p>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-xs-12">
+                        <ul class="nav nav-inline  justify-content-end ">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="/">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Sitemap</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Privacy Policy</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Terms of services</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Copyright  End-->
+    </footer>
+    <!-- Footer Section End-->
+    <!-- Go to Top Link -->
+    <a href="#" class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+    </a>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader" id="loader-1"></div>
+    </div>
+    <!-- End Preloader -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="/assets/website/js/frontend/freeclashx/jquery-min.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/jquery.mixitup.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/jquery.countTo.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/jquery.nav.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/scrolling-nav.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/jquery.easing.min.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/jquery.slicknav.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/form-validator.min.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/contact-form-script.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
