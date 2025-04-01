@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+      <link rel="canonical" href="https://freeclashx.github.io/news/article-83832.htm" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>vue CLI3.0自己实现一个轮播组件，并设置自定义属性</title>
+        <meta name="description" content="搭建CLI步奏过程不详细介绍了 主要利用Vue.component()注册全局组件,滑动效果使用了translateX 如下图 让后开始详细介绍如何实现自己的轮播组件 一.新建jv-swiper文件夹" />
+        <link rel="icon" href="/assets/website/img/freeclashx/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Free Clash X免费订阅地址中文网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freeclashx.github.io/news/article-83832.htm" />
+    <meta property="og:site_name" content="Free Clash X免费订阅地址中文网" />
+    <meta property="og:title" content="vue CLI3.0自己实现一个轮播组件，并设置自定义属性" />
+    <meta property="og:image" content="https://freeclashx.github.io/uploads/20250116/e16afa57b6ea9df35047bc19b9edffd5.webp" />
+        <meta property="og:release_date" content="2025-03-29T09:00:05" />
+    <meta property="og:updated_time" content="2025-03-29T09:00:05" />
+        <meta property="og:description" content="搭建CLI步奏过程不详细介绍了 主要利用Vue.component()注册全局组件,滑动效果使用了translateX 如下图 让后开始详细介绍如何实现自己的轮播组件 一.新建jv-swiper文件夹" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="vue CLI3.0自己实现一个轮播组件，并设置自定义属性">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/bootstrap.min.css">
+    <!-- Font -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/font-awesome.min.css">
+    <!-- Slicknav -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/slicknav.css">
+    <!-- Owl carousel -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/owl.carousel.css">
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/owl.theme.css">
+    <!-- Animate -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/animate.css">
+    <!-- Main Style -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/main.css">
+    <!-- Extras Style -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/extras.css">
+    <!-- Responsive Style -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/responsive.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3Z77540WBS"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-3Z77540WBS');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!-- Header Area wrapper Starts -->
+    <header id="header-wrap">
+              <!-- Navbar Start -->
+        <nav class="navbar navbar-expand-lg fixed-top scrolling-navbar indigo">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                        <span class="icon-menu"></span>
+                        <span class="icon-menu"></span>
+                        <span class="icon-menu"></span>
+                    </button>
+                    <a href="/" class="navbar-brand xcblog-blog-logo">
+                                                <span>Free Clash X</span>
+                                            </a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-navbar">
+                    <ul class="navbar-nav mr-auto w-100 justify-content-end clearfix">
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/">
+                                首页                            </a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/free-nodes/">
+                                免费节点                            </a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/paid-subscribe/">
+                                推荐机场                            </a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/client.htm">
+                                客户端                            </a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/news/">
+                                新闻资讯                            </a>
+                        </li>
+                                            </ul>
+                </div>
+            </div>
+            <!-- Mobile Menu Start -->
+            <ul class="mobile-menu navbar-nav">
+                                <li>
+                    <a href="/">
+                        首页                    </a>
+                </li>
+                                <li>
+                    <a href="/free-nodes/">
+                        免费节点                    </a>
+                </li>
+                                <li>
+                    <a href="/paid-subscribe/">
+                        推荐机场                    </a>
+                </li>
+                                <li>
+                    <a href="/client.htm">
+                        客户端                    </a>
+                </li>
+                                <li>
+                    <a href="/news/">
+                        新闻资讯                    </a>
+                </li>
+                            </ul>
+            <!-- Mobile Menu End -->
+        </nav>
+        <!-- Navbar End -->
+        <!-- sliders -->
+        <div id="sliders">
+            <div class="full-width">
+                <!-- light slider -->
+                <div id="light-slider" class="carousel slide">
+                    <div id="carousel-area">
+                        <div id="carousel-slider" class="carousel slide" data-ride="carousel">
+                            <div class="carousel-inner" role="listbox">
+                                <div class="carousel-item active">
+                                    <img src="/assets/website/img/freeclashx/slider/bg-1.jpg" alt="">
+                                    <div class="carousel-caption">
+                                        <h1 class="slide-title">vue CLI3.0自己实现一个轮播组件，并设置自定义属性</h1>
+                                        <h5 class="slide-text">
+                                            <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End sliders -->
+    </header>
+    <!-- Header Area wrapper End -->
+    
+    <!-- Services Section Start -->
+    <section id="services" class="section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Node官网订阅站" data-url="https://clashnode.github.io">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <p>搭建CLI步奏过程不详细介绍了</p> <p>主要利用Vue.component()注册全局组件,滑动效果使用了translateX<br /> 如下图<br /><img decoding="async" src="http://img.555519.xyz/uploads/20230112/d6c27f3c8c36ba3cd5e96edab838cf47.jpg" alt="vue CLI3.0自己实现一个轮播组件，并设置自定义属性"><br /> 让后开始详细介绍如何实现自己的轮播组件</p> <p>一.新建jv-swiper文件夹<br /> 1.1、然后在jv-swiper文件夹新建index.vue ，该vue其实为swiper的外层控制</p> <pre><code>&lt;template&gt;   &lt;div class="jv-swiper" ref="swileng"&gt;     &lt;slot&gt;&lt;/slot&gt;           &lt;div v-if="indicator==='true'" class="indicator-box"&gt;//此段代码为指示器，轮播的小点点         &lt;div  v-for="(i,index) in jv_siwdom" :key="index" :class="jv_siw_index==index?'indicator_color':''" class="indicator"&gt;    &lt;/div&gt;      &lt;/div&gt;       &lt;/div&gt; &lt;/template&gt;  &lt;script&gt;  /* eslint-disable */ export default {   name: "JvSwiper",   porps: {},   data() {     return {       indicator: true,       jv_siwdom: 0,       jv_siw_index: 0,     };   },   created() {},   mounted() {     let jv_interval = 3000,//滑动间隔       jv_duration = 300,//运动时间       jv_indicator = true;//指示器，轮播的小点点     try {       jv_interval = this.$refs.swileng.attributes.interval.value;//使用过程中设置的属性参数       jv_duration = this.$refs.swileng.attributes.duration.value;       jv_indicator = this.$refs.swileng.attributes.indicator.value;            } catch (error) {           }     this.indicator = jv_indicator;//把用户设置的或者默认的运动直接存储一下     let siwdom = this.$refs.swileng.childNodes,//获取有用户设置了多少张轮播     slef=this,       cont = 0,       box_left = 0;     this.jv_siwdom=siwdom.length - 1;  //给负责渲染层的变量赋值，让它生产多少张轮播          let seti = setInterval(() =&gt; {//执行       SwiRotste();     }, jv_interval);          function SwiRotste() {       cont += 1;        //进来就累加一次       if (cont == siwdom.length - 1) {  //如果等于最后一个         cont = 0;       }       slef.jv_siw_index=cont;        //把当前的值赋值给jv_siw_index,告诉我们当前滑动到哪一张       box_left = 100 * cont;       for (let i = 0, s = siwdom.length - 1; i &lt; s; i++) {  //给每个div添加不同的translateX值及运动时间         siwdom[i].style.transform = `translateX(${-box_left}%)`;         siwdom[i].style.transition = `${jv_duration / 1000}s`;       }     }   } }; &lt;/script&gt;  &lt;style&gt; .jv-swiper {   width: 100%;   height: auto;   background-color: slategrey;   display: -webkit-inline-box;   overflow: hidden;   position: relative; } .indicator-box{   display: flex; position: absolute;   bottom: 12px;   right: 6px;  } .indicator {   width: 6px;   height: 6px;   border-radius: 100%;   background-color: #333;   margin: 0 3px; } .indicator_color{   background-color: #fff; } &lt;/style&gt;    </code></pre> <p>1.2、然后在jv-swiper文件夹新建swiper-item.vue ，该vue其实为swiper的swiper-item</p> <pre><code>&lt;template&gt;   &lt;div class="swiper-item"&gt;     &lt;slot&gt;&lt;/slot&gt;   &lt;/div&gt; &lt;/template&gt;  &lt;script&gt; export default {   name: "swiper-item",   porps: {} }; &lt;/script&gt; &lt;style&gt; .swiper-item {      width: 100%;   height: 100%;     z-index: 9999;   } .swiper-item img {   width: 100%;   height: auto; } &lt;/style&gt;   </code></pre> <p>二、在jv-swiper同级新建jv-index.js用了统一注册组件</p> <pre><code>/* eslint-disable */ import JvSwiper from './jv-swiper' import SwiperItem from './jv-swiper/swiper-item.vue'  const JvIndex={     install:function(Vue){         // Vue.component()是用来注册全局组件的        Vue.component("jv-swiper", JvSwiper);        Vue.component("swiper-item", SwiperItem);     }   } export default JvIndex  </code></pre> <p>三、在mian.js 注册一下</p> <pre><code>import JvIndex from './components/jv-index' Vue.use(JvIndex) </code></pre> <p>四、开始使用啦~</p> <pre><code>&lt;template&gt;   &lt;div class="hello"&gt;     &lt;h1&gt;{<!-- -->{ msg }}&lt;/h1&gt;     //第一个轮播     &lt;jv-swiper interval='5000' duration='400' indicator='true'&gt;//设置自定义属性，这几个（ interval、duration、indicator）属性都需要放子啊标签上哦       &lt;swiper-item  v-for="(item, index) in img" v-bind:key="index"&gt;          &lt;img :src="item" alt=""&gt;         &lt;/swiper-item&gt;     &lt;/jv-swiper&gt;          //第二个轮播     &lt;jv-swiper interval='3000' duration='400' indicator='true'&gt;       &lt;swiper-item  v-for="(item, index) in img" v-bind:key="index"&gt;          &lt;img :src="item" alt=""&gt;         &lt;/swiper-item&gt;     &lt;/jv-swiper&gt;   &lt;/div&gt; &lt;/template&gt;  &lt;script&gt; /* eslint-disable */ export default {   name: "HelloWorld",   props: {     msg: String   },   data() {     return {       img: ['http://m.xuelejia.com/static/images/lunbo2.jpg','http://m.xuelejia.com/static/images/new-banner2.png','http://m.xuelejia.com/static/images/lunbo3.jpg']     };   } }; &lt;/script&gt;  &lt;!-- Add "scoped" attribute to limit CSS to this component only --&gt; &lt;style scoped&gt; h3 {   margin: 40px 0 0; } ul {   list-style-type: none;   padding: 0; } li {   display: inline-block;   margin: 0 10px; } a {   color: #42b983; } &lt;/style&gt;  </code></pre> <p>好了大功告成，下面为效果图<br /><img decoding="async" src="http://img.555519.xyz/uploads/20230112/3c6c6adef7ba234f3b46dd6d7ad7cbbf.jpg" alt="vue CLI3.0自己实现一个轮播组件，并设置自定义属性"></p> <p>总结：</p> <p>主要利用Vue.component()注册全局组件<br /> 使用 <code>this.$refs.swileng.attributes</code> 获取用户设置的参数，不知道各位大佬有没有更好的方式，求介绍<br /> 使用<code>this.$refs.swileng.childNodes</code>获取用多少张轮播，不知道各位大佬有没有更好的方式，求介绍<br /> 滑动效果使用了translateX 使用 slot 实现用户在组件标签内插入html代码 个人感觉自己写的代码还是有点小乱，还需改进提升</p> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-83142.htm">小型狗粮设备多少钱（微型狗粮机）</a></p>
+                                        <p>下一个：<a href="/news/article-83833.htm">请多多无货源开网店是真是假啊（平多多无货源）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-60901.htm" title="孕妇让猫抓破了流了一点点血有事吗（孕期让猫抓了出血有事吗）">孕妇让猫抓破了流了一点点血有事吗（孕期让猫抓了出血有事吗）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-3-free-clash-subscribe.htm" title="3月3日最新ClashX订阅 | 19.5M/S|2025年Shadowrocket/Clash/SSR/V2ray免费节点地址链接分享">3月3日最新ClashX订阅 | 19.5M/S|2025年Shadowrocket/Clash/SSR/V2ray免费节点地址链接分享</a></li>
+                        <li class="py-2"><a href="/news/article-52508.htm" title="饲料厂加盟多少钱（饲料厂加盟多少钱）">饲料厂加盟多少钱（饲料厂加盟多少钱）</a></li>
+                        <li class="py-2"><a href="/news/article-53048.htm" title="宠物医院美团好评50字 宠物医院美团好评50字通用评论">宠物医院美团好评50字 宠物医院美团好评50字通用评论</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-15-node-share-links.htm" title="2月15日最新ClashX订阅 | 21.8M/S|2025年V2ray/Clash/SSR/Shadowrocket免费节点地址链接分享">2月15日最新ClashX订阅 | 21.8M/S|2025年V2ray/Clash/SSR/Shadowrocket免费节点地址链接分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-16-free-node-subscribe-links.htm" title="1月16日最新机场订阅 | 20.9M/S|2025年SSR/Shadowrocket/V2ray/Clash免费节点地址链接分享">1月16日最新机场订阅 | 20.9M/S|2025年SSR/Shadowrocket/V2ray/Clash免费节点地址链接分享</a></li>
+                        <li class="py-2"><a href="/news/article-55787.htm" title="2020年中国动物疫苗市场情况（动物疫苗市场分析）">2020年中国动物疫苗市场情况（动物疫苗市场分析）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-10-clash-windows.htm" title="3月10日最新ClashX订阅 | 22.1M/S|2025年Shadowrocket/V2ray/SSR/Clash免费节点地址链接分享">3月10日最新ClashX订阅 | 22.1M/S|2025年Shadowrocket/V2ray/SSR/Clash免费节点地址链接分享</a></li>
+                        <li class="py-2"><a href="/news/article-66380.htm" title="河南兽药十强企业（河南兽药排名第一的兽药公司）">河南兽药十强企业（河南兽药排名第一的兽药公司）</a></li>
+                        <li class="py-2"><a href="/news/article-77578.htm" title="38岁学美容晚不晚（34岁学美容一般学多久）">38岁学美容晚不晚（34岁学美容一般学多久）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">48</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Services Section End -->
+    
+        <!-- Footer Section -->
+    <footer class="footer">
+        <!-- Copyright -->
+        <div id="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-xs-12">
+                        <p class="copyright-text">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                            Free Clash X免费订阅地址中文网 版权所有 Powered by WordPress
+                        </p>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-xs-12">
+                        <ul class="nav nav-inline  justify-content-end ">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="/">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Sitemap</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Privacy Policy</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Terms of services</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Copyright  End-->
+    </footer>
+    <!-- Footer Section End-->
+    <!-- Go to Top Link -->
+    <a href="#" class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+    </a>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader" id="loader-1"></div>
+    </div>
+    <!-- End Preloader -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="/assets/website/js/frontend/freeclashx/jquery-min.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/jquery.mixitup.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/jquery.countTo.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/jquery.nav.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/scrolling-nav.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/jquery.easing.min.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/jquery.slicknav.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/form-validator.min.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/contact-form-script.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
