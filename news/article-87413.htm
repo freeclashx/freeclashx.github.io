@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+      <link rel="canonical" href="https://freeclashx.github.io/news/article-87413.htm" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>HBase原理和基本架构和HBase优化（包括RowKey设计）</title>
+        <meta name="description" content="1）Name Space 命名空间，类似于关系型数据库的database概念，每个命名空间下有多个表。HBase两个自带的命名空间，分别是hbase和default，hbase中存放的是HBase内置" />
+        <link rel="icon" href="/assets/website/img/freeclashx/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Free Clash X免费订阅地址中文网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freeclashx.github.io/news/article-87413.htm" />
+    <meta property="og:site_name" content="Free Clash X免费订阅地址中文网" />
+    <meta property="og:title" content="HBase原理和基本架构和HBase优化（包括RowKey设计）" />
+    <meta property="og:image" content="https://freeclashx.github.io/uploads/20250116/f1628e3f5c1761f25a2ce72ecd0ffe21.webp" />
+        <meta property="og:release_date" content="2025-04-03T08:30:56" />
+    <meta property="og:updated_time" content="2025-04-03T08:30:56" />
+        <meta property="og:description" content="1）Name Space 命名空间，类似于关系型数据库的database概念，每个命名空间下有多个表。HBase两个自带的命名空间，分别是hbase和default，hbase中存放的是HBase内置" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="HBase原理和基本架构和HBase优化（包括RowKey设计）">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/bootstrap.min.css">
+    <!-- Font -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/font-awesome.min.css">
+    <!-- Slicknav -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/slicknav.css">
+    <!-- Owl carousel -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/owl.carousel.css">
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/owl.theme.css">
+    <!-- Animate -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/animate.css">
+    <!-- Main Style -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/main.css">
+    <!-- Extras Style -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/extras.css">
+    <!-- Responsive Style -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/responsive.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3Z77540WBS"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-3Z77540WBS');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!-- Header Area wrapper Starts -->
+    <header id="header-wrap">
+              <!-- Navbar Start -->
+        <nav class="navbar navbar-expand-lg fixed-top scrolling-navbar indigo">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                        <span class="icon-menu"></span>
+                        <span class="icon-menu"></span>
+                        <span class="icon-menu"></span>
+                    </button>
+                    <a href="/" class="navbar-brand xcblog-blog-logo">
+                                                <span>Free Clash X</span>
+                                            </a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-navbar">
+                    <ul class="navbar-nav mr-auto w-100 justify-content-end clearfix">
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/">
+                                首页                            </a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/free-nodes/">
+                                免费节点                            </a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/paid-subscribe/">
+                                推荐机场                            </a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/client.htm">
+                                客户端                            </a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/news/">
+                                新闻资讯                            </a>
+                        </li>
+                                            </ul>
+                </div>
+            </div>
+            <!-- Mobile Menu Start -->
+            <ul class="mobile-menu navbar-nav">
+                                <li>
+                    <a href="/">
+                        首页                    </a>
+                </li>
+                                <li>
+                    <a href="/free-nodes/">
+                        免费节点                    </a>
+                </li>
+                                <li>
+                    <a href="/paid-subscribe/">
+                        推荐机场                    </a>
+                </li>
+                                <li>
+                    <a href="/client.htm">
+                        客户端                    </a>
+                </li>
+                                <li>
+                    <a href="/news/">
+                        新闻资讯                    </a>
+                </li>
+                            </ul>
+            <!-- Mobile Menu End -->
+        </nav>
+        <!-- Navbar End -->
+        <!-- sliders -->
+        <div id="sliders">
+            <div class="full-width">
+                <!-- light slider -->
+                <div id="light-slider" class="carousel slide">
+                    <div id="carousel-area">
+                        <div id="carousel-slider" class="carousel slide" data-ride="carousel">
+                            <div class="carousel-inner" role="listbox">
+                                <div class="carousel-item active">
+                                    <img src="/assets/website/img/freeclashx/slider/bg-1.jpg" alt="">
+                                    <div class="carousel-caption">
+                                        <h1 class="slide-title">HBase原理和基本架构和HBase优化（包括RowKey设计）</h1>
+                                        <h5 class="slide-text">
+                                            <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End sliders -->
+    </header>
+    <!-- Header Area wrapper End -->
+    
+    <!-- Services Section Start -->
+    <section id="services" class="section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Node官网订阅站" data-url="https://clashnode.github.io">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> </h1> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220820/38aa0da98049fc4549d4ed1672a5f832.jpg" alt="HBase原理和基本架构和HBase优化（包括RowKey设计）"><br /> 1）Name Space<br /> 命名空间，类似于关系型数据库的database概念，每个命名空间下有多个表。HBase两个自带的命名空间，分别是hbase和default，hbase中存放的是HBase内置的表，default表是用户默认使用的命名空间。<br /> 2）Table<br /> 类似于关系型数据库的表概念。不同的是，HBase定义表时只需要声明列族即可，不需要声明具体的列。这意味着，往HBase写入数据时，字段可以动态、按需指定。因此，和关系型数据库相比，HBase能够轻松应对字段变更的场景。<br /> 3）Row<br /> HBase表中的每行数据都由一个RowKey和多个Column（列）组成，数据是按照RowKey的字典顺序存储的，并且查询数据时只能根据RowKey进行检索，所以RowKey的设计十分重要。<br /> 4）Column<br /> HBase中的每个列都由Column Family(列族)和Column Qualifier（列限定符）进行限定，例如info：name，info：age。建表时，只需指明列族，而列限定符无需预先定义。<br /> 5）Time Stamp<br /> 用于标识数据的不同版本（version），每条数据写入时，系统会自动为其加上该字段，其值为写入HBase的时间。最大的时间戳为新版数据，其它都是旧版数据；并且存储版本数可以通过shell命令更改，默认会存三个版本的数据（并且表示的时候会将所有版本的数据都展示）<br /> 6）Cell<br /> 由{rowkey, column Family：column Qualifier, time Stamp} 唯一确定的单元。cell中的数据全部是字节码形式存贮。<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220820/fc1e7a813a9e3bde5e2c2eccdc48b273.jpg" alt="HBase原理和基本架构和HBase优化（包括RowKey设计）"><br /> 总结：对于一张表来说，可以通过ROWKey，列族名，列名来锁定一个位置，这个位置通过时间戳的不同又可以放几个版本的单元，新版只有一个，版本的数量由我们设置，每个单元就是一个cell。可以将 HBase模型比喻为图书馆，列族就是哪个书架，ROWKey就是第几排，列名就是第几列。这个位置我们又可以放很多本同样的书。</p> <p>Region：<br /> 而为了方便分布式，我们又将每个ROWKey分区来划分为Region，如果是图书馆的话，就是按每排来划分，注意这里不是按列族来划分的，是按每行ROWKey，如第1005行到1010行，每行可以包括多个列族<br /> Store：<br /> 每个Region对应的每个列族叫一个Store，也就是说一个Region可以又多个Store</p> </h1> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220820/3a0665d7ada599d99cc5fbc4631f5799.jpg" alt="HBase原理和基本架构和HBase优化（包括RowKey设计）"><br /> 1）Region Server（每个节点上的一个进程，等下细讲，每个节点一个）<br /> Region Server为 Region的管理者，其实现类为HRegionServer，主要作用如下:<br /> 对于数据的操作：get, put, delete；（区别Master，谁操作表，谁操作表的数据）<br /> 对于Region的操作：splitRegion、compactRegion。<br /> 2）Master（Master是单点启动的，谁先启动的谁是Master。当上一个Master挂了，通过zookeeper可以迅速找到下一个Master，并且即使原Master再次启动，依然不会改变Master）<br /> Master是所有Region Server的管理者，其实现类为HMaster，主要作用如下：<br /> 对于表的操作：create, delete, alter<br /> 对于RegionServer的操作：分配regions到每个RegionServer，监控每个RegionServer的状态，负载均衡和故障转移。<br /> 3）Zookeeper<br /> HBase通过Zookeeper来做master的高可用、RegionServer的监控、元数据的入口（读写请求的时候需要元数据，这些底下讲）以及集群配置的维护等工作。<br /> 4）HDFS<br /> HDFS为Hbase提供最终的底层数据存储服务，同时为HBase提供高可用的支持。</p> </h1> <p>至于基于zookeeper的高可用，则是谁先开启master谁就是master，但是没有备用master，此时未开启高可用HA。只需在配置文件修改<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220820/2798e5e276442cc0c3bf04f957357b06.jpg" alt="HBase原理和基本架构和HBase优化（包括RowKey设计）"><br /> 配置号之后可以检查<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220820/fb5f9b9050b3bea4fdae9b4bd40d87cd.jpg" alt="HBase原理和基本架构和HBase优化（包括RowKey设计）"><br /> 发现又备胎Master，此时关上原先的Master所在节点，发现上不来哦web端，但是转到103的web就可以<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220820/df8f20ed3ba4907f8ebb0c966be18c8a.jpg" alt="HBase原理和基本架构和HBase优化（包括RowKey设计）"></p> </h1> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220820/7d9c252936894b35cb6e0d07bf491c7b.jpg" alt="HBase原理和基本架构和HBase优化（包括RowKey设计）"><br /> 1）StoreFile<br /> 保存实际数据的物理文件，StoreFile以Hfile的形式存储在HDFS上。每个Store会有一个或多个StoreFile（HFile），数据在每个StoreFile中都是有序的。<br /> 2）MemStore<br /> 写缓存，由于HFile中的数据要求是有序的，所以数据是先存储在MemStore中，排好序后，等到达刷写时机才会刷写到HFile，每次刷写都会形成一个新的HFile。<br /> 3）WAL<br /> 由于数据要经MemStore排序后才能刷写到HFile，但把数据保存在内存中会有很高的概率导致数据丢失，为了解决这个问题，数据会先写在一个叫做Write-Ahead logfile的文件中，然后再写入MemStore中。所以在系统出现故障的时候，数据可以通过这个日志文件重建。<br /> 4）BlockCache<br /> 读缓存，每次查询出的数据会缓存在BlockCache中，方便下次查询。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220820/318c621ee36d6157a19d3c5be90f5ada.jpg" alt="HBase原理和基本架构和HBase优化（包括RowKey设计）"><br /> 1）Client先访问zookeeper，获取hbase:meta表位于哪个Region Server。<br /> 2）访问对应的Region Server，获取hbase:meta表，根据读请求的namespace:table/rowkey，查询出目标数据位于哪个Region Server中的哪个Region中。并将该table的region信息以及meta表的位置信息缓存在客户端的meta cache，方便下次访问。<br /> 3）与目标Region Server进行通讯；<br /> 4）将数据顺序写入（追加）到WAL；<br /> 5）将数据写入对应的MemStore，数据会在MemStore进行排序；<br /> 6）向客户端发送ack（注意发送时机，是落盘到一个Hfile就会返回ack，而不是等这个hfile再有备份后在发送，对比kafka的ack）；<br /> 7）等达到MemStore的刷写时机后，将数据刷写到HFile(注：一个Region的刷写会将所有store都进行刷写操作，即使这个store的Memstore中没有缓存数据)。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220820/971c41bc5bf9128eaa03f6a0ffdb2525.jpg" alt="HBase原理和基本架构和HBase优化（包括RowKey设计）"><br /> MemStore刷写时机：</p> <p>1.当某个memstroe的大小达到了hbase.hregion.memstore.flush.size（默认值128M），其所在region的所有memstore都会刷写。<br /> 当memstore的大小达到了（因为是周期性判断大小的，所以可能出现四倍缓存大小）<br /> hbase.hregion.memstore.flush.size（默认值128M）</p> <ul> <li>hbase.hregion.memstore.block.multiplier（默认值4）<br /> 时，会阻止继续往该memstore写数据。（因为它检查是否达到128M并不是一直检查，而是过一会检查一下；如果某次检查完并没有达到128M，刚检查完，数据传输增加，瞬间增加到128的4倍以上，下次检查发现时，就会阻止继续往缓冲区写数据）</li> </ul> <p>2.当region server中memstore的总大小达到<br /> java_heapsize<br /> *hbase.regionserver.global.memstore.size（默认值0.4）<br /> *hbase.regionserver.global.memstore.size.lower.limit（默认值0.95），</p> <p>注：也就是jvm给region分的内存的百分之四十用来memstore的写流程，假设给region的内存为a，当memstore内存大小达到a * 0.4 * 0.95时；region会按照其所有memstore的大小顺序（由大到小）依次进行刷写。直到region server中所有memstore的总大小减小到上述值以下。</p> <p>但你避免不了来的数据突然变多，此时有可能达到a<em>0.4的这个界限，此时会阻止继续往所有的memstore写数据。（<br /> 也就是说当region server中memstore的总大小达到 java_heapsize</em>hbase.regionserver.global.memstore.size（默认值0.4）<br /> 时，会阻止继续往所有的memstore写数据。）</p> <ol start="3"> <li>到达自动刷写的时间，也会触发memstore flush。自动刷新的时间间隔由该属性进行配置hbase.regionserver.optionalcacheflushinterval（默认1小时）。（对比flume的hdfs sink）</li> </ol> <p>4.当WAL文件的数量超过hbase.regionserver.max.logs，region会按照时间顺序依次进行刷写，直到WAL文件数量减小到hbase.regionserver.max.log以下（该属性名已经废弃，现无需手动设置，最大值为32）。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220820/eec7aa3e269e099fdbfc0927721d61b7.jpg" alt="HBase原理和基本架构和HBase优化（包括RowKey设计）"><br /> ）Client先访问zookeeper，获取hbase:meta表位于哪个Region Server。<br /> 2）访问对应的Region Server，获取hbase:meta表，根据读请求的namespace:table/rowkey，查询出目标数据位于哪个Region Server中的哪个Region中。并将该table的region信息以及meta表的位置信息缓存在客户端的meta cache，方便下次访问。<br /> 3）与目标Region Server进行通讯；<br /> 4）分别在MemStore和Store File（HFile）中查询目标数据，并将查到的所有数据进行合并。此处所有数据是指同一条数据的不同版本（time stamp）或者不同的类型（Put/Delete）。<br /> 5）将查询到的新的数据块（Block，HFile数据存储单元，默认大小为64KB）缓存到Block Cache。<br /> 6）将合并后的最终结果返回给客户端。</p> </h1> <p>下载好HBase后有两种方法可以添加，第一种是先关上集群，然后在HBase的配置文件的regionservers中加上新加入的节点名，然后再重启集群<br /> 第二种方法是基于zookeeper来实现的，只需要配置好该新增加节点的配置文件，让它能连上zookeeper，然后在对它单点启动，即可自动将其加入到HBase集群中</p> </h1> <p>每一个region维护着startRow与endRowKey，如果加入的数据符合某个region维护的rowKey范围，则该数据交给这个region维护。那么依照这个原则，我们可以将数据所要投放的分区提前大致的规划好，以提高HBase性能。（避免某个region的rowkey太多，其它region的rowkey数量太少，造成数据倾斜）<br /> 所以我们一般情况下是在拿到数据后，要提前按照需求来对RowKey进行设计，方便计算</p> <h2><a id="_107" rel="nofollow"></a>常用的预分区计划</h2> <p>1.手动设定预分区<br /> create ‘staff1’,‘info’, SPLITS =&gt; [‘1000’,‘2000’,‘3000’,‘4000’]<br /> 2.生成16进制序列预分区<br /> create ‘staff2’,‘info’,{NUMREGIONS =&gt; 15, SPLITALGO =&gt; ‘HexStringSplit’}<br /> 3.按照文件中设置的规则预分区<br /> 创建splits.txt文件内容如下：<br /> aaaa<br /> bbbb<br /> cccc<br /> dddd<br /> 然后执行：<br /> create ‘staff3’, ‘info’,SPLITS_FILE =&gt; ‘splits.txt’<br /> 4.使用JavaAPI创建预分区</p> <h2><a id="RowKey_122" rel="nofollow"></a>RowKey设计</h2> <p>1.生成随机数、hash、散列值<br /> 2.字符串反转<br /> 3.字符串拼接<br /> 这样直接说很难想象出来怎么设计RowKey会比较好，所以这里介绍一个例子来方便理解</p> <p>首先我们能拿到的数据是一列手机号，一列手机号拨打电话的时间戳，一列每个电话队对应的打了多久的时间数<br /> 需求: 存储手机号在某个时间打了多少分钟的电话<br /> 首先想到的是按照手机的前三位来设计分区，但是有个问题是手机前三位就那几个，并且很容易出现某个前三位如138等数据特别多，再次出现数据倾斜</p> <p>所以我们直接设定直接用手动设定预分区，直接设置为300个，所以开头分区将会为很小的数值到000，000到001，001到002这样往下。然后我们对手机号进行hash运算，这样尽量将手机号打散，再用打散后的hash值对分区数取模，得到的值作为它所在的区号，并放在rowkey最前面。这时候我们可以想象一下现在的情况，大概是300个分区，假设一共有3000种不同的手机号，那每个分区理想状态下大概分了10个手机号左右（因为hash打乱会将手机号尽量不同）</p> <p>可这并没有结束，我们可以想想这样一种情况，如果只是对手机号hash打乱后分区，那么每个分区其实打散的其实是手机号，而不是拨打数量，因为同样的一个手机号进入的一定是同一个分区。这时候就有可能出现，某个分区分得的手机号都是经常打电话的手机号，比如打了10w条。另外一个分区分得的手机号都是不经常打电话的，比如10条。那么又会产生数据倾斜，那么我们如何解决比较好呢。<br /> 结论是可以通过手机号再相乘时间来进行hash打乱分区。比如如果需求是要统计手机号在某个月打了多少电话这种需求，这样的话我们在rowkey中将手机号和月份连在一起，在搜索rowkey的时候会非常的方便，比如我们要某个手机号10月份的数据，直接搜索rowkey为手机号加10月即可。此时我们在设计的时候就可以通过手机号 * 月份来一起打乱成hash码再来取模，这样就可以将同一个手机号的数据再次打散。</p> <p>这个时候我们在设计rowkey时要用分区号来拼上时间如上面将的就可以用手机号拼接年月份。但是你止不住会有同时同月且在同一个分区的手机号，所以还要在在最后面拼接上手机号。此时rowkey形式变为<br /> 分区号_yyyy-MM-dd HH-mm-ss（根据需求）_手机号</p> <p>此时举例我们如何往这个表里放数据，同样我们能拿到的数据是一列手机号，一列手机号拨打电话的时间戳，一列每个电话队对应的打了多久的时间数。此时我们需要写代码先将时间戳中的设定时间取出，如年月这一部分取出，然后再用手机号乘它取hash然后算出这条数据所在分区号，拼接上时间，手机号，就完成了这条数据的rowkey。</p> <p>那我们如何再需要找到某人在十月份的数据，那么只需要算出它的手机号*10的hash值取模的数值得到分区号，这时候我们得到了分区号，时间，手机号，只需要直接筛选rowkey即可</p> <p>还有值得注意的一点，我们在手动分区的时候要注意尽量在数字后面加上|，原因是比如我们000分区，我们需要一个界限来规划这个分区最后的hash值，所以尽量让000后面加上|（因为|已经是常用符号中hash值最大的了），这样无论你在000后面拼接什么时间，手机号；都会小于000|。避免应该属于000分区的，却因为hash值比000分区的边界大而跑到下一个分区<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220820/d474981596433f82567a3f1ff659d07b.jpg" alt="HBase原理和基本架构和HBase优化（包括RowKey设计）"><br /> 这里简单的用001到004来演示下web端能查到的region分区效果<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220820/3927763c654e05d2fab57b397f47e611.jpg" alt="HBase原理和基本架构和HBase优化（包括RowKey设计）"></p> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-86706.htm">宠物粮食品牌名字4个字大全及图片视频 宠物粮食品牌名字4个字大全及图片视频教程</a></p>
+                                        <p>下一个：<a href="/news/article-87414.htm">农大动物医院营业时间是几点（农大动物医院预约挂号）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-4-2-free-ssr-node.htm" title="4月2日最新ClashX订阅 | 19.2M/S|2025年V2ray/Clash/SSR/Shadowrocket免费节点地址链接分享">4月2日最新ClashX订阅 | 19.2M/S|2025年V2ray/Clash/SSR/Shadowrocket免费节点地址链接分享</a></li>
+                        <li class="py-2"><a href="/news/article-81025.htm" title="动物医院社会实践心得体会（动物医院实践心得2000）">动物医院社会实践心得体会（动物医院实践心得2000）</a></li>
+                        <li class="py-2"><a href="/news/article-72196.htm" title="想开个宠物店（想开个宠物店怎么申请）">想开个宠物店（想开个宠物店怎么申请）</a></li>
+                        <li class="py-2"><a href="/news/article-66379.htm" title="电脑上查看已连接过的WiFi密码">电脑上查看已连接过的WiFi密码</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-2-free-subscribe-node.htm" title="3月2日最新ClashX订阅 | 21.1M/S|2025年Clash/V2ray/SSR/Shadowrocket免费节点地址链接分享">3月2日最新ClashX订阅 | 21.1M/S|2025年Clash/V2ray/SSR/Shadowrocket免费节点地址链接分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-15-node-share-links.htm" title="3月15日最新ClashX订阅 | 19.2M/S|2025年Shadowrocket/SSR/V2ray/Clash免费节点地址链接分享">3月15日最新ClashX订阅 | 19.2M/S|2025年Shadowrocket/SSR/V2ray/Clash免费节点地址链接分享</a></li>
+                        <li class="py-2"><a href="/news/article-85265.htm" title="国产品牌十大宠物食品 中国十大宠物食品公司">国产品牌十大宠物食品 中国十大宠物食品公司</a></li>
+                        <li class="py-2"><a href="/news/article-80304.htm" title="养土狗的方法与技术有哪些视频讲解（养土狗技巧）">养土狗的方法与技术有哪些视频讲解（养土狗技巧）</a></li>
+                        <li class="py-2"><a href="/news/article-67018.htm" title="太原免费领养宠物的网站叫什么（太原宠物领养太原宠物赠送）">太原免费领养宠物的网站叫什么（太原宠物领养太原宠物赠送）</a></li>
+                        <li class="py-2"><a href="/news/article-75550.htm" title="适合新手男人开的店90后（适合男生新手行业）">适合新手男人开的店90后（适合男生新手行业）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">12</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">90</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Services Section End -->
+    
+        <!-- Footer Section -->
+    <footer class="footer">
+        <!-- Copyright -->
+        <div id="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-xs-12">
+                        <p class="copyright-text">
+                                                <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                            Free Clash X免费订阅地址中文网 版权所有 Powered by WordPress
+                        </p>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-xs-12">
+                        <ul class="nav nav-inline  justify-content-end ">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="/">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Sitemap</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Privacy Policy</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Terms of services</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Copyright  End-->
+    </footer>
+    <!-- Footer Section End-->
+    <!-- Go to Top Link -->
+    <a href="#" class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+    </a>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader" id="loader-1"></div>
+    </div>
+    <!-- End Preloader -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="/assets/website/js/frontend/freeclashx/jquery-min.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/jquery.mixitup.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/jquery.countTo.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/jquery.nav.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/scrolling-nav.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/jquery.easing.min.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/jquery.slicknav.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/form-validator.min.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/contact-form-script.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
