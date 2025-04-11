@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+      <link rel="canonical" href="https://freeclashx.github.io/news/article-93301.htm" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>ElasticSearch8 SpringBoot集成ElasticSearch8.x 基本应用 CRUD操作 环境安装详细步骤</title>
+        <meta name="description" content="最近在研究es的时候发现官方已经在7.15.0放弃对旧版本中的Java REST Client （High Level Rest Client (HLRC)）的支持，从而替换为推荐使用的Java AP" />
+        <link rel="icon" href="/assets/website/img/freeclashx/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Free Clash X免费订阅地址中文网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freeclashx.github.io/news/article-93301.htm" />
+    <meta property="og:site_name" content="Free Clash X免费订阅地址中文网" />
+    <meta property="og:title" content="ElasticSearch8 SpringBoot集成ElasticSearch8.x 基本应用 CRUD操作 环境安装详细步骤" />
+    <meta property="og:image" content="https://freeclashx.github.io/uploads/20250116/72126c54adbab5adb9ea75600d775423.webp" />
+        <meta property="og:release_date" content="2025-04-11T08:57:05" />
+    <meta property="og:updated_time" content="2025-04-11T08:57:05" />
+        <meta property="og:description" content="最近在研究es的时候发现官方已经在7.15.0放弃对旧版本中的Java REST Client （High Level Rest Client (HLRC)）的支持，从而替换为推荐使用的Java AP" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="ElasticSearch8 SpringBoot集成ElasticSearch8.x 基本应用 CRUD操作 环境安装详细步骤">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/bootstrap.min.css">
+    <!-- Font -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/font-awesome.min.css">
+    <!-- Slicknav -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/slicknav.css">
+    <!-- Owl carousel -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/owl.carousel.css">
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/owl.theme.css">
+    <!-- Animate -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/animate.css">
+    <!-- Main Style -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/main.css">
+    <!-- Extras Style -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/extras.css">
+    <!-- Responsive Style -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/responsive.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3Z77540WBS"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-3Z77540WBS');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!-- Header Area wrapper Starts -->
+    <header id="header-wrap">
+              <!-- Navbar Start -->
+        <nav class="navbar navbar-expand-lg fixed-top scrolling-navbar indigo">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                        <span class="icon-menu"></span>
+                        <span class="icon-menu"></span>
+                        <span class="icon-menu"></span>
+                    </button>
+                    <a href="/" class="navbar-brand xcblog-blog-logo">
+                                                <span>Free Clash X</span>
+                                            </a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-navbar">
+                    <ul class="navbar-nav mr-auto w-100 justify-content-end clearfix">
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/">
+                                首页                            </a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/free-nodes/">
+                                免费节点                            </a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/paid-subscribe/">
+                                推荐机场                            </a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/client.htm">
+                                客户端                            </a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/news/">
+                                新闻资讯                            </a>
+                        </li>
+                                            </ul>
+                </div>
+            </div>
+            <!-- Mobile Menu Start -->
+            <ul class="mobile-menu navbar-nav">
+                                <li>
+                    <a href="/">
+                        首页                    </a>
+                </li>
+                                <li>
+                    <a href="/free-nodes/">
+                        免费节点                    </a>
+                </li>
+                                <li>
+                    <a href="/paid-subscribe/">
+                        推荐机场                    </a>
+                </li>
+                                <li>
+                    <a href="/client.htm">
+                        客户端                    </a>
+                </li>
+                                <li>
+                    <a href="/news/">
+                        新闻资讯                    </a>
+                </li>
+                            </ul>
+            <!-- Mobile Menu End -->
+        </nav>
+        <!-- Navbar End -->
+        <!-- sliders -->
+        <div id="sliders">
+            <div class="full-width">
+                <!-- light slider -->
+                <div id="light-slider" class="carousel slide">
+                    <div id="carousel-area">
+                        <div id="carousel-slider" class="carousel slide" data-ride="carousel">
+                            <div class="carousel-inner" role="listbox">
+                                <div class="carousel-item active">
+                                    <img src="/assets/website/img/freeclashx/slider/bg-1.jpg" alt="">
+                                    <div class="carousel-caption">
+                                        <h1 class="slide-title">ElasticSearch8 SpringBoot集成ElasticSearch8.x 基本应用 CRUD操作 环境安装详细步骤</h1>
+                                        <h5 class="slide-text">
+                                            <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End sliders -->
+    </header>
+    <!-- Header Area wrapper End -->
+    
+    <!-- Services Section Start -->
+    <section id="services" class="section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Node官网订阅站" data-url="https://clashnode.github.io">
+                  				  				  				<div id="content_views" class="htmledit_views"> </h1> <p>最近在研究es的时候发现官方已经在7.15.0放弃对旧版本中的Java REST Client （High Level Rest Client (HLRC)）的支持，从而替换为推荐使用的Java API Client 8.x</p> <p><img fetchpriority="high" decoding="async" alt="" height="306" src="http://img.555519.xyz/uploads3/20220602/b4d037c4b670590014001a652302b12c.jpg"></p> <p>查看SpringBoot2.6.4的依赖，其中es的版本仅为7.15.2</p> <pre><code>  &lt;dependency&gt;         &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;         &lt;artifactId&gt;spring-boot-starter-data-elasticsearch&lt;/artifactId&gt;   &lt;/dependency&gt;    &lt;elasticsearch&gt;7.15.2&lt;/elasticsearch&gt;</code></pre> <p>因此这里我就按照官方文档使用了推荐的</p> <pre><code>&lt;dependency&gt;       &lt;groupId&gt;co.elastic.clients&lt;/groupId&gt;       &lt;artifactId&gt;elasticsearch-java&lt;/artifactId&gt;       &lt;version&gt;8.1.0&lt;/version&gt; &lt;/dependency&gt;</code></pre> <p>鉴于es8.x的资料文档目前并不是很齐全，本文中如有错误，欢迎各位指出。本文将记录一些es8.x api下的简单CRUD操作。</p> </h1> <p>SpringBoot 2.6.4 + ElasticSearch 8.1.0</p> </h1> <p>首先去官网下载最新的安装包<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.elastic.co/cn/downloads/elasticsearch"  title="Download Elasticsearch | Elastic" rel="nofollow">Download Elasticsearch | Elastic</a></p> <p><img decoding="async" alt="" height="626" src="http://img.555519.xyz/uploads3/20220602/4f5d9416bba66282cad890151ea93442.jpg"></p> <p>解压即可，进入/bin,启动elasticsearch.bat</p> <p>访问 127.0.0.1:9200,出现es的集群信息即安装成功</p> <h2>可视化界面elasticsearch-head安装</h2> <p>在github上搜索elasticsearch-head，下载他的源码</p> <p>进入源码目录执行（需安装Node.js）</p> <pre><code class="language-bash">npm install npm run start  Running "connect:server" (connect) task                                                                                  Waiting forever...                                                                                                       Started connect web server on http://localhost:9100</code></pre> <p>即可访问9100端口访问</p> <p><img decoding="async" alt="" height="266" src="http://img.555519.xyz/uploads3/20220602/39b3e8a7bf1fa9a0a9d6b8e7024f2231.jpg"></p> </h1> <pre><code class="language-XML">  &lt;dependency&gt;         &lt;groupId&gt;com.fasterxml.jackson.core&lt;/groupId&gt;         &lt;artifactId&gt;jackson-databind&lt;/artifactId&gt;         &lt;version&gt;2.13.2&lt;/version&gt;   &lt;/dependency&gt;    &lt;dependency&gt;         &lt;groupId&gt;org.glassfish&lt;/groupId&gt;         &lt;artifactId&gt;jakarta.json&lt;/artifactId&gt;         &lt;version&gt;2.0.1&lt;/version&gt;   &lt;/dependency&gt;           &lt;dependency&gt;         &lt;groupId&gt;co.elastic.clients&lt;/groupId&gt;         &lt;artifactId&gt;elasticsearch-java&lt;/artifactId&gt;         &lt;version&gt;8.1.0&lt;/version&gt;   &lt;/dependency&gt;</code></pre> </h1> <pre><code class="language-java">@Configuration public class ElasticSearchConfig {      //注入IOC容器     @Bean     public ElasticsearchClient elasticsearchClient(){         RestClient client = RestClient.builder(new HttpHost("localhost", 9200,"http")).build();         ElasticsearchTransport transport = new RestClientTransport(client,new JacksonJsonpMapper());         return new ElasticsearchClient(transport);     } }</code></pre> </h1> <h2>增加index</h2> <pre><code class="language-java">  @Autowired   private ElasticsearchClient client;      @Test     public void createTest() throws IOException {                  //写法比RestHighLevelClient更加简洁         CreateIndexResponse indexResponse = client.indices().create(c -&gt; c.index("user"));     }</code></pre> <h2>查询Index</h2> <pre><code class="language-java">    @Test     public void queryTest() throws IOException {         GetIndexResponse getIndexResponse = client.indices().get(i -&gt; i.index("user"));     }</code></pre> <h2>&nbsp;判断index是否存在</h2> <pre><code class="language-java">    @Test     public void existsTest() throws IOException {         BooleanResponse booleanResponse = client.indices().exists(e -&gt; e.index("user"));         System.out.println(booleanResponse.value());     }</code></pre> <h2>删除index</h2> <pre><code class="language-java">@Test     public void deleteTest() throws IOException {         DeleteIndexResponse deleteIndexResponse = client.indices().delete(d -&gt; d.index("user"));         System.out.println(deleteIndexResponse.acknowledged());     }</code></pre> </h1> <p>这里准备了一个简单的实体类User用于测试</p> <pre><code class="language-java">@Data @AllArgsConstructor @NoArgsConstructor public class User {     private String name;     private Integer age; }</code></pre> <h2>插入document</h2> <pre><code class="language-java">    @Test     public void addDocumentTest() throws IOException {          User user = new User("user1", 10);         IndexResponse indexResponse = client.index(i -&gt; i                 .index("user")                  //设置id                 .id("1")                  //传入user对象                 .document(user));      }</code></pre> <p>进入可视化插件，可以看到数据已经成功插入</p> <p><img loading="lazy" decoding="async" alt="" height="353" src="http://img.555519.xyz/uploads3/20220602/7e684e622ce25592b865e95bc30b2e30.jpg"></p> <h2>&nbsp;更新Document</h2> <pre><code class="language-java">    @Test     public void updateDocumentTest() throws IOException {         UpdateResponse&lt;User&gt; updateResponse = client.update(u -&gt; u                         .index("user")                         .id("1")                         .doc(new User("user2", 13))                 , User.class);     }</code></pre> <h2>判断Document是否存在</h2> <pre><code class="language-java">    @Test     public void existDocumentTest() throws IOException {         BooleanResponse indexResponse = client.exists(e -&gt; e.index("user").id("1"));         System.out.println(indexResponse.value());     }</code></pre> <h2>查询Document</h2> <pre><code class="language-java">    @Test     public void getDocumentTest() throws IOException {         GetResponse&lt;User&gt; getResponse = client.get(g -&gt; g                         .index("user")                         .id("1")                 , User.class         );         System.out.println(getResponse.source());     }</code></pre> <p>返回</p> <pre><code>User(name=user2, age=13)</code></pre> <h2>删除Document</h2> <pre><code class="language-java">    @Test     public void deleteDocumentTest() throws IOException {         DeleteResponse deleteResponse = client.delete(d -&gt; d                 .index("user")                 .id("1")         );         System.out.println(deleteResponse.id());     }</code></pre> <h2>批量插入Document</h2> <pre><code class="language-java">    @Test     public void bulkTest() throws IOException {         List&lt;User&gt; userList = new ArrayList&lt;&gt;();         userList.add(new User("user1", 11));         userList.add(new User("user2", 12));         userList.add(new User("user3", 13));         userList.add(new User("user4", 14));         userList.add(new User("user5", 15));         List&lt;BulkOperation&gt; bulkOperationArrayList = new ArrayList&lt;&gt;();         //遍历添加到bulk中         for(User user : userList){             bulkOperationArrayList.add(BulkOperation.of(o-&gt;o.index(i-&gt;i.document(user))));         }               BulkResponse bulkResponse = client.bulk(b -&gt; b.index("user")                 .operations(bulkOperationArrayList));      }</code></pre> <p><img loading="lazy" decoding="async" alt="" height="291" src="http://img.555519.xyz/uploads3/20220602/82970c783903a8fead3cb6c5c3121af9.jpg"></p> </h1> <pre><code class="language-java">    @Test     public void searchTest() throws IOException {         SearchResponse&lt;User&gt; search = client.search(s -&gt; s                 .index("user")                 //查询name字段包含hello的document(不使用分词器精确查找)                 .query(q -&gt; q                         .term(t -&gt; t                                 .field("name")                                 .value(v -&gt; v.stringValue("hello"))                         ))                 //分页查询，从第0页开始查询3个document                 .from(0)                 .size(3)                 //按age降序排序                 .sort(f-&gt;f.field(o-&gt;o.field("age").order(SortOrder.Desc))),User.class         );         for (Hit&lt;User&gt; hit : search.hits().hits()) {             System.out.println(hit.source());         }     }</code></pre> <p>为了测试，我们先添加以下数据</p> <pre><code class="language-java">        List&lt;User&gt; userList = new ArrayList&lt;&gt;();         userList.add(new User("hello world", 11));         userList.add(new User("hello java", 12));         userList.add(new User("hello es", 13));         userList.add(new User("hello spring", 14));         userList.add(new User("user", 15));</code></pre> <p>查询结果：</p> <pre><code>User(name=hello spring, age=14) User(name=hello es, age=13) User(name=hello java, age=12)</code></pre> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-92538.htm">宠物粮食市场份额预测分析 宠物粮食市场份额预测分析报告</a></p>
+                                        <p>下一个：<a href="/news/article-93302.htm">济南猫咪领养吧 济南猫咪领养吧百度贴吧</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-3-26-free-subscribe-node.htm" title="3月26日最新ClashX订阅 | 21.9M/S|2025年V2ray/Shadowrocket/Clash/SSR免费节点地址链接分享">3月26日最新ClashX订阅 | 21.9M/S|2025年V2ray/Shadowrocket/Clash/SSR免费节点地址链接分享</a></li>
+                        <li class="py-2"><a href="/news/article-65751.htm" title="人用针剂跟畜用针剂一样吗 人用针剂跟畜用针剂一样吗图片">人用针剂跟畜用针剂一样吗 人用针剂跟畜用针剂一样吗图片</a></li>
+                        <li class="py-2"><a href="/news/article-74879.htm" title="es修改字段text类型为date类型">es修改字段text类型为date类型</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-11-free-subscribe-node.htm" title="4月11日最新ClashX订阅 | 21.5M/S|2025年Clash/Shadowrocket/SSR/V2ray免费节点地址链接分享">4月11日最新ClashX订阅 | 21.5M/S|2025年Clash/Shadowrocket/SSR/V2ray免费节点地址链接分享</a></li>
+                        <li class="py-2"><a href="/news/article-67021.htm" title="动物疫苗佐剂类型（动物疫苗的种类和制备原理）">动物疫苗佐剂类型（动物疫苗的种类和制备原理）</a></li>
+                        <li class="py-2"><a href="/news/article-81025.htm" title="动物医院社会实践心得体会（动物医院实践心得2000）">动物医院社会实践心得体会（动物医院实践心得2000）</a></li>
+                        <li class="py-2"><a href="/news/article-78259.htm" title="动物疫苗的作用原理是什么（动物疫苗的概念）">动物疫苗的作用原理是什么（动物疫苗的概念）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-16-free-high-speed-nodes.htm" title="3月16日最新ClashX订阅 | 21.5M/S|2025年SSR/V2ray/Shadowrocket/Clash免费节点地址链接分享">3月16日最新ClashX订阅 | 21.5M/S|2025年SSR/V2ray/Shadowrocket/Clash免费节点地址链接分享</a></li>
+                        <li class="py-2"><a href="/news/article-81024.htm" title="动物疫苗检测的方法（动物疫苗抗体检测）">动物疫苗检测的方法（动物疫苗抗体检测）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-28-clash-windows.htm" title="3月28日最新ClashX订阅 | 22.5M/S|2025年Shadowrocket/Clash/V2ray/SSR免费节点地址链接分享">3月28日最新ClashX订阅 | 22.5M/S|2025年Shadowrocket/Clash/V2ray/SSR免费节点地址链接分享</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">33</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">90</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Services Section End -->
+    
+        <!-- Footer Section -->
+    <footer class="footer">
+        <!-- Copyright -->
+        <div id="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-xs-12">
+                        <p class="copyright-text">
+                                                <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                            Free Clash X免费订阅地址中文网 版权所有 Powered by WordPress
+                        </p>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-xs-12">
+                        <ul class="nav nav-inline  justify-content-end ">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="/">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Sitemap</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Privacy Policy</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Terms of services</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Copyright  End-->
+    </footer>
+    <!-- Footer Section End-->
+    <!-- Go to Top Link -->
+    <a href="#" class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+    </a>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader" id="loader-1"></div>
+    </div>
+    <!-- End Preloader -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="/assets/website/js/frontend/freeclashx/jquery-min.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/jquery.mixitup.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/jquery.countTo.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/jquery.nav.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/scrolling-nav.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/jquery.easing.min.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/jquery.slicknav.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/form-validator.min.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/contact-form-script.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
