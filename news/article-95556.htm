@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+      <link rel="canonical" href="https://freeclashx.github.io/news/article-95556.htm" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>架构设计基础设施保障IaaS之计算篇</title>
+        <meta name="description" content="IaaS之计算 1.1 IaaS概述 IaaS（Infrastructure as a Service ）提供托管的 IT 基础架构，供用户调配处理能力、存储、网络和其他基础计算资源。IaaS 提供商" />
+        <link rel="icon" href="/assets/website/img/freeclashx/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Free Clash X免费订阅地址中文网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freeclashx.github.io/news/article-95556.htm" />
+    <meta property="og:site_name" content="Free Clash X免费订阅地址中文网" />
+    <meta property="og:title" content="架构设计基础设施保障IaaS之计算篇" />
+    <meta property="og:image" content="https://freeclashx.github.io/uploads/20250116/e16afa57b6ea9df35047bc19b9edffd5.webp" />
+        <meta property="og:release_date" content="2025-04-14T08:02:36" />
+    <meta property="og:updated_time" content="2025-04-14T08:02:36" />
+        <meta property="og:description" content="IaaS之计算 1.1 IaaS概述 IaaS（Infrastructure as a Service ）提供托管的 IT 基础架构，供用户调配处理能力、存储、网络和其他基础计算资源。IaaS 提供商" />
+        
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="架构设计基础设施保障IaaS之计算篇">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/bootstrap.min.css">
+    <!-- Font -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/font-awesome.min.css">
+    <!-- Slicknav -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/slicknav.css">
+    <!-- Owl carousel -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/owl.carousel.css">
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/owl.theme.css">
+    <!-- Animate -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/animate.css">
+    <!-- Main Style -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/main.css">
+    <!-- Extras Style -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/extras.css">
+    <!-- Responsive Style -->
+    <link rel="stylesheet" type="text/css" href="/assets/website/css/freeclashx/responsive.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3Z77540WBS"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-3Z77540WBS');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+    <!-- Header Area wrapper Starts -->
+    <header id="header-wrap">
+              <!-- Navbar Start -->
+        <nav class="navbar navbar-expand-lg fixed-top scrolling-navbar indigo">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                        <span class="icon-menu"></span>
+                        <span class="icon-menu"></span>
+                        <span class="icon-menu"></span>
+                    </button>
+                    <a href="/" class="navbar-brand xcblog-blog-logo">
+                                                <span>Free Clash X</span>
+                                            </a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-navbar">
+                    <ul class="navbar-nav mr-auto w-100 justify-content-end clearfix">
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/">
+                                首页                            </a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/free-nodes/">
+                                免费节点                            </a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/paid-subscribe/">
+                                推荐机场                            </a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/client.htm">
+                                客户端                            </a>
+                        </li>
+                                                <li class="nav-item">
+                            <a class="nav-link" href="/news/">
+                                新闻资讯                            </a>
+                        </li>
+                                            </ul>
+                </div>
+            </div>
+            <!-- Mobile Menu Start -->
+            <ul class="mobile-menu navbar-nav">
+                                <li>
+                    <a href="/">
+                        首页                    </a>
+                </li>
+                                <li>
+                    <a href="/free-nodes/">
+                        免费节点                    </a>
+                </li>
+                                <li>
+                    <a href="/paid-subscribe/">
+                        推荐机场                    </a>
+                </li>
+                                <li>
+                    <a href="/client.htm">
+                        客户端                    </a>
+                </li>
+                                <li>
+                    <a href="/news/">
+                        新闻资讯                    </a>
+                </li>
+                            </ul>
+            <!-- Mobile Menu End -->
+        </nav>
+        <!-- Navbar End -->
+        <!-- sliders -->
+        <div id="sliders">
+            <div class="full-width">
+                <!-- light slider -->
+                <div id="light-slider" class="carousel slide">
+                    <div id="carousel-area">
+                        <div id="carousel-slider" class="carousel slide" data-ride="carousel">
+                            <div class="carousel-inner" role="listbox">
+                                <div class="carousel-item active">
+                                    <img src="/assets/website/img/freeclashx/slider/bg-1.jpg" alt="">
+                                    <div class="carousel-caption">
+                                        <h1 class="slide-title">架构设计基础设施保障IaaS之计算篇</h1>
+                                        <h5 class="slide-text">
+                                            <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / 正文
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End sliders -->
+    </header>
+    <!-- Header Area wrapper End -->
+    
+    <!-- Services Section Start -->
+    <section id="services" class="section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Node官网订阅站" data-url="https://clashnode.github.io">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-light"> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220902/5fb6ce59920bb53a7a8c1ea9ff008075.jpg" alt="架构设计基础设施保障IaaS之计算篇"></p> <h2><a id="IaaS_1" rel="nofollow"></a>IaaS之计算</h2> <h3><a id="11__IaaS_3" rel="nofollow"></a>1.1 IaaS概述</h3> <p>IaaS（Infrastructure as a Service ）提供托管的 IT 基础架构，供用户调配处理能力、存储、网络和其他基础计算资源。IaaS 提供商运行并管理此基础架构，用户可以在此基础架构上运行选择的操作系统和应用程序软件。</p> <p>在云平台中还会涉及以下概念：</p> <ol> <li>PaaS：平台即服务。对应于上面所说的提供常用的技术组件方便系统的开发和维护；</li> <li>SaaS：软件即服务。对应于上面所说的提供开发好的应用或服务，按功能或性能要求付费。</li> <li>Faas：函数即服务。服务商提供一个平台，允许客户开发、运行和管理应用程序功能，而无需构建和维护通常与开发和启动应用程序相关的基础架构。</li> </ol> <h3><a id="12___17" rel="nofollow"></a>1.2 服务部署演进历程</h3> <ol> <li><strong>应用拆分</strong></li> </ol> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220902/dd3df1c5c0b3c898da43fab2afb38315.jpg" alt="架构设计基础设施保障IaaS之计算篇"></p> <p>按照业务功能来划分应用服务，整个职责更清晰，相互之间可以做到独立升级迭代。应用之间可能会涉及到一些公共配置，可以通过分布式配置中心Zookeeper来解决。</p> <p>架构瓶颈：</p> <p>不同应用服务之间存在共用的组件，会导致相同代码存在多份，公共功能升级时全部应用代码都要跟着升级。</p> <p>比如说JSON字符串处理组件， 加密处理组件等。</p> <ol start="2"> <li><strong>微服务应用</strong></li> </ol> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220902/3e3ab33b9b51cb8a68ee87ec9b98f16f.jpg" alt="架构设计基础设施保障IaaS之计算篇"></p> <p>如用户管理、订单、支付、鉴权等功能在多个应用中都存在，那么可以把这些功能的代码单独抽取出来形成一个单独的服务来管理， 比如说加密封装，鉴权处理接口等。</p> <p>微服务架构，应用和服务之间通过HTTP、TCP或RPC请求等多种方式来访问公共服务，每个单独的服务都可以由单独的团队来管理。</p> <p>在服务治理层面， 可以通过SpringCloud等框架实现服务治理、限流、熔断、降级等功能，提高服务的稳定性和可用性。</p> <p>架构瓶颈：</p> <p>不同服务的接口访问方式不同，应用服务可能需要适配多种访问方式， 才能使用服务，应用服务之间也可能相互访问，调用链将会变得非常复杂冗长，逻辑变得混乱。</p> <ol start="3"> <li><strong>企业服务总线ESB</strong></li> </ol> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220902/90b2293805335967f42ffaf4243c815d.jpg" alt="架构设计基础设施保障IaaS之计算篇"></p> <p>应用统一通过ESB来访问后端服务，服务与服务之间也通过ESB来相互调用，以此降低系统的耦合程度。</p> <p>使用企业消息总线来解除服务之间耦合问题的架构，就是所谓的SOA（面向服务）架构，这种架构与微服务架构容易混淆，因为表现形式比较相似。</p> <p>微服务架构更多是指把系统里的公共服务抽取出来单独运维管理的思想，而SOA架构则是指一种拆分服务并使服务接口访问变得统一的架构思想，SOA架构中包含了微服务的思想。</p> <p>架构瓶颈：</p> <p>业务不断发展，应用和服务都会不断变多，应用和服务的部署变得复杂，同一台服务器上部署多个服务还要解决运行环境冲突的问题。</p> <p>对于如大促这类需要动态扩缩容的场景，需要水平扩展服务的性能，就需要在新增的服务上准备运行环境，部署服务等，运维将变得十分困难。</p> <ol start="4"> <li><strong>容器化技术</strong></li> </ol> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220902/8cb29929906ee1f0502fe18a610fc124.jpg" alt="架构设计基础设施保障IaaS之计算篇"></p> <p>目前最流行的容器化技术是Docker，最流行的容器管理服务是Kubernetes(K8S)，应用/服务可以打包为Docker镜像，通过K8S来动态分发和部署镜像。</p> <p>Docker镜像可理解为一个能运行你的应用/服务的最小的操作系统，里面放着应用/服务的运行代码，运行环境根据实际的需要设置好。</p> <p>把整个“操作系统”打包为一个镜像后，就可以分发到需要部署相关服务的机器上，直接启动Docker镜像就可以把服务起起来，使服务的部署和运维变得简单。</p> <p>架构瓶颈：</p> <p>使用容器化技术后服务动态扩缩容问题得以解决，但是机器还是需要公司自身来管理，在非大促的时候，还是需要闲置着大量的机器资源来应对大促，机器自身成本和运维成本都极高，资源利用率低。</p> <ol start="5"> <li><strong>云平台</strong></li> </ol> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220902/cb19b82ab641ffec2e8af24763ec1f28.jpg" alt="架构设计基础设施保障IaaS之计算篇"></p> <p>系统可部署到公有云上，利用公有云的海量机器资源，解决动态硬件资源的问题</p> <p>在大促的时间段里，在云平台中临时申请更多的资源，结合Docker和K8S来快速部署服务，在大促结束后释放资源，真正做到按需付费，资源利用率大大提高，同时大大降低了运维成本。</p> <p>所谓的云平台，就是把海量机器资源，通过统一的资源管理，抽象为一个资源整体</p> <p>在云平台上可按需动态申请硬件资源（如CPU、内存、网络等），并且之上提供通用的操作系统，提供常用的技术组件（如Hadoop技术栈，MPP数据库等）供用户使用，甚至提供开发好的应用</p> <p>用户不需要关心应用内部使用了什么技术，就能够解决需求（如音视频转码服务、邮件服务、个人博客等）。</p> <h3><a id="13___97" rel="nofollow"></a>1.3 云虚拟机</h3> <ul> <li><strong>介绍</strong></li> </ul> <ol> <li> <p>阿里云ECS</p> <p>ECS（Elastic Compute Service）是阿里云提供的性能卓越、稳定可靠、弹性扩展的IaaS（Infrastructure as a Service）级别云计算服务。</p> </li> <li> <p>亚马逊EC2</p> <p>EC2（Amazon Elastic Compute Cloud），是一种 Web 服务，能在云中提供安全且可调整大小的计算能力。该服务旨在让开发人员能够更轻松地进行 Web 规模的云计算。</p> </li> <li> <p>腾讯云CVM</p> <p>CVM（Cloud Virtual Machine），提供安全可靠的弹性计算服务，可以在云端获取和启用 CVM，来实现计算需求。随着业务需求的变化，可以实时扩展或缩减计算资源。</p> </li> </ol> <ul> <li><strong>云虚拟机对比</strong></li> </ul> <ol> <li>性能评测：</li> </ol> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220902/6e7b5c5a398473f351ef01b871e873ad.jpg" alt="架构设计基础设施保障IaaS之计算篇"></p> <p>（累计值越小， 综合排名越高。）</p> <ol start="2"> <li>成本对比：</li> </ol> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220902/97fdb896a822bfbcbc3a5d286c73e47b.jpg" alt="架构设计基础设施保障IaaS之计算篇"></p> <h3><a id="14___130" rel="nofollow"></a>1.4 云虚拟机如何选型</h3> <ol> <li> <p>虚拟机类型</p> <p>主要类型对比：</p> <table> <thead> <tr> <th>类型</th> <th>AWS代号</th> <th>阿里云代号</th> <th>腾讯云代号</th> </tr> </thead> <tbody> <tr> <td>通用型</td> <td>M</td> <td>G</td> <td>S</td> </tr> <tr> <td>计算型</td> <td>C</td> <td>C</td> <td>C、CN</td> </tr> <tr> <td>内存型</td> <td>R</td> <td>R</td> <td>M</td> </tr> <tr> <td>GPU计算型</td> <td>P</td> <td>GN</td> <td>AMD、NVIDIA</td> </tr> <tr> <td>存储型</td> <td>I、D</td> <td>I、D</td> <td>D</td> </tr> </tbody> </table> <p>阿里云还包含： 本地SSD型、高主频型、FPGA计算型、NPU计算型、超级计算集群（SCC）、弹性裸金属服务器(自研新一代云服务器)等。</p> </li> </ol> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://help.aliyun.com/document_detail/108490.html?spm=a2c4g.11186623.6.604.999e6f0f0b2lAc"  rel="nofollow">官方参考</a></p> <p>腾讯云还包含： 高 IO 型实例族、批量型实例族等。</p> <p><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://cloud.tencent.com/product/cvm/instances"  rel="nofollow">官方参考</a></p> <ol start="2"> <li> <p>代别更新</p> <p>随着虚拟化技术不断发展， 云厂商需要不断地对虚拟机进行更新：</p> <ol> <li> <p>硬件方面， 比如CPU的换代， 内存升级等；</p> </li> <li> <p>软件层面，比如内核的改进，虚拟化技术的提升等。</p> </li> </ol> </li> <li> <p>实例配置</p> <p>实例按业界标准划分为micro、small、medium、large、xlarge。</p> <table> <thead> <tr> <th>类型</th> <th>vCPU</th> <th>内存</th> </tr> </thead> <tbody> <tr> <td>micro</td> <td>1</td> <td>1</td> </tr> <tr> <td>small</td> <td>1</td> <td>2</td> </tr> <tr> <td>medium</td> <td>2</td> <td>4</td> </tr> <tr> <td>large</td> <td>2</td> <td>8</td> </tr> <tr> <td>xlarge</td> <td>4</td> <td>16</td> </tr> <tr> <td>2xlarge</td> <td>8</td> <td>32</td> </tr> </tbody> </table> </li> </ol> <h3><a id="15___177" rel="nofollow"></a>1.5 云虚拟机的创建操作</h3> <ol> <li>选择虚拟机类型</li> </ol> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220902/3a7d2ded06dd2e4db6d9c43417552517.jpg" alt="架构设计基础设施保障IaaS之计算篇"></p> <p>如果测试， 可以选取抢占实例， 节省成本。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220902/db46667e0eff88439af7839721ab0459.jpg" alt="架构设计基础设施保障IaaS之计算篇"></p> <ol start="2"> <li> <p>网路和安全组配置</p> <p>[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-UE2xoy6O-1660718280551)(images/image-20201112150546245.png)]</p> </li> <li> <p>系统配置</p> </li> </ol> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220902/a44df20d34e4ef1de3b7de8de5b92b11.jpg" alt="架构设计基础设施保障IaaS之计算篇"></p> <ol start="4"> <li>分组设置</li> </ol> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220902/c97f876721ec0d94f52c0cf23422b218.jpg" alt="架构设计基础设施保障IaaS之计算篇"></p> <ol start="5"> <li>远程连接</li> </ol> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220902/fb7367309ef9607d3e8324e104bbfe1c.jpg" alt="架构设计基础设施保障IaaS之计算篇"></p> <p>通过远程连接可以直接进行操作， 一般会采用远程连接工具进行管理， 比如VNC或SSH连接工具。</p> <p>如果需要节省成本， 可以选择“停机不收费”， 但不能保障稳定性。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220902/bc5c267c41c70fdf1e60eac041ba20ed.jpg" alt="架构设计基础设施保障IaaS之计算篇"></p> <h3><a id="16___220" rel="nofollow"></a>1.6 服务部署访问</h3> <ol> <li> <p>开通80端口访问权限</p> <p>在网络与安全 -&gt; 安全组里面， 新增配置：</p> </li> </ol> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220902/4cd9204921c35b16f79b13837e968299.jpg" alt="架构设计基础设施保障IaaS之计算篇"></p> <ol start="2"> <li> <p>安装JDK</p> <pre><code class="prism language-sh">yum -y install java-1.8.0-openjdk.x86_64</code></pre> </li> <li> <p>打包服务</p> <pre><code class="prism language-sh">maven clean install</code></pre> </li> <li> <p>配置服务器连接</p> <p>直接通过外网IP访问：</p> </li> </ol> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220902/805acd63a6c9d6eb8afe3239670eff88.jpg" alt="架构设计基础设施保障IaaS之计算篇"></p> <ol start="5"> <li> <p>运行服务</p> <pre><code class="prism language-sh">java -jar app-basic.jar</code></pre> </li> <li> <p>访问验证</p> <p>http://47.104.9.75:10692/getOrder</p> </li> </ol> <blockquote> <p>专注Java技术干货分享，欢迎志同道合的小伙伴，一起交流学习</p> </blockquote> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-95554.htm">Postman测试 &#8211; Post请求参数为 Llist＜String＞ 如何传参？</a></p>
+                                        <p>下一个：<a href="/news/article-96309.htm">gateway聚合swagger3统一管理api文档</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-72864.htm" title="成都宠物犬领养中心电话地址（成都宠物领养中心官网收容中心）">成都宠物犬领养中心电话地址（成都宠物领养中心官网收容中心）</a></li>
+                        <li class="py-2"><a href="/news/article-77579.htm" title="动物防疫站的职责是什么 动物防疫站的职责是什么呢">动物防疫站的职责是什么 动物防疫站的职责是什么呢</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-12-free-ssr-node.htm" title="3月12日最新ClashX订阅 | 19.9M/S|2025年Shadowrocket/V2ray/Clash/SSR免费节点地址链接分享">3月12日最新ClashX订阅 | 19.9M/S|2025年Shadowrocket/V2ray/Clash/SSR免费节点地址链接分享</a></li>
+                        <li class="py-2"><a href="/news/article-94255.htm" title="动物诊疗许可证申领准备材料清单（动物诊疗许可证申领条件）">动物诊疗许可证申领准备材料清单（动物诊疗许可证申领条件）</a></li>
+                        <li class="py-2"><a href="/news/article-70885.htm" title="动物疫苗一针多少钱啊 动物疫苗一针多少钱啊图片">动物疫苗一针多少钱啊 动物疫苗一针多少钱啊图片</a></li>
+                        <li class="py-2"><a href="/news/article-74199.htm" title="狗狗领养协议一般是怎么规定的呢（狗狗领养手续）">狗狗领养协议一般是怎么规定的呢（狗狗领养手续）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-14-clash-v2ray-ss-ssr.htm" title="3月14日最新ClashX订阅 | 22.2M/S|2025年Shadowrocket/V2ray/SSR/Clash免费节点地址链接分享">3月14日最新ClashX订阅 | 22.2M/S|2025年Shadowrocket/V2ray/SSR/Clash免费节点地址链接分享</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-10-free-node-subscribe-links.htm" title="4月10日最新ClashX订阅 | 18.2M/S|2025年V2ray/Clash/Shadowrocket/SSR免费节点地址链接分享">4月10日最新ClashX订阅 | 18.2M/S|2025年V2ray/Clash/Shadowrocket/SSR免费节点地址链接分享</a></li>
+                        <li class="py-2"><a href="/news/article-80304.htm" title="养土狗的方法与技术有哪些视频讲解（养土狗技巧）">养土狗的方法与技术有哪些视频讲解（养土狗技巧）</a></li>
+                        <li class="py-2"><a href="/news/article-89600.htm" title="宠物打完疫苗后多久检测抗体（宠物打完疫苗之后多久可以洗澡）">宠物打完疫苗后多久检测抗体（宠物打完疫苗之后多久可以洗澡）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">45</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">90</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Services Section End -->
+    
+        <!-- Footer Section -->
+    <footer class="footer">
+        <!-- Copyright -->
+        <div id="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-xs-12">
+                        <p class="copyright-text">
+                                                <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                            Free Clash X免费订阅地址中文网 版权所有 Powered by WordPress
+                        </p>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-xs-12">
+                        <ul class="nav nav-inline  justify-content-end ">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="/">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Sitemap</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Privacy Policy</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Terms of services</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Copyright  End-->
+    </footer>
+    <!-- Footer Section End-->
+    <!-- Go to Top Link -->
+    <a href="#" class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+    </a>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader" id="loader-1"></div>
+    </div>
+    <!-- End Preloader -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="/assets/website/js/frontend/freeclashx/jquery-min.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/popper.min.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/bootstrap.min.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/owl.carousel.min.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/jquery.mixitup.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/jquery.countTo.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/jquery.nav.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/scrolling-nav.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/jquery.easing.min.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/jquery.slicknav.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/form-validator.min.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/contact-form-script.js"></script>
+    <script src="/assets/website/js/frontend/freeclashx/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+    <script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
