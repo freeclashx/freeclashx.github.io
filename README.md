@@ -1,4 +1,4 @@
-# 9月4日最新ClashX订阅 | 18M/S|2025年Shadowrocket/Clash/SSR/V2ray免费节点地址链接分享  更新时间 2025-09-04 09:46:38
+# 9月10日最新ClashX订阅 | 19M/S|2025年Clash/SSR/V2ray/Shadowrocket免费节点地址链接分享  更新时间 2025-09-10 10:03:11
 所有免费clash节点都爬取自网络，请勿用于非法用途 。节点地址：<a href="https://freeclashx.github.io" target="_blank">点击跳转</a>
 
 ## clash使用教程：
@@ -9,23 +9,23 @@
 
 ### Clash订阅链接
 
-- https://freeclashx.github.io/uploads/2025/09/0-20250904.yaml
-- https://freeclashx.github.io/uploads/2025/09/1-20250904.yaml
-- https://freeclashx.github.io/uploads/2025/09/2-20250904.yaml
-- https://freeclashx.github.io/uploads/2025/09/3-20250904.yaml
-- https://freeclashx.github.io/uploads/2025/09/4-20250904.yaml
+- https://freeclashx.github.io/uploads/2025/09/0-20250910.yaml
+- https://freeclashx.github.io/uploads/2025/09/1-20250910.yaml
+- https://freeclashx.github.io/uploads/2025/09/2-20250910.yaml
+- https://freeclashx.github.io/uploads/2025/09/3-20250910.yaml
+- https://freeclashx.github.io/uploads/2025/09/4-20250910.yaml
 
 ### V2ray订阅链接
 
-- https://freeclashx.github.io/uploads/2025/09/0-20250904.txt
-- https://freeclashx.github.io/uploads/2025/09/1-20250904.txt
-- https://freeclashx.github.io/uploads/2025/09/2-20250904.txt
-- https://freeclashx.github.io/uploads/2025/09/3-20250904.txt
-- https://freeclashx.github.io/uploads/2025/09/4-20250904.txt
+- https://freeclashx.github.io/uploads/2025/09/0-20250910.txt
+- https://freeclashx.github.io/uploads/2025/09/1-20250910.txt
+- https://freeclashx.github.io/uploads/2025/09/2-20250910.txt
+- https://freeclashx.github.io/uploads/2025/09/3-20250910.txt
+- https://freeclashx.github.io/uploads/2025/09/4-20250910.txt
 
 ### Sing-box订阅链接
 
-- https://freeclashx.github.io/uploads/2025/09/20250904.json
+- https://freeclashx.github.io/uploads/2025/09/20250910.json
 
 ## 更多clash节点订阅 ：
 
