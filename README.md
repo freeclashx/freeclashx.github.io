@@ -1,4 +1,4 @@
-# 12月11日最新ClashX订阅 | 19.8M/S|2025年Clash节点/Shadowrocket节点/V2ray节点/SSR节点/Singbox节点免费节点地址链接分享  更新时间 2025-12-11 09:30:23
+# 12月19日最新ClashX订阅 | 19.1M/S|2025年Singbox节点/Shadowrocket节点/V2ray节点/Clash节点/SSR节点免费节点地址链接分享  更新时间 2025-12-19 09:42:09
 所有免费clash节点都爬取自网络，请勿用于非法用途 。节点地址：<a href="https://freeclashx.github.io" target="_blank">点击跳转</a>
 
 ## clash使用教程：
@@ -9,23 +9,23 @@
 
 ### 免费Clash节点订阅链接
 
-- https://freeclashx.github.io/uploads/2025/12/0-20251211.yaml
-- https://freeclashx.github.io/uploads/2025/12/1-20251211.yaml
-- https://freeclashx.github.io/uploads/2025/12/2-20251211.yaml
-- https://freeclashx.github.io/uploads/2025/12/3-20251211.yaml
-- https://freeclashx.github.io/uploads/2025/12/4-20251211.yaml
+- https://freeclashx.github.io/uploads/2025/12/0-20251219.yaml
+- https://freeclashx.github.io/uploads/2025/12/1-20251219.yaml
+- https://freeclashx.github.io/uploads/2025/12/2-20251219.yaml
+- https://freeclashx.github.io/uploads/2025/12/3-20251219.yaml
+- https://freeclashx.github.io/uploads/2025/12/4-20251219.yaml
 
 ### 免费V2ray节点订阅链接
 
-- https://freeclashx.github.io/uploads/2025/12/0-20251211.txt
-- https://freeclashx.github.io/uploads/2025/12/1-20251211.txt
-- https://freeclashx.github.io/uploads/2025/12/2-20251211.txt
-- https://freeclashx.github.io/uploads/2025/12/3-20251211.txt
-- https://freeclashx.github.io/uploads/2025/12/4-20251211.txt
+- https://freeclashx.github.io/uploads/2025/12/0-20251219.txt
+- https://freeclashx.github.io/uploads/2025/12/1-20251219.txt
+- https://freeclashx.github.io/uploads/2025/12/2-20251219.txt
+- https://freeclashx.github.io/uploads/2025/12/3-20251219.txt
+- https://freeclashx.github.io/uploads/2025/12/4-20251219.txt
 
 ### 免费Sing-box节点订阅链接
 
-- https://freeclashx.github.io/uploads/2025/12/20251211.json
+- https://freeclashx.github.io/uploads/2025/12/20251219.json
 
 ## 更多Clash节点订阅 ：
 
