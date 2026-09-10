@@ -287,24 +287,9 @@ A4：目前多为订阅制，需按年续费，保障软件和服务的持续更
         先用 ping 和 traceroute 检查到服务器的延迟与路由跳数；再通过测速工具测带宽并尝试更换不同出站端口或混淆方式；若仍然不稳，考虑更换节点或联系客服查看服务端链路质量。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>PassWall2 如何通过策略组优化科学上网？</h5></div>
-    <div class="panel-body">
-        PassWall2 结合策略组和节点延迟检测功能，可自动选择最佳节点处理网页、视频和游戏流量。无需手动干预，保证访问速度和网络稳定性，提高整体体验。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Nekoray 的订阅更新机制如何运作？</h5></div>
-    <div class="panel-body">
-        Nekoray 可以通过远程订阅 URL 自动下载最新节点和规则文件。用户可以设置更新频率，程序会定时检测并替换旧节点，保持配置最新状态。<hr />    </div>
-</div>
-<div class="panel panel-default">
     <div class="panel-heading"><h5>Nekoray 与 Nekobox 有什么不同？</h5></div>
     <div class="panel-body">
         Nekoray 是一款基于 Qt 的跨平台代理前端，而 Nekobox 更偏向移动端简化使用。两者均支持 V2Ray/VLESS/Trojan 协议，但 Nekobox 提供了更轻量的界面和更快的连接启动速度。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Sing-box 如何按端口分流流量？</h5></div>
-    <div class="panel-body">
-        Sing-box 支持根据端口匹配流量，将不同应用流量分配到指定节点。结合策略组使用，可精准分流，提高访问速度和网络稳定性，优化整体网络体验。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Shadowrocket 如何实现节点自动切换？</h5></div>
@@ -312,9 +297,14 @@ A4：目前多为订阅制，需按年续费，保障软件和服务的持续更
         Shadowrocket 可结合延迟测速和策略组自动选择低延迟、稳定节点处理不同流量。提高网页、视频和游戏访问速度，减少掉线和卡顿，优化整体上网体验。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>VLESS 相比 VMess 的主要改进是什么？</h5></div>
+    <div class="panel-heading"><h5>SSR 的加密方式推荐使用哪种？</h5></div>
     <div class="panel-body">
-        VLESS 是 VMess 的后继协议，移除了加密层以减少服务器资源消耗，同时提供更灵活的加密与传输方式选择。它更轻量、可扩展性更好，常被用于与 XTLS 等新传输协议搭配使用。<hr />    </div>
+        SSR 支持多种加密方式，如 aes-256-cfb、chacha20、rc4-md5 等。建议优先选择 chacha20 系列算法，在移动设备上性能更佳，同时具有较强的安全性。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Sing-box 如何按端口分流流量？</h5></div>
+    <div class="panel-body">
+        Sing-box 支持根据端口匹配流量，将不同应用流量分配到指定节点。结合策略组使用，可精准分流，提高访问速度和网络稳定性，优化整体网络体验。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Clash 策略组如何实现节点优先级切换？</h5></div>
@@ -322,14 +312,24 @@ A4：目前多为订阅制，需按年续费，保障软件和服务的持续更
         用户可以在 Clash 策略组中设置节点优先级，结合规则文件自动选择延迟低、稳定性高的节点处理流量。优化网页浏览、视频播放和游戏访问速度，提高整体网络效率。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>SSR 的加密方式推荐使用哪种？</h5></div>
+    <div class="panel-heading"><h5>VLESS 相比 VMess 的主要改进是什么？</h5></div>
     <div class="panel-body">
-        SSR 支持多种加密方式，如 aes-256-cfb、chacha20、rc4-md5 等。建议优先选择 chacha20 系列算法，在移动设备上性能更佳，同时具有较强的安全性。<hr />    </div>
+        VLESS 是 VMess 的后继协议，移除了加密层以减少服务器资源消耗，同时提供更灵活的加密与传输方式选择。它更轻量、可扩展性更好，常被用于与 XTLS 等新传输协议搭配使用。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>PassWall2 如何通过策略组优化科学上网？</h5></div>
+    <div class="panel-body">
+        PassWall2 结合策略组和节点延迟检测功能，可自动选择最佳节点处理网页、视频和游戏流量。无需手动干预，保证访问速度和网络稳定性，提高整体体验。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>ShadowsocksR 支持哪些混淆插件？</h5></div>
     <div class="panel-body">
-        ShadowsocksR 提供多种混淆方式，如 tls1.2_ticket_auth、http_simple、random_head 等。它们通过模拟正常流量特征来规避防火墙检测，使通信更加隐蔽。    </div>
+        ShadowsocksR 提供多种混淆方式，如 tls1.2_ticket_auth、http_simple、random_head 等。它们通过模拟正常流量特征来规避防火墙检测，使通信更加隐蔽。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Nekoray 的订阅更新机制如何运作？</h5></div>
+    <div class="panel-body">
+        Nekoray 可以通过远程订阅 URL 自动下载最新节点和规则文件。用户可以设置更新频率，程序会定时检测并替换旧节点，保持配置最新状态。    </div>
 </div>
 <div class="panel panel-default mt-5">
     <div class="panel-heading">
@@ -377,16 +377,16 @@ A4：目前多为订阅制，需按年续费，保障软件和服务的持续更
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2026-8-12-free-high-speed-nodes.htm" title="8月12日最新ClashX订阅 | 19.9M/S|2025年Trojan节点/Clash节点/Shadowrocket节点/V2ray节点/Singbox节点/SSR节点免费节点地址链接分享">8月12日最新ClashX订阅 | 19.9M/S|2025年Trojan节点/Clash节点/Shadowrocket节点/V2ray节点/Singbox节点/SSR节点免费节点地址链接分享</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-8-2-clash-node.htm" title="8月2日最新ClashX订阅 | 21.3M/S|2025年Trojan节点/SSR节点/Shadowrocket节点/Singbox节点/Clash节点/V2ray节点免费节点地址链接分享">8月2日最新ClashX订阅 | 21.3M/S|2025年Trojan节点/SSR节点/Shadowrocket节点/Singbox节点/Clash节点/V2ray节点免费节点地址链接分享</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/node-share-links-2026-8-7.htm" title="8月7日最新ClashX订阅 | 22.8M/S|2025年Clash节点/SSR节点/Singbox节点/Trojan节点/Shadowrocket节点/V2ray节点免费节点地址链接分享">8月7日最新ClashX订阅 | 22.8M/S|2025年Clash节点/SSR节点/Singbox节点/Trojan节点/Shadowrocket节点/V2ray节点免费节点地址链接分享</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/free-clash-subscribe-2026-8-3.htm" title="8月3日最新ClashX订阅 | 21.9M/S|2025年Clash节点/V2ray节点/Shadowrocket节点/SSR节点/Singbox节点/Trojan节点免费节点地址链接分享">8月3日最新ClashX订阅 | 21.9M/S|2025年Clash节点/V2ray节点/Shadowrocket节点/SSR节点/Singbox节点/Trojan节点免费节点地址链接分享</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-8-18-clash-node.htm" title="8月18日最新ClashX订阅 | 20.4M/S|2025年Singbox节点/Shadowrocket节点/Clash节点/SSR节点/Trojan节点/V2ray节点免费节点地址链接分享">8月18日最新ClashX订阅 | 20.4M/S|2025年Singbox节点/Shadowrocket节点/Clash节点/SSR节点/Trojan节点/V2ray节点免费节点地址链接分享</a><hr /></li>
                         <li class="py-2"><a href="/free-nodes/2026-8-8-clash-node.htm" title="8月8日最新ClashX订阅 | 22.4M/S|2025年Singbox节点/SSR节点/V2ray节点/Clash节点/Trojan节点/Shadowrocket节点免费节点地址链接分享">8月8日最新ClashX订阅 | 22.4M/S|2025年Singbox节点/SSR节点/V2ray节点/Clash节点/Trojan节点/Shadowrocket节点免费节点地址链接分享</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/free-subscribe-node-2026-7-31.htm" title="7月31日最新ClashX订阅 | 21.3M/S|2025年Trojan节点/Clash节点/Singbox节点/SSR节点/V2ray节点/Shadowrocket节点免费节点地址链接分享">7月31日最新ClashX订阅 | 21.3M/S|2025年Trojan节点/Clash节点/Singbox节点/SSR节点/V2ray节点/Shadowrocket节点免费节点地址链接分享</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-8-4-node-share.htm" title="8月4日最新ClashX订阅 | 21.9M/S|2025年V2ray节点/SSR节点/Trojan节点/Singbox节点/Shadowrocket节点/Clash节点免费节点地址链接分享">8月4日最新ClashX订阅 | 21.9M/S|2025年V2ray节点/SSR节点/Trojan节点/Singbox节点/Shadowrocket节点/Clash节点免费节点地址链接分享</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/free-clash-subscribe-2026-8-27.htm" title="8月27日最新ClashX订阅 | 19.4M/S|2025年Clash节点/Trojan节点/V2ray节点/SSR节点/Singbox节点/Shadowrocket节点免费节点地址链接分享">8月27日最新ClashX订阅 | 19.4M/S|2025年Clash节点/Trojan节点/V2ray节点/SSR节点/Singbox节点/Shadowrocket节点免费节点地址链接分享</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-8-10-clash-v2ray-ss-ssr.htm" title="8月10日最新ClashX订阅 | 19M/S|2025年Trojan节点/Clash节点/V2ray节点/Shadowrocket节点/SSR节点/Singbox节点免费节点地址链接分享">8月10日最新ClashX订阅 | 19M/S|2025年Trojan节点/Clash节点/V2ray节点/Shadowrocket节点/SSR节点/Singbox节点免费节点地址链接分享</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/node-share-links-2026-8-25.htm" title="8月25日最新ClashX订阅 | 22.7M/S|2025年V2ray节点/Trojan节点/SSR节点/Singbox节点/Clash节点/Shadowrocket节点免费节点地址链接分享">8月25日最新ClashX订阅 | 22.7M/S|2025年V2ray节点/Trojan节点/SSR节点/Singbox节点/Clash节点/Shadowrocket节点免费节点地址链接分享</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/clash-node-github-2026-8-13.htm" title="8月13日最新ClashX订阅 | 18.3M/S|2025年SSR节点/Trojan节点/Singbox节点/Clash节点/V2ray节点/Shadowrocket节点免费节点地址链接分享">8月13日最新ClashX订阅 | 18.3M/S|2025年SSR节点/Trojan节点/Singbox节点/Clash节点/V2ray节点/Shadowrocket节点免费节点地址链接分享</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-8-26-free-node-subscribe.htm" title="8月26日最新ClashX订阅 | 21.8M/S|2025年Singbox节点/V2ray节点/Trojan节点/Clash节点/Shadowrocket节点/SSR节点免费节点地址链接分享">8月26日最新ClashX订阅 | 21.8M/S|2025年Singbox节点/V2ray节点/Trojan节点/Clash节点/Shadowrocket节点/SSR节点免费节点地址链接分享</a><hr /></li>
                         <li class="py-2"><a href="/free-nodes/2026-8-24-clash-node.htm" title="8月24日最新ClashX订阅 | 18.7M/S|2025年Trojan节点/Singbox节点/V2ray节点/SSR节点/Shadowrocket节点/Clash节点免费节点地址链接分享">8月24日最新ClashX订阅 | 18.7M/S|2025年Trojan节点/Singbox节点/V2ray节点/SSR节点/Shadowrocket节点/Clash节点免费节点地址链接分享</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-8-16-clash-v2ray-ss-ssr.htm" title="8月16日最新ClashX订阅 | 20.5M/S|2025年Shadowrocket节点/Clash节点/SSR节点/Trojan节点/Singbox节点/V2ray节点免费节点地址链接分享">8月16日最新ClashX订阅 | 20.5M/S|2025年Shadowrocket节点/Clash节点/SSR节点/Trojan节点/Singbox节点/V2ray节点免费节点地址链接分享</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-8-14-clash-node.htm" title="8月14日最新ClashX订阅 | 18.3M/S|2025年Clash节点/SSR节点/Singbox节点/V2ray节点/Shadowrocket节点/Trojan节点免费节点地址链接分享">8月14日最新ClashX订阅 | 18.3M/S|2025年Clash节点/SSR节点/Singbox节点/V2ray节点/Shadowrocket节点/Trojan节点免费节点地址链接分享</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-8-30-free-clash.htm" title="8月30日最新ClashX订阅 | 22.6M/S|2025年Trojan节点/Shadowrocket节点/Singbox节点/SSR节点/Clash节点/V2ray节点免费节点地址链接分享">8月30日最新ClashX订阅 | 22.6M/S|2025年Trojan节点/Shadowrocket节点/Singbox节点/SSR节点/Clash节点/V2ray节点免费节点地址链接分享</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-8-6-free-high-speed-nodes.htm" title="8月6日最新ClashX订阅 | 22.3M/S|2025年Singbox节点/Clash节点/SSR节点/V2ray节点/Trojan节点/Shadowrocket节点免费节点地址链接分享">8月6日最新ClashX订阅 | 22.3M/S|2025年Singbox节点/Clash节点/SSR节点/V2ray节点/Trojan节点/Shadowrocket节点免费节点地址链接分享</a><hr /></li>
                     </ul>
     </div>
 </div>
@@ -398,10 +398,10 @@ A4：目前多为订阅制，需按年续费，保障软件和服务的持续更
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">27</span> <a href="/date/2026-08/" title="2026-08 归档">2026-08</a></h4>
+                <h4><span class="badge" style="float: right;">4</span> <a href="/date/2026-09/" title="2026-09 归档">2026-09</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">13</span> <a href="/date/2026-07/" title="2026-07 归档">2026-07</a></h4>
+                <h4><span class="badge" style="float: right;">26</span> <a href="/date/2026-08/" title="2026-08 归档">2026-08</a></h4>
             </li>
                     </ul>
     </div>
